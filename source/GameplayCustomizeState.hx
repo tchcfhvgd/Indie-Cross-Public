@@ -10,7 +10,7 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
-#if windows
+#if desktop
 import Discord.DiscordClient;
 #end
 
@@ -37,7 +37,7 @@ class GameplayCustomizeState extends MusicBeatState
 	{
 		super.create();
 
-		#if windows
+		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("Customizing Gameplay Modules", null);
 		#end

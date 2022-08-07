@@ -323,11 +323,11 @@ class ModchartState
 				songLowercase = 'philly';
 		}
 
-		var data:BitmapData = BitmapData.fromFile(Sys.getCwd() + "assets/data/" + songLowercase + '/' + spritePath + ".png");
+		var data:BitmapData = openfl.utils.Assets.getBitmapData(Sys.getCwd() + "assets/data/" + songLowercase + '/' + spritePath + ".png");
 
 		var sprite:FlxSprite = new FlxSprite(0, 0);
 
-		sprite.frames = FlxAtlasFrames.fromSparrow(FlxGraphic.fromBitmapData(data), Sys.getCwd() + "assets/data/" + songLowercase + "/" + spritePath + ".xml");
+		sprite.frames = FlxAtlasFrames.fromSparrow(FlxGraphic.fromBitmapData(data), openfl.utils.Assets.getText("assets/data/" + songLowercase + "/" + spritePath + ".xml"));
 
 		trace(sprite.frames.frames.length);
 
@@ -362,7 +362,7 @@ class ModchartState
 				songLowercase = 'philly';
 		}
 
-		var data:BitmapData = BitmapData.fromFile(Sys.getCwd() + "assets/data/" + songLowercase + '/' + spritePath + ".png");
+		var data:BitmapData = openfl.utils.Assets.getBitmapData("assets/data/" + songLowercase + '/' + spritePath + ".png");
 
 		var sprite:FlxSprite = new FlxSprite(0, 0);
 		var imgWidth:Float = FlxG.width / data.width;
@@ -437,7 +437,7 @@ class ModchartState
 				songLowercase = 'philly';
 		}
 
-		var result = LuaL.dofile(lua, Paths.lua(songLowercase + "/modchart")); // execute le file
+		var result = LuaL.dostring(lua, openfl.utils.Assets.getText(Paths.lua(songLowercase + "/modchart"))); // execute le file
 
 		if (result != 0)
 		{

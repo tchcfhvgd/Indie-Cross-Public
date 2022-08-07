@@ -93,10 +93,16 @@ class SansDialogueBox extends FlxSpriteGroup
 				dialogueStarted = true;
 			}
 
-			if (PlayerSettings.player1.controls.ACCEPT)
-			{
+			var pressed:Bool = PlayerSettings.player1.controls.ACCEPT;
+
+			#if android
+			for (touch in FlxG.touches.list)
+				if (touch.justPressed)
+					pressed = true;
+			#end
+
+			if (pressed)
 				accept();
-			}
 		}
 		else
 		{

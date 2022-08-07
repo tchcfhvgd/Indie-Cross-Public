@@ -513,6 +513,12 @@ class GameJoltLogin extends MusicBeatState
 	}
 }
 
+class GJKeys
+{
+	public static var id:Int = 	0; // Put your game's ID here
+	public static var key:String = ""; // Put your game's private API key here
+}
+
 class GJButton extends FlxSprite
 {
 	public var animOffsets:Map<String, Array<Dynamic>>;
@@ -757,8 +763,8 @@ class Toast extends Sprite
 
 		if (iconPath != null)
 		{
-			icon = new Bitmap(BitmapData.fromFile(iconPath));
-			trace("BITMAP DATA: " + BitmapData.fromFile(iconPath));
+			icon = new Bitmap(openfl.utils.Assets.getBitmapData(iconPath));
+			trace("BITMAP DATA: " + openfl.utils.Assets.getBitmapData(iconPath));
 			icon.x = 10;
 			icon.y = 10;
 

@@ -5,7 +5,7 @@ import Sys.sleep;
 
 using StringTools;
 
-#if cpp
+#if desktop
 import discord_rpc.DiscordRpc;
 #end
 
@@ -13,7 +13,7 @@ class DiscordClient
 {
 	public function new()
 	{
-		#if cpp
+		#if desktop
 		trace("Discord Client starting...");
 		DiscordRpc.start({
 			clientID: "858855876760043560",
@@ -35,7 +35,7 @@ class DiscordClient
 
 	public static function shutdown()
 	{
-		#if cpp
+		#if desktop
 		trace('shuttin');
 		DiscordRpc.shutdown();
 		#end
@@ -43,7 +43,7 @@ class DiscordClient
 
 	static function onReady()
 	{
-		#if cpp
+		#if desktop
 		DiscordRpc.presence({
 			details: "In the Menus",
 			state: null,
@@ -65,7 +65,7 @@ class DiscordClient
 
 	public static function initialize()
 	{
-		#if cpp
+		#if desktop
 		var DiscordDaemon = sys.thread.Thread.create(() ->
 		{
 			new DiscordClient();
@@ -76,7 +76,7 @@ class DiscordClient
 
 	public static function changePresence(details:String, state:Null<String>, ?smallImageKey:String, ?hasStartTimestamp:Bool, ?endTimestamp:Float)
 	{
-		#if cpp
+		#if desktop
 		var startTimestamp:Float = if (hasStartTimestamp) Date.now().getTime() else 0;
 
 		if (endTimestamp > 0)

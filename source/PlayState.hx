@@ -61,7 +61,7 @@ import sys.io.File;
 import sys.io.Process;
 import sys.thread.Thread;
 #end
-#if cpp
+#if desktop
 import Discord.DiscordClient;
 import sys.FileSystem;
 #end
@@ -527,13 +527,13 @@ class PlayState extends MusicBeatState
 		songLowercase = StringTools.replace(PlayState.SONG.song, " ", "-").toLowerCase();
 
 		#if cpp
-		executeModchart = FileSystem.exists(Paths.lua(songLowercase + "/modchart"));
+		executeModchart = openfl.utils.Assets.exists(Paths.lua(songLowercase + "/modchart"));
 		#end
 		#if !cpp
 		executeModchart = false; // FORCE disable for non cpp targets
 		#end
 
-		#if cpp
+		#if desktop
 		// Making difficulty text for Discord Rich Presence.
 		storyDifficultyText = HelperFunctions.difficultyFromInt(storyDifficulty);
 
@@ -3245,7 +3245,7 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				if (FileSystem.exists(Paths.video(cutPrefix + '/' + storyIndex + suffix)))
+				if (openfl.utils.Assets.exists(Paths.video(cutPrefix + '/' + storyIndex + suffix)))
 				{
 					camGame.visible = false;
 					camHUD.visible = false;
@@ -4330,7 +4330,7 @@ class PlayState extends MusicBeatState
 
 		allowedToHeadbang = false;
 
-		#if cpp
+		#if desktop
 		// Updating Discord Rich Presence (with Time Left)
 			var disSong:String = SONG.song;
 			if (HelperFunctions.shouldBeHidden(SONG.song.toLowerCase()))
@@ -4489,7 +4489,7 @@ class PlayState extends MusicBeatState
 		var playerCounter:Int = 0;
 
 		// Per song offset check
-		#if windows
+		#if desktop
 		// pre lowercasing the song name (generateSong)
 
 		var songPath = 'assets/data/' + songLowercase + '/';
@@ -4943,7 +4943,7 @@ class PlayState extends MusicBeatState
 					player3.onpause(true);
 			}
 
-			#if cpp
+			#if desktop
 			var disSong:String = SONG.song;
 			if (HelperFunctions.shouldBeHidden(SONG.song.toLowerCase()))
 				disSong = '[CONFIDENTIAL]';
@@ -4991,7 +4991,7 @@ class PlayState extends MusicBeatState
 			FlxG.sound.music.play();
 			Conductor.songPosition = FlxG.sound.music.time;
 
-			#if cpp
+			#if desktop
 			var disSong:String = SONG.song;
 			if (HelperFunctions.shouldBeHidden(SONG.song.toLowerCase()))
 				disSong = '[CONFIDENTIAL]';
@@ -5075,7 +5075,7 @@ class PlayState extends MusicBeatState
 
 			paused = false;
 
-			#if cpp
+			#if desktop
 			if (!specialIntro)
 			{
 				if (startTimer.finished)
@@ -5133,7 +5133,7 @@ class PlayState extends MusicBeatState
 				vocals.time = Conductor.songPosition;
 				vocals.play();
 
-				#if cpp
+				#if desktop
 				var disSong:String = SONG.song;
 				if (HelperFunctions.shouldBeHidden(SONG.song.toLowerCase()))
 					disSong = '[CONFIDENTIAL]';
@@ -6238,7 +6238,9 @@ class PlayState extends MusicBeatState
 		{
 			cannotDie = true;
 			transitioningToState = true;
+			#if desktop
 			DiscordClient.changePresence("Chart Editor", null, null, true);
+			#end
 			FlxG.switchState(new ChartingState());
 			Application.current.window.onFocusOut.remove(onWindowFocusOut);
 			FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
@@ -7639,7 +7641,7 @@ class PlayState extends MusicBeatState
 
 		if (isStoryMode && (storyPlaylist.length <= 0 && SONG.song.toLowerCase() != 'sansational'))
 		{
-			if (FileSystem.exists(Paths.video(cutPrefix + '/' + (storyIndex + 1) + suffix)))
+			if (openfl.utils.Assets.exists(Paths.video(cutPrefix + '/' + (storyIndex + 1) + suffix)))
 			{
 				camGame.visible = false;
 				camHUD.visible = false;
@@ -10090,6 +10092,7 @@ class PlayState extends MusicBeatState
 
 			songLength = FlxG.sound.music.length;
 
+			#if desktop
 			// Updating Discord Rich Presence (with Time Left)
 			var disSong:String = SONG.song;
 			if (HelperFunctions.shouldBeHidden(SONG.song.toLowerCase()))
@@ -10109,6 +10112,7 @@ class PlayState extends MusicBeatState
 				+ misses, iconRPC, true,
 				songLength
 				- Conductor.songPosition);
+			#end
 		}
 	}
 
@@ -11644,7 +11648,7 @@ class PlayState extends MusicBeatState
 				}
 			}
 
-			#if cpp
+			#if desktop
 			// Game Over doesn't get his own variable because it's only used here
 			var disSong:String = SONG.song;
 			if (HelperFunctions.shouldBeHidden(SONG.song.toLowerCase()))

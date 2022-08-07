@@ -388,13 +388,13 @@ class CreditsMenu extends MusicBeatState
 
 		for (i in 0...credTypes.length)
 		{
-			var bgBitmap:BitmapData = BitmapData.fromFile(Paths.image("credits/bg/" + credTypes[i] + '_BG', "preload"));
+			var bgBitmap:BitmapData = openfl.utils.Assets.getBitmapData(Paths.image("credits/bg/" + credTypes[i] + '_BG', "preload"));
 			bgAssets.push(bgBitmap);
 		}
 
 		for (i in 0...credits.length)
 		{
-			var bigIconAsset:BitmapData = BitmapData.fromFile(Paths.image("credits/icons/big_icons/" + credits[i][0], "preload"));
+			var bigIconAsset:BitmapData = openfl.utils.Assets.getBitmapData(Paths.image("credits/icons/big_icons/" + credits[i][0], "preload"));
 			bigIconsAssets.push(bigIconAsset);
 			//make the small ones use the big ones just resized, saves a bit of loading time(not really)
 
@@ -420,11 +420,11 @@ class CreditsMenu extends MusicBeatState
 
 			credIcons.push(smallIcon);
 
-			//var bigIconAsset:BitmapData = BitmapData.fromFile(Paths.image("credits/icons/big_icons/" + credits[i][0], "preload"));
+			//var bigIconAsset:BitmapData = openfl.utils.Assets.getBitmapData(Paths.image("credits/icons/big_icons/" + credits[i][0], "preload"));
 			//bigIconsAssets.push(bigIconAsset);
 		}
 
-		selctionHighlighter = new FlxSprite(3, 11).loadGraphic(BitmapData.fromFile(Paths.image('credits/icons/selector', 'preload')));
+		selctionHighlighter = new FlxSprite(3, 11).loadGraphic(openfl.utils.Assets.getBitmapData(Paths.image('credits/icons/selector', 'preload')));
 		selctionHighlighter.setGraphicSize(Std.int(selctionHighlighter.width * 0.7));
 		selctionHighlighter.updateHitbox();
 		selctionHighlighter.antialiasing = FlxG.save.data.highquality;

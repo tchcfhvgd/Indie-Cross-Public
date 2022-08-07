@@ -20,6 +20,10 @@ class SpecsDetector extends FlxState
 
 	override public function create()
 	{
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
+
 		KadeEngineData.initSave();
 		super.create();
 

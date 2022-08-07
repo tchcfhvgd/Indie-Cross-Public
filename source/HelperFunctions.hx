@@ -1,17 +1,13 @@
 import GameJolt.GameJoltInfo;
 #if desktop
 import sys.io.Process;
-import sys.FileSystem;
-import sys.io.File;
 #end
 import flixel.FlxG;
 import flixel.graphics.FlxGraphic;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
-import lime.utils.Assets;
-import openfl.display.BitmapData;
-import sys.thread.Thread;
+import openfl.utils.Assets;
 
 using StringTools;
 
@@ -319,7 +315,7 @@ class HelperFunctions
 		}
 		else
 		{
-			if (FileSystem.exists('assets/data/' + song.toLowerCase() + '/' + poop.toLowerCase() + '.json'))
+			if (Assets.exists('assets/data/' + song.toLowerCase() + '/' + poop.toLowerCase() + '.json'))
 			{
 				var json:Dynamic;
 	
@@ -355,6 +351,7 @@ class HelperFunctions
 	
 	public static function isRecording():Bool
 	{
+		#if desktop
 		var programList:Array<String> = 
 		[
 			'obs32',
@@ -388,11 +385,14 @@ class HelperFunctions
 		readableList = '';
 
 		return isOBS;
+		#else
+		return false;
+		#end
 	}
 
 	public static function instExists(song:String):Bool
 	{
-		if (FileSystem.exists('assets/songs/' + song.toLowerCase() + '/Inst.ogg'))
+		if (Assets.exists('assets/songs/' + song.toLowerCase() + '/Inst.ogg'))
 		{
 			return true;
 		}
@@ -404,7 +404,7 @@ class HelperFunctions
 
 	public static function vocalExists(song:String):Bool
 	{
-		if (FileSystem.exists('assets/songs/' + song.toLowerCase() + '/Voices.ogg'))
+		if (Assets.exists('assets/songs/' + song.toLowerCase() + '/Voices.ogg'))
 		{
 			return true;
 		}
@@ -416,7 +416,7 @@ class HelperFunctions
 
 	public static function instEasyExists(song:String):Bool
 	{
-		if (FileSystem.exists('assets/songs/' + song.toLowerCase() + '/Inst-easy.ogg'))
+		if (Assets.exists('assets/songs/' + song.toLowerCase() + '/Inst-easy.ogg'))
 		{
 			return true;
 		}
@@ -428,7 +428,7 @@ class HelperFunctions
 
 	public static function vocalEasyExists(song:String):Bool
 	{
-		if (FileSystem.exists('assets/songs/' + song.toLowerCase() + '/Voices-easy.ogg'))
+		if (Assets.exists('assets/songs/' + song.toLowerCase() + '/Voices-easy.ogg'))
 		{
 			return true;
 		}
@@ -518,16 +518,5 @@ class HelperFunctions
 		}
 
 		return font;
-	}
-
-	/**
-	 * Gets image that didn't exist during compiling
-	 * 
-	 * Usage: **HelperFunctions.getSparrowAtlas(path);**
-	 * @param path The path to the image
-	 */
-	public static function getSparrowAtlas(path:String):FlxAtlasFrames
-	{
-		return FlxAtlasFrames.fromSparrow(FlxGraphic.fromBitmapData(BitmapData.fromFile(path + ".png")), File.getContent(path + ".xml"));
 	}
 }
