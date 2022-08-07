@@ -18,7 +18,7 @@ import openfl.display.BitmapData;
 import openfl.display.Sprite;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
-import tentools.api.FlxGameJolt as GJApi;
+import flixel.addons.api.FlxGameJolt as GJApi;
 
 using StringTools;
 class GameJoltAPI

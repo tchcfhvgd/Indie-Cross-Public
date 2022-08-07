@@ -60,7 +60,6 @@
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
 	<haxelib name="discord_rpc" if="desktop"/>
-    <haxelib name="tentools" />
 	<haxelib name="linc_luajit" if="cpp"/>
 	<haxelib name="extension-androidtools" if="android"/>
 

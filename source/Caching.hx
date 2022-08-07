@@ -1,7 +1,7 @@
 package;
 
 import Shaders.FXHandler;
-import GameJolt.GameJoltAPI;
+//import GameJolt.GameJoltAPI;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.FlxGraphic;
@@ -117,8 +117,8 @@ class Caching extends MusicBeatState
 
 		}
 
-		GameJoltAPI.connect();
-		GameJoltAPI.authDaUser(FlxG.save.data.gjUser, FlxG.save.data.gjToken);
+		//GameJoltAPI.connect();
+		//GameJoltAPI.authDaUser(FlxG.save.data.gjUser, FlxG.save.data.gjToken);
 
 		FlxG.worldBounds.set(0, 0);
 
