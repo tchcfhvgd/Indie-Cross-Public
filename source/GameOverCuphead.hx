@@ -194,6 +194,11 @@ class GameOverCuphead extends MusicBeatSubstate
 
 		changeItem(3);
 
+		#if android
+		addVirtualPad(UP_DOWN, A);
+		virtualpad.alpha = 0;
+		#end
+
 		new FlxTimer().start(1, function(tmr:FlxTimer)
 		{
 			FlxTween.tween(death, {alpha: 0}, 0.7);
@@ -201,6 +206,7 @@ class GameOverCuphead extends MusicBeatSubstate
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
 			{
 				canAccept = true;
+				FlxTween.tween(virtualpad, {alpha: 1}, 0.7, {ease: FlxEase.cubeOut});
 				FlxTween.tween(bgImage, {angle: -10}, 0.7, {ease: FlxEase.cubeOut});
 				FlxTween.tween(bgImage, {alpha: 1}, 0.7);
 

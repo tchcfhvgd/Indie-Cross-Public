@@ -105,6 +105,11 @@ class GameplayCustomizeState extends MusicBeatState
 
 		add(text);
 
+		#if android
+		addVirtualPad(FULL, A_B);
+		addPadCamera();
+		#end
+
 		FlxTween.tween(text, {y: FlxG.height - 18}, 2, {ease: FlxEase.elasticInOut});
 		FlxTween.tween(blackBorder, {y: FlxG.height - 18}, 2, {ease: FlxEase.elasticInOut});
 
@@ -128,19 +133,19 @@ class GameplayCustomizeState extends MusicBeatState
 		FlxG.camera.zoom = FlxMath.lerp(0.9, FlxG.camera.zoom, 0.95);
 		camHUD.zoom = FlxMath.lerp(1, camHUD.zoom, 0.95);
 
-		if (FlxG.keys.anyJustPressed([UP]))
+		if (controls.UP_P)
 		{
 			moveSick("y", -40);
 		}
-		if (FlxG.keys.anyJustPressed([DOWN]))
+		if (controls.DOWN_P)
 		{
 			moveSick("y", 40);
 		}
-		if (FlxG.keys.anyJustPressed([LEFT]))
+		if (controls.LEFT_P)
 		{
 			moveSick("x", -40);
 		}
-		if (FlxG.keys.anyJustPressed([RIGHT]))
+		if (controls.RIGHT_P)
 		{
 			moveSick("x", 40);
 		}
@@ -150,7 +155,7 @@ class GameplayCustomizeState extends MusicBeatState
 		for (i in strumLineNotes)
 			i.y = strumLine.y;
 
-		if (FlxG.keys.justPressed.R)
+		if (FlxG.keys.justPressed.R #if android || virtualpad.buttonA.justPressed #end)
 		{
 			sick.x = defaultX;
 			sick.y = defaultY;

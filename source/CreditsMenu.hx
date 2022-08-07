@@ -495,6 +495,10 @@ class CreditsMenu extends MusicBeatState
 
 		updateSelection(0);
 
+		#if android
+		addVirtualPad(NONE, A_B_C);
+		#end
+
 		new FlxTimer().start(Main.transitionDuration, function(tmr:FlxTimer)
 		{
 			allowTransit = true;
@@ -589,7 +593,7 @@ class CreditsMenu extends MusicBeatState
 			backOut();
 		}
 
-		if (FlxG.keys.justPressed.TAB)
+		if (FlxG.keys.justPressed.TAB #if android || virtualpad.buttonC.justPressed #end)
 		{
 			toggleThanks();
 		}
@@ -598,6 +602,23 @@ class CreditsMenu extends MusicBeatState
 		{
 			var smallIcon:FlxSprite = credIcons[i];
 
+			#if android
+			for (touch in FlxG.touches.list)
+			{
+				if ((curIcon == i && touch.overlaps(credIcons[curIcon])) && !thanksOpen)
+				{
+					smallIcon.alpha = 1.0;
+					if (touch.justReleased)
+					{
+						FlxG.openURL(credits[curIcon][4]);
+					}
+				}
+				else
+				{
+					smallIcon.alpha = 0.5;
+				}
+			}
+			#else
 			if ((curIcon == i && FlxG.mouse.overlaps(credIcons[curIcon])) && !thanksOpen)
 			{
 				smallIcon.alpha = 1.0;
@@ -610,6 +631,7 @@ class CreditsMenu extends MusicBeatState
 			{
 				smallIcon.alpha = 0.5;
 			}
+			#end
 		}
 
 		selctionHighlighter.x = FlxMath.lerp(selctionHighlighter.x, selXLerp, 0.25);

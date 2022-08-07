@@ -395,11 +395,11 @@ class StoryMenuState extends MusicBeatState
 			{
 				if (PlayState.storyWeek == curWeek && leftDuringWeek && PlayState.isStoryMode && PlayState.storyDifficulty == curDifficulty)
 				{
+					#if android
+					removeVirtualPad();
+					#end
 					persistentUpdate = false;
 					lockInput = true;
-					#if android
-				    removeVirtualPad();
-				    #end
 					openSubState(new Prompt("Would You Like to Resume Your Current Week?"));
 					Prompt.acceptThing = function()
 					{

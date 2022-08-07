@@ -1083,6 +1083,29 @@ class CustomizeGameplay extends Option
 	}
 }
 
+#if android
+class CustomizeAndroidControls extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		trace("switch");
+		FlxG.switchState(new GameplayCustomizeState());
+		return false;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Customize Gameplay";
+	}
+}
+#end
+
 /*class LogInGJ extends Option
 {
 	public function new(desc:String)

@@ -21,7 +21,10 @@ class OptionsMenu extends MusicBeatState
 
 	var options:Array<OptionCategory> = [
 		new OptionCategory("Gameplay", [
-			new DFJKOption(), 
+			new DFJKOption(),
+			#if android
+			new CustomizeAndroidControls("Change the mode of the android controls."),
+			#end
 			new DownscrollOption("Change the layout of the strumline."),
 			new GhostTapOption("Ghost Tapping is when you tap a direction and it doesn't give you a miss."),
 			new BotPlay("Showcase your charts and mods with autoplay."),
@@ -42,10 +45,12 @@ class OptionsMenu extends MusicBeatState
 		new OptionCategory("Performance", [
 			new Photosensitive("Turn off visual effects that may harm your vision."),
 			new HighQuality("Enable low quality mode for a smoother playing experience."),
-			new CacheStart("Enables caching and loading of images before the game starts and songs.")
+			//new CacheStart("Enables caching and loading of images before the game starts and songs.")
 		]),
 		new OptionCategory("Window", [
+			#if !android
 			new Resolution("Change the game's resolution, press ENTER to apply"),
+			#end
 			new Gamma("Change the gamma value of the app."),
 			new Brightness("Change the brightness value of the app."),
 			new FocusFreeze("Freeze the game when clicking off of the application."),
@@ -57,7 +62,7 @@ class OptionsMenu extends MusicBeatState
 		]),
 		new OptionCategory("Accessibility", [
 			new ShowSubtitles("Show subtitles during cutscenes."),
-			new Colorblind(""),
+			new Colorblind("")
 			//new LogInGJ("Log into gamejolt for achievements & perks"),
 			//new LogOutGJ("Log out of your gamejolt account")
 		])
@@ -125,6 +130,10 @@ class OptionsMenu extends MusicBeatState
 		FlxTween.tween(blackBorder, {y: FlxG.height - 18}, 2, {ease: FlxEase.elasticInOut});
 
 		changeSelection(0);
+
+		#if android
+		addVirtualPad(FULL, A_B_C);
+		#end
 
 		new FlxTimer().start(Main.transitionDuration, function(tmr:FlxTimer)
 		{
@@ -271,7 +280,7 @@ class OptionsMenu extends MusicBeatState
 
 	function catOption()
 	{
-		if (FlxG.keys.pressed.SHIFT || !currentSelectedCat.getOptions()[curSelected].allowFastChange)
+		if ((FlxG.keys.pressed.SHIFT #if android || virtualpad.buttonC.pressed #end) || !currentSelectedCat.getOptions()[curSelected].allowFastChange)
 		{
 			if (controls.RIGHT_P)
 				currentSelectedCat.getOptions()[curSelected].right();
@@ -297,7 +306,7 @@ class OptionsMenu extends MusicBeatState
 
 	function offsetChange()
 	{
-		if (FlxG.keys.pressed.SHIFT)
+		if (FlxG.keys.pressed.SHIFT #if android || virtualpad.buttonC.pressed #end)
 		{
 			if (controls.RIGHT_P)
 				FlxG.save.data.offset += 0.1;
