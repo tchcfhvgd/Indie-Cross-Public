@@ -132,7 +132,7 @@ class NotesplashOffsets extends FlxState
 		if (FlxG.keys.justPressed.BACKSPACE)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			Main.switchState(new MainMenuState());
+			FlxG.switchState(new MainMenuState());
 		}
 
 		var upP = FlxG.keys.anyJustPressed([UP]);

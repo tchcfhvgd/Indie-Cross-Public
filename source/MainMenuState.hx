@@ -219,7 +219,7 @@ class LoginScreen extends FlxTypedSpriteGroup<FlxSprite>
 			{
 				case 0:
 					disableInput = true;
-					Main.switchState(new GameJoltLogin());
+					FlxG.switchState(new GameJoltLogin());
 			}
 		});*/
 	}
@@ -522,8 +522,8 @@ class MainMenuState extends MusicBeatState
 
 			if (FlxG.keys.justPressed.I && FlxG.keys.pressed.CONTROL && debugTools)
 			{
-				//Main.switchState(new NotesplashOffsets());
-				Main.switchState(new DiffButtonOffsets());
+				//FlxG.switchState(new NotesplashOffsets());
+				FlxG.switchState(new DiffButtonOffsets());
 			}
 
 			if (FlxG.keys.justPressed.LEFT && FlxG.keys.pressed.CONTROL && debugTools)
@@ -672,7 +672,7 @@ class MainMenuState extends MusicBeatState
 	{
 		disableInput = true;
 		FlxG.sound.play(Paths.sound('cancelMenu'));
-		Main.switchState(new TitleState());
+		FlxG.switchState(new TitleState());
 	}
 
 	function generateButtons(yPos:Float, sep:Float)
@@ -817,16 +817,16 @@ class MainMenuState extends MusicBeatState
 			{
 				case "storymode":
 					StoryMenuState.fromWeek = -1;
-					Main.switchState(new StoryMenuState());
+					FlxG.switchState(new StoryMenuState());
 				case "freeplay":
-					Main.switchState(new FreeplaySelect());
+					FlxG.switchState(new FreeplaySelect());
 				case "options":
 					FlxG.sound.music.stop();
-					Main.switchState(new OptionsMenu());
+					FlxG.switchState(new OptionsMenu());
 				case "credits":
-					Main.switchState(new CreditsMenu());
+					FlxG.switchState(new CreditsMenu());
 				case "achievements":
-					Main.switchState(new AchievementsMenuState());
+					FlxG.switchState(new AchievementsMenuState());
 			}
 		});
 	}

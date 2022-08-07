@@ -258,12 +258,12 @@ class GameOverSubstate extends MusicBeatSubstate
 		{
 			StoryMenuState.fromWeek = fromWeek;
 			StoryMenuState.leftDuringWeek = true;
-			Main.switchState(new StoryMenuState());
+			FlxG.switchState(new StoryMenuState());
 		}
 		else
 		{
 			FreeplayState.fromWeek = fromWeek;
-			Main.switchState(new FreeplayState());
+			FlxG.switchState(new FreeplayState());
 		}
 	}
 

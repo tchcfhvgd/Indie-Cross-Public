@@ -27,10 +27,6 @@ import openfl.net.FileReference;
 
 using StringTools;
 
-#if cpp
-import systools.Clipboard;
-#end
-
 /**
 	*DEBUG MODE
  */
@@ -84,8 +80,7 @@ class AnimationDebug extends MusicBeatState
 		if ((data != null) && (data.length > 0))
 		{
 			#if cpp
-			var leData = data.trim();
-			Clipboard.setText(leData);
+			openfl.system.System.setClipboard(data.trim());
 
 			trace('saved shit on clipboard :D');
 			#end
@@ -307,7 +302,7 @@ class AnimationDebug extends MusicBeatState
 		if (FlxG.keys.justPressed.ESCAPE || FlxG.keys.justPressed.BACKSPACE)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			Main.switchState(new PlayState());
+			FlxG.switchState(new PlayState());
 		}
 
 		if (FlxG.keys.justPressed.P)

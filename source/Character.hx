@@ -50,7 +50,7 @@ class Character extends FlxSprite
 		{
 
 			case 'dad':
-				frames = Paths.getSparrowAtlas('characters/DADDY_DEAREST', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/DADDY_DEAREST', 'shared');
 				animation.addByPrefix('idle', 'Dad idle dance', 24, false);
 				animation.addByPrefix('singUP', 'Dad Sing Note UP', 24);
 				animation.addByPrefix('singRIGHT', 'Dad Sing Note RIGHT', 24);
@@ -66,7 +66,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'cupheadNightmare':
-				frames = Paths.getSparrowAtlas('characters/Nightmare_Cuphead', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/Nightmare_Cuphead', 'shared');
 				animation.addByPrefix('idle', 'Idle instance 1', 24, true);
 				animation.addByPrefix('singUP', 'Up instance 1', 24);
 				animation.addByPrefix('singRIGHT', 'Right instance 1', 24);
@@ -103,7 +103,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'saness':
-				frames = Paths.getSparrowAtlas('characters/Saness', 'hiddenContent', true);
+				frames = Paths.getSparrowAtlas('characters/Saness', 'hiddenContent');
 				animation.addByPrefix('idle', 'Sans instance 1', 24, false);
 				animation.addByPrefix('singUP', 'Up instance 1', 24);
 				animation.addByPrefix('singRIGHT', 'Right instance 1', 24);
@@ -136,7 +136,7 @@ class Character extends FlxSprite
 				setZoom(1.5);
 
 			case 'gose':
-				frames = Paths.getSparrowAtlas('goose', 'hiddenContent', true);
+				frames = Paths.getSparrowAtlas('goose', 'hiddenContent');
 
 				animation.addByPrefix('idle', 'Goose Idle0', 24, false);
 				animation.addByPrefix('idle-alt', 'Gose Idle Dank', 24, false);
@@ -165,7 +165,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'sammy':
-				frames = Paths.getSparrowAtlas('characters/SammyRemastered', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/SammyRemastered', 'shared');
 				animation.addByPrefix('idle', 'Sammy Idle instance 1', 24, false);
 				animation.addByPrefix('singUP', 'Up instance 1', 24);
 				animation.addByPrefix('singRIGHT', 'Right instance 1', 24);
@@ -191,7 +191,7 @@ class Character extends FlxSprite
 				setGraphicSize(Std.int(frameWidth * 1.75));
 				updateHitbox();
 			case 'bendy':
-				frames = Paths.getSparrowAtlas('characters/Bendy_remastered', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/Bendy_remastered', 'shared');
 				animation.addByPrefix('idle', 'Bendy Idle instance 1', 24, false);
 				animation.addByPrefix('singUP', 'Up instance 1', 24, false);
 				animation.addByPrefix('singRIGHT', 'B-Right instance 1', 24, false);
@@ -211,7 +211,7 @@ class Character extends FlxSprite
 
 				setZoom(2.4);
 			case 'bendyNightmare':
-				frames = Paths.getSparrowAtlas('characters/NMB', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/NMB', 'shared');
 				animation.addByPrefix('idle', 'DeathBendy instance 1', 25, true);
 				animation.addByPrefix('singUP', 'Up instance 1', 25, false);
 				animation.addByPrefix('singRIGHT', 'FUCK YOU instance 1', 25, false);
@@ -233,7 +233,7 @@ class Character extends FlxSprite
 				setZoom(3);
 
 			case 'bendyChase':
-				frames = Paths.getSparrowAtlas('characters/Bendy_run_Remastered', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/Bendy_run_Remastered', 'shared');
 				animation.addByPrefix('idle', 'Bendy Run instance 1', 24, true);
 				animation.addByPrefix('singUP', 'Upp instance 1', 24, true);
 				animation.addByPrefix('singRIGHT', 'Right instance 1', 24, true);
@@ -254,7 +254,7 @@ class Character extends FlxSprite
 				constantLooping = true;
 				
 			case 'bendyChaseDark':
-				frames = Paths.getSparrowAtlas('characters/dark/Bendy_run_Remastered', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/dark/Bendy_run_Remastered', 'shared');
 				animation.addByPrefix('idle', 'Bendy Run instance 1', 24, true);
 				animation.addByPrefix('singUP', 'Upp instance 1', 24, true);
 				animation.addByPrefix('singRIGHT', 'Right instance 1', 24, true);
@@ -275,7 +275,7 @@ class Character extends FlxSprite
 				constantLooping = true;
 
 			case 'bfChase':
-				frames = Paths.getSparrowAtlas('characters/NM_run_BF', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/NM_run_BF', 'shared');
 				animation.addByPrefix('idle', 'Run_cycle instance 1', 24);
 				animation.addByPrefix('idle2', 'Run_When Bendy is Close instance 1', 24);
 				animation.addByPrefix('singUP', 'Up instance 1', 24);
@@ -307,7 +307,7 @@ class Character extends FlxSprite
 				constantLooping = true;
 
 			case 'bfChaseDark':
-				frames = Paths.getSparrowAtlas('characters/dark/NM-run-BF-Dark', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/dark/NM-run-BF-Dark', 'shared');
 				animation.addByPrefix('idle', 'Run_cycle instance 1', 24);
 				animation.addByPrefix('idle2', 'Run_When Bendy is Close instance 1', 24);
 				animation.addByPrefix('singUP', 'Up instance 1', 24);
@@ -339,7 +339,7 @@ class Character extends FlxSprite
 				constantLooping = true;
 
 			case 'cuphead':
-				frames = Paths.getSparrowAtlas('characters/Cuphead_Remastered', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/Cuphead_Remastered', 'shared');
 				animation.addByPrefix('idle', 'Cuphead_standing instance 1', 24, true);
 				animation.addByPrefix('singUP', 'Up instance 1', 24);
 				animation.addByPrefix('singRIGHT', 'Right instance 1', 24);
@@ -368,7 +368,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'angrycuphead':
-				frames = Paths.getSparrowAtlas('characters/Cuphead Pissed', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/Cuphead Pissed', 'shared');
 				animation.addByPrefix('idle', '1 instance 1', 24, true);
 				animation.addByPrefix('singUP', 'Up instance 1', 24, false);
 				animation.addByPrefix('singRIGHT', 'Right instance 1', 24, false);
@@ -411,7 +411,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'sans':
-				frames = Paths.getSparrowAtlas('characters/Sans', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/Sans', 'shared');
 				animation.addByIndices('idleLeft', 'Sans FNF instance 1', [28, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
 				animation.addByIndices('idleRight', 'Sans FNF instance 1', [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27], "", 24, false);
 				animation.addByPrefix('singUP', 'Up instance 1', 24, false);
@@ -446,7 +446,7 @@ class Character extends FlxSprite
 			 */
 
 			case 'sansScared':
-				frames = Paths.getSparrowAtlas('characters/Sans_Phase_3', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/Sans_Phase_3', 'shared');
 				animation.addByIndices('idleLeft', 'Sans FNF instance 1', [28, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
 				animation.addByIndices('idleRight', 'Sans FNF instance 1', [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27], "", 24, false);
 				animation.addByPrefix('singUP', 'Up instance 1', 24, false);
@@ -490,7 +490,7 @@ class Character extends FlxSprite
 				playAnim('idleRight');
 
 			case 'sanswaterfall':
-				frames = Paths.getSparrowAtlas('characters/SansWF', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/SansWF', 'shared');
 				animation.addByPrefix('idle', 'Sans FNF Tired instance 1', 24, false);
 				animation.addByPrefix('singUP', 'Up Tired instance 1', 24, false);
 				animation.addByPrefix('singRIGHT', 'Right Tired instance 1', 24, false);
@@ -512,7 +512,7 @@ class Character extends FlxSprite
 				*/
 
 			case 'papyrus':
-				frames = Paths.getSparrowAtlas('characters/Papyrus', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/Papyrus', 'shared');
 
 				animation.addByPrefix('bruh', 'Bruh instance 1', 24, false);
 				animation.addByPrefix('singUP-alt', 'ISTG instance 1', 24);
@@ -553,7 +553,7 @@ class Character extends FlxSprite
 				setZoom(1.45);
 
 			case 'sanswinter':
-				frames = Paths.getSparrowAtlas('characters/Sans_Brrrr', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/Sans_Brrrr', 'shared');
 
 				animation.addByPrefix('wakeup', '03 instance 1', 24, false);
 				animation.addByPrefix('fallasleep', '01 instance 1', 24, false);
@@ -593,7 +593,7 @@ class Character extends FlxSprite
 				addOffset('putin', 39, 88);
 
 			case 'sansNightmare':
-				frames = Paths.getSparrowAtlas('characters/DeathSans002', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/DeathSans002', 'shared');
 				animation.addByPrefix('idle', 'Nightmare SANS Idle instance 1', 24, true);
 				animation.addByPrefix('singUP', 'UPP instance 1', 24);
 				animation.addByPrefix('singRIGHT', 'Rightt instance 1', 24);
@@ -611,7 +611,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'sansbattle':
-				frames = Paths.getSparrowAtlas('characters/Sans_but_Rip_colors', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/Sans_but_Rip_colors', 'shared');
 				animation.addByIndices('idleLeft', 'EReree ee instance 1', [24, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
 				animation.addByIndices('idleRight', 'EReree ee instance 1', [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], "", 24, false);
 				animation.addByPrefix('singUP', 'UpUT instance 1', 24, false);
@@ -631,7 +631,7 @@ class Character extends FlxSprite
 				playAnim('idleLeft');
 			
 			case 'bfSammy':
-				frames = Paths.getSparrowAtlas('characters/BoyFriend_Sammy', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/BoyFriend_Sammy', 'shared');
 				moroAnim('idle', 'BF idle dance', false);
 				moroAnim('singUPA', 'BF NOTE UP', false);
 				moroAnim('singDOWNA', 'BF NOTE DOWN', false);
@@ -663,7 +663,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'bf':
-				frames = Paths.getSparrowAtlas('characters/BOYFRIEND', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/BOYFRIEND', 'shared');
 				animation.addByPrefix('idle', '0Idle', 24, false);
 				animation.addByPrefix('singUP', '0UPPP', 24, false);
 				animation.addByPrefix('singLEFT', '0EERR', 24, false);
@@ -703,7 +703,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'bfswag':
-				frames = Paths.getSparrowAtlas('characters/BoyFriend_Cuphead', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/BoyFriend_Cuphead', 'shared');
 				animation.addByPrefix('idle', 'BF idle dance instance 1', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP instance 1', 24, false);
 				animation.addByPrefix('singLEFT', 'BF NOTE LEFT instance 1', 24, false);
@@ -735,7 +735,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'bfda':
-				frames = Paths.getSparrowAtlas('characters/BoyFriend_DA', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/BoyFriend_DA', 'shared');
 				animation.addByPrefix('idle', 'BF idle dance instance 1', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP instance 1', 24, false);
 				animation.addByPrefix('singLEFT', 'BF NOTE LEFT instance 1', 24, false);
@@ -767,7 +767,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'rainbf':
-				frames = Paths.getSparrowAtlas('characters/BoyFriend_Rain', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/BoyFriend_Rain', 'shared');
 				animation.addByPrefix('idle', 'BF idle dance instance 1', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP instance 1', 24, false);
 				animation.addByPrefix('singLEFT', 'BF NOTE RIGHT instance 1', 24, false);
@@ -799,7 +799,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'bfnightmareCup':
-				frames = Paths.getSparrowAtlas('characters/BoyFriend_NM', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/BoyFriend_NM', 'shared');
 				animation.addByPrefix('idle', 'BF idle dance instance 1', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP instance 1', 24, false);
 				animation.addByPrefix('singLEFT', 'BF NOTE LEFT instance 1', 24, false);
@@ -831,7 +831,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'bf-bendo':
-				frames = Paths.getSparrowAtlas('characters/BoyFriend_BendyShade', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/BoyFriend_BendyShade', 'shared');
 
 				animation.addByPrefix('idle', 'BF idle dance instance 1', 24, false);
 				animation.addByPrefix('idleA', 'BFA idle dance  instance 1', 24, false);
@@ -890,7 +890,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'bfFUCKINWHATTHEFUCKBITCH':
-				frames = Paths.getSparrowAtlas('characters/BoyFriend_3rdPhase', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/BoyFriend_3rdPhase', 'shared');
 				animation.addByPrefix('idle', 'BF idle dance copy 2 instance', 24, true);
 				animation.addByPrefix('singUP', 'BF NOTE UP copy 2 instance', 24, false);
 				animation.addByPrefix('singLEFT', 'BF NOTE LEFT copy 2 instance', 24, false);
@@ -926,7 +926,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'bfwhoareyou':
-				frames = Paths.getSparrowAtlas('characters/BF_FINAL', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/BF_FINAL', 'shared');
 				animation.addByPrefix('idle', 'BF annoyed instance 1', 24, true);
 				animation.addByPrefix('singUP', 'BF NOTE UP copy instance 1', 24, false);
 				animation.addByPrefix('singLEFT', 'BF NOTE LEFT copy instance 1', 24, false);
@@ -954,7 +954,7 @@ class Character extends FlxSprite
 				setZoom(1.481171548117155);
 
 			case 'bfSans':
-				frames = Paths.getSparrowAtlas('characters/BoyFriend_CRshader', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/BoyFriend_CRshader', 'shared');
 				animation.addByPrefix('attack', '0BF attack instance 1', 24, false);
 				animation.addByPrefix('oof', 'OuchBonesinmyAss instance 1', 24, false);
 				animation.addByPrefix('idle', 'BF idle dance instance 1', 24, false);
@@ -984,7 +984,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'bfsanswaterfall':
-				frames = Paths.getSparrowAtlas('characters/BoyFriend_SansWT', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/BoyFriend_SansWT', 'shared');
 				animation.addByPrefix('idle', 'BF idle dance instance 1', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP instance 1', 24, false);
 				animation.addByPrefix('singLEFT', 'BF NOTE LEFT instance 1', 24, false);
@@ -1016,7 +1016,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'bfchara':
-				frames = Paths.getSparrowAtlas('characters/Chara', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/Chara', 'shared');
 				animation.addByPrefix('idle', '0Idle', 24, false);
 				animation.addByPrefix('singUP', '0UPPP', 24, false);
 				animation.addByPrefix('singLEFT', '0EERR', 24, false);
@@ -1046,7 +1046,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'bfwinter':
-				frames = Paths.getSparrowAtlas('characters/BoyFriend_Assets_CHRISTMAS_VARIANT', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/BoyFriend_Assets_CHRISTMAS_VARIANT', 'shared');
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP instance 1', 24, false);
 				animation.addByPrefix('singLEFT', 'BF NOTE LEFT instance 1', 24, false);
@@ -1074,7 +1074,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'bfSansNightmare':
-				frames = Paths.getSparrowAtlas('characters/BF-BS-shader', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/BF-BS-shader', 'shared');
 				animation.addByPrefix('idle', 'BF idle dance instance 1', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP instance 1', 24, false);
 				animation.addByPrefix('singLEFT', 'BF NOTE LEFT instance 1', 24, false);
@@ -1102,7 +1102,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'bfbattle':
-				frames = Paths.getSparrowAtlas('characters/UT BF', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/UT BF', 'shared');
 				animation.addByPrefix('idle', '0Idle', 24, false);
 				animation.addByPrefix('singUP', '0UPPP', 24, false);
 				animation.addByPrefix('singLEFT', '0EERR', 24, false);
@@ -1132,7 +1132,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'bfNightmareBendynew':
-				frames = Paths.getSparrowAtlas('characters/BoyFriend_NM_Bendy', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/BoyFriend_NM_Bendy', 'shared');
 				animation.addByPrefix('idle', 'BF idle dance copy 2 instance 1', 24, true);
 				animation.addByPrefix('singUP', 'BF NOTE UP copy 2 instance 1', 24, false);
 				animation.addByPrefix('singLEFT', 'BF NOTE LEFT copy 2 instance 1', 24, false);
@@ -1173,7 +1173,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'charabattle':
-				frames = Paths.getSparrowAtlas('characters/CharaUT', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/CharaUT', 'shared');
 				animation.addByPrefix('idle', '0Idle', 24, false);
 				animation.addByPrefix('singUP', '0UPPP', 24, false);
 				animation.addByPrefix('singLEFT', '0EERR', 24, false);
@@ -1199,7 +1199,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'devilFull':
-				frames = Paths.getSparrowAtlas('characters/Devil', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/Devil', 'shared');
 				animation.addByPrefix('idle', 'Idle instance 1', 20, false);
 				animation.addByPrefix('singUP', 'Up instance 1', 20, false);
 				animation.addByPrefix('singLEFT', 'Left instance 1', 20, false);
@@ -1217,7 +1217,7 @@ class Character extends FlxSprite
 				setZoom(1.3);
 
 			case 'bendyDA':
-				frames = Paths.getSparrowAtlas('characters/BendyDAgames', 'shared', true);
+				frames = Paths.getSparrowAtlas('characters/BendyDAgames', 'shared');
 
 				animation.addByPrefix('idle-alt', 'Oblivion Bendy instance 1', 24, true);
 				animation.addByPrefix('singUP-alt', 'Up Oblivion instance 1', 24, false);

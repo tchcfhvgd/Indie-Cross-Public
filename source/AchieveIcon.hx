@@ -1,5 +1,6 @@
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.graphics.FlxGraphic;
 
 class AchieveIcon extends FlxSprite
 {
@@ -13,13 +14,13 @@ class AchieveIcon extends FlxSprite
 
 		if (FlxG.save.data.achievementsIndie[Achievements.achievements[id].id])
 		{
-			var path:String = Paths.image(Achievements.achievements[id].img, 'achievements');
+			var path:FlxGraphic = Paths.image(Achievements.achievements[id].img, 'achievements');
 			trace("IMAGE PATH: " + path);
 			loadGraphic(path);
 		}
 		else
 		{
-			var path:String = Paths.image('locked', 'achievements');
+			var path:FlxGraphic = Paths.image('locked', 'achievements');
 			trace("IMAGE PATH: " + path);
 			loadGraphic(path);
 		}

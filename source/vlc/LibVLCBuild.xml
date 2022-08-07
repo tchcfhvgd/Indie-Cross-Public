@@ -7,14 +7,18 @@
 		<compilervalue name="-I" value="${CPP_DIR}/src/" />
 	</files>
 	
-	<target id='haxe' tool='linker' toolid='exe'>
-		<lib name='${CPP_DIR}/lib/libvlc.lib' if='windows'/>
-		<lib name='${CPP_DIR}/lib/libvlccore.lib' if='windows'/>
+	<target id='haxe' tool='linker' toolid='exe' if='windows'>
+		<lib name='${CPP_DIR}/lib/libvlc.lib' />
+		<lib name='${CPP_DIR}/lib/libvlccore.lib' />
 	</target>
 
-	<target id='haxe' tool='linker'>
-		<lib name='${CPP_DIR}/lib/linux/libvlc.so.5' if='linux'/>
-		<lib name='${CPP_DIR}/lib/linux/libvlccore.so.7' if='linux'/>
+	<target id='haxe' tool='linker' if="linux">
+		<lib name='${CPP_DIR}/lib/linux/libvlc.so.5' />
+		<lib name='${CPP_DIR}/lib/linux/libvlccore.so.7' />
 	</target>
-	
+
+	<target id="haxe" tool="linker" if="android">
+		<lib name="../../../../ndll/Android/libvlc-v7.so" if="HXCPP_ARMV7" />
+		<lib name="../../../../ndll/Android/libvlc-64.so" if="HXCPP_ARM64" />
+	</target>
 </xml>

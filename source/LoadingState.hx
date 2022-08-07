@@ -81,7 +81,7 @@ class LoadingState extends MusicBeatState
 
 		FlxGraphic.defaultPersist = true;
 		Thread.create(() ->
-		{
+		{	#if !android
 			screen.setLoadingText("Loading sounds...");
 			for (sound in soundsToCache)
 			{
@@ -97,6 +97,7 @@ class LoadingState extends MusicBeatState
 				FlxG.bitmap.add(Paths.image(image, library));
 				screen.progress += 1;
 			}
+			#end
 
 			FlxGraphic.defaultPersist = false;
 
@@ -119,18 +120,7 @@ class LoadingState extends MusicBeatState
 
 		if (stopMusic && FlxG.sound.music != null)
 			FlxG.sound.music.stop();
-		Main.dumping = false;
-		FlxG.switchState(target);
-	}
 
-	public static function dumpAdditionalAssets()
-	{
-		for (image in imagesToCache)
-		{
-			trace("Dumping image " + image);
-			FlxG.bitmap.removeByKey(Paths.image(image, library));
-		}
-		soundsToCache = [];
-		imagesToCache = [];
+		FlxG.switchState(target);
 	}
 }

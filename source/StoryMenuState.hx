@@ -389,7 +389,7 @@ class StoryMenuState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			lockInput = true;
 	
-			Main.switchState(new MainMenuState());
+			FlxG.switchState(new MainMenuState());
 		}
 	}
 
@@ -414,7 +414,7 @@ class StoryMenuState extends MusicBeatState
 						leftDuringWeek = false;
 						LoadingState.target = new PlayState();
 						LoadingState.stopMusic = true;
-						Main.switchState(new LoadingState());
+						FlxG.switchState(new LoadingState());
 					}
 					Prompt.backThing = function()
 					{
@@ -520,7 +520,7 @@ class StoryMenuState extends MusicBeatState
 		{
 			PlayState.playCutscene = true;
 
-			Main.switchState(new LoadingState());
+			FlxG.switchState(new LoadingState());
 		});
 
 		stopspamming = true;

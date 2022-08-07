@@ -356,12 +356,12 @@ class PauseSubState extends MusicBeatSubstate
 						if (PlayState.isStoryMode)
 						{
 							StoryMenuState.fromWeek = fromWeek;
-							Main.switchState(new StoryMenuState());
+							FlxG.switchState(new StoryMenuState());
 						}
 						else
 						{
 							FreeplayState.fromWeek = fromWeek;
-							Main.switchState(new FreeplayState());
+							FlxG.switchState(new FreeplayState());
 						}
 					});
 				}

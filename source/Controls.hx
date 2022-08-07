@@ -4,6 +4,7 @@ package;
 import android.flixel.FlxButton;
 import android.flixel.FlxHitbox;
 import android.flixel.FlxVirtualPad;
+import flixel.input.actions.FlxActionInputDigital;
 #end
 import flixel.FlxG;
 import flixel.input.FlxInput;
@@ -260,7 +261,7 @@ class Controls extends FlxActionSet
 		inline forEachBound(Control.RIGHT, (action, state) -> addbutton(action, Hitbox.buttonRight, state));
 	}
 
-	public function setVirtualPadUI(VirtualPad:FlxVirtualPad, DPad:FlxDPadMode, Action:FlxActionMode)
+	public function setVirtualPad(VirtualPad:FlxVirtualPad, DPad:FlxDPadMode, Action:FlxActionMode)
 	{
 		switch (DPad)
 		{

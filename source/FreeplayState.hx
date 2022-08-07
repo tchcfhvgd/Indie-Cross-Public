@@ -484,7 +484,7 @@ class FreeplayState extends MusicBeatState
 					onComplete: function(twn:FlxTween)
 					{
 						accepted = false;
-						music.loadSound(Paths.inst(songs[curSelected[freeplayType]].songName), false);
+						music.loadSound(Paths.inst(songs[curSelected[freeplayType]].songName).toString(), false);
 						music.play();
 					}
 				});
@@ -551,7 +551,7 @@ class FreeplayState extends MusicBeatState
 
 		if (FlxG.keys.justPressed.I && FlxG.keys.pressed.CONTROL && MainMenuState.debugTools)
 		{
-			Main.switchState(new IconOffsets(songs[curSelected[freeplayType]].songCharacter));
+			FlxG.switchState(new IconOffsets(songs[curSelected[freeplayType]].songCharacter));
 		}
 
 		if (!lockDiff)
@@ -666,7 +666,7 @@ class FreeplayState extends MusicBeatState
 			LoadingState.target = new PlayState();
 			LoadingState.stopMusic = true;
 
-			Main.switchState(new LoadingState());
+			FlxG.switchState(new LoadingState());
 		});
 	}
 
@@ -700,7 +700,7 @@ class FreeplayState extends MusicBeatState
 
 			new FlxTimer().start(0.5, function(tmr:FlxTimer)
 			{
-				Main.switchState(new FreeplaySelect());
+				FlxG.switchState(new FreeplaySelect());
 			});
 		}
 	}
@@ -772,7 +772,7 @@ class FreeplayState extends MusicBeatState
 
 			new FlxTimer().start(waitDuration, function(tmr:FlxTimer)
 			{
-				Main.switchState(new LoadingState());
+				FlxG.switchState(new LoadingState());
 			});
 		}
 	}
@@ -822,7 +822,7 @@ class FreeplayState extends MusicBeatState
 					waitshit.cancel();
 					waitshit.start(waitTime, function(tmr:FlxTimer)
 					{
-						music.loadSound(Paths.instEasy(songs[curSelected[freeplayType]].songName), false);
+						music.loadSound(Paths.instEasy(songs[curSelected[freeplayType]].songName).toString(), false);
 						music.play();
 					});
 
@@ -838,7 +838,7 @@ class FreeplayState extends MusicBeatState
 					waitshit.cancel();
 					waitshit.start(waitTime, function(tmr:FlxTimer)
 					{
-						music.loadSound(Paths.inst(songs[curSelected[freeplayType]].songName), false);
+						music.loadSound(Paths.inst(songs[curSelected[freeplayType]].songName).toString(), false);
 						music.play();
 					});
 
@@ -976,7 +976,7 @@ class FreeplayState extends MusicBeatState
 				waitshit.cancel();
 				waitshit.start(waitTime, function(tmr:FlxTimer)
 				{
-					music.loadSound(Paths.inst(songs[curSelected[freeplayType]].songName), true);
+					music.loadSound(Paths.inst(songs[curSelected[freeplayType]].songName).toString(), true);
 					music.play();
 				});
 

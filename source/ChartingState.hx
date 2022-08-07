@@ -887,7 +887,7 @@ class ChartingState extends MusicBeatState
 					JumpscareState.allowRetry = false;
 					new FlxTimer().start(3, function(tmr:FlxTimer)
 					{
-						Main.switchState(new JumpscareState());
+						FlxG.switchState(new JumpscareState());
 					});
 				}
 	
@@ -912,7 +912,7 @@ class ChartingState extends MusicBeatState
 					JumpscareState.allowRetry = false;
 					new FlxTimer().start(3, function(tmr:FlxTimer)
 					{
-						Main.switchState(new JumpscareState());
+						FlxG.switchState(new JumpscareState());
 					});
 				}
 	
@@ -937,7 +937,7 @@ class ChartingState extends MusicBeatState
 					JumpscareState.allowRetry = false;
 					new FlxTimer().start(3, function(tmr:FlxTimer)
 					{
-						Main.switchState(new JumpscareState());
+						FlxG.switchState(new JumpscareState());
 					});
 				}
 			}
@@ -1006,7 +1006,7 @@ class ChartingState extends MusicBeatState
 				JumpscareState.allowRetry = false;
 				new FlxTimer().start(3, function(tmr:FlxTimer)
 				{
-					Main.switchState(new JumpscareState());
+					FlxG.switchState(new JumpscareState());
 				});
 			}
 			if (PlayState.SONG.song.toLowerCase() == 'devils-gambit' && cuphead.alpha == 0 && !MainMenuState.debugTools)
@@ -1026,7 +1026,7 @@ class ChartingState extends MusicBeatState
 				JumpscareState.allowRetry = false;
 				new FlxTimer().start(3, function(tmr:FlxTimer)
 				{
-					Main.switchState(new JumpscareState());
+					FlxG.switchState(new JumpscareState());
 				});
 			}
 			if (PlayState.SONG.song.toLowerCase() == 'bad-time' && sans.alpha == 0 && !MainMenuState.debugTools)
@@ -1046,7 +1046,7 @@ class ChartingState extends MusicBeatState
 				JumpscareState.allowRetry = false;
 				new FlxTimer().start(3, function(tmr:FlxTimer)
 				{
-					Main.switchState(new JumpscareState());
+					FlxG.switchState(new JumpscareState());
 				});
 			}
 		}
@@ -1095,7 +1095,7 @@ class ChartingState extends MusicBeatState
 			lastSection = curSection;
 			FlxG.sound.music.stop();
 			vocals.stop();
-			Main.switchState(new MainMenuState());
+			FlxG.switchState(new MainMenuState());
 		}
 		if (FlxG.keys.justPressed.E)
 		{
@@ -1739,7 +1739,7 @@ class ChartingState extends MusicBeatState
 		PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
 		LoadingState.target = new ChartingState();
 		LoadingState.stopMusic = true;
-		Main.switchState(new LoadingState());
+		FlxG.switchState(new LoadingState());
 	}
 
 	function loadAutosave():Void
@@ -1747,7 +1747,7 @@ class ChartingState extends MusicBeatState
 		PlayState.SONG = Song.parseJSONshit(FlxG.save.data.autosave);
 		LoadingState.target = new ChartingState();
 		LoadingState.stopMusic = true;
-		Main.switchState(new LoadingState());
+		FlxG.switchState(new LoadingState());
 	}
 
 	function autosaveSong():Void

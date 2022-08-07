@@ -1073,7 +1073,7 @@ class CustomizeGameplay extends Option
 	public override function press():Bool
 	{
 		trace("switch");
-		Main.switchState(new GameplayCustomizeState());
+		FlxG.switchState(new GameplayCustomizeState());
 		return false;
 	}
 
@@ -1095,7 +1095,7 @@ class CustomizeGameplay extends Option
 	{
 		trace("cock");
 		GameJoltLogin.fromOptions = true;
-		Main.switchState(new GameJoltLogin());
+		FlxG.switchState(new GameJoltLogin());
 		return false;
 	}
 

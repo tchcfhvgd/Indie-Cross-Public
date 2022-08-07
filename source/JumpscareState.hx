@@ -83,7 +83,7 @@ class JumpscareState extends MusicBeatState
         if (MainMenuState.debugTools || allowRetry)
         {
             accepted = true;
-            Main.switchState(new FreeplayState());
+            FlxG.switchState(new FreeplayState());
         }
     }
 }

@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxG;
 import flixel.FlxState;
 import flixel.FlxSubState;
 import flixel.addons.ui.FlxUIState;
@@ -11,26 +12,14 @@ class FNFState extends FlxUIState
     
     public var enableTransIn:Bool = true;
     public var enableTransOut:Bool = true;
-
-    public static var dumpcachetuff:Bool = true;
     
     var transOutRequested:Bool = false;
     var finishedTransOut:Bool = false;
 
-    var dumpAddt:Bool = true;
-
-    public function new()
-    {
-        super();
-    }
-
     override function create()
     {
-		if (dumpAddt)
-            LoadingState.dumpAdditionalAssets();
-        
-        if (dumpcachetuff)
-            Main.dumpCache();
+        Paths.clearStoredMemory();
+        Paths.clearUnusedMemory();
         
         super.create();
 
@@ -67,7 +56,7 @@ class FNFState extends FlxUIState
                 fadeOut(function()
                 {
                     finishedTransOut = true;
-                    Main.switchState(state);
+                    FlxG.switchState(state);
                 });
 
                 transOutRequested = true;

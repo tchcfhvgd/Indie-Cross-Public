@@ -128,7 +128,7 @@ class FreeplaySelect extends MusicBeatState
 	{
 		allowTransit = false;
 		FlxG.sound.play(Paths.sound('cancelMenu'));
-		Main.switchState(new MainMenuState());
+		FlxG.switchState(new MainMenuState());
 	}
 
 	function generateButtons(sep:Float)
@@ -227,7 +227,7 @@ class FreeplaySelect extends MusicBeatState
 
 		new FlxTimer().start(1, function(tmr:FlxTimer)
 		{
-			Main.switchState(new FreeplayState());
+			FlxG.switchState(new FreeplayState());
 		});
 	}
 }

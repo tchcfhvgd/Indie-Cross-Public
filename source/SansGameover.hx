@@ -142,11 +142,11 @@ class SansGameover extends MusicBeatSubstate
 			if (PlayState.isStoryMode)
 			{
 				StoryMenuState.leftDuringWeek = true;
-				Main.switchState(new StoryMenuState());
+				FlxG.switchState(new StoryMenuState());
 			}
 			else
 			{
-				Main.switchState(new FreeplayState());
+				FlxG.switchState(new FreeplayState());
 			}
 		});
 	}

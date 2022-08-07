@@ -326,12 +326,12 @@ class GameOverCuphead extends MusicBeatSubstate
 							{
 								StoryMenuState.fromWeek = 0;
 								StoryMenuState.leftDuringWeek = true;
-								Main.switchState(new StoryMenuState());
+								FlxG.switchState(new StoryMenuState());
 							}
 							else
 							{
 								FreeplayState.fromWeek = 0;
-								Main.switchState(new FreeplayState());
+								FlxG.switchState(new FreeplayState());
 							}
 						});
 				}

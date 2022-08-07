@@ -214,58 +214,6 @@ class Main extends Sprite
 		}
 	}
 
-	// you tried lol
-	public static var persistentAssets:Array<FlxGraphic> = [];
-	public static var idk:Array<String> = ['', 'assets/'];
-
-	public static function dumpCache()
-	{
-		// /*
-		if (Main.dumping)
-		{
-			trace('removed ur mom');
-			// haya's stuff again lol
-			@:privateAccess
-			for (key in FlxG.bitmap._cache.keys())
-			{
-				var obj = FlxG.bitmap._cache.get(key);
-				if (obj != null && !persistentAssets.contains(obj))
-				{
-					Assets.cache.removeBitmapData(key);
-					FlxG.bitmap._cache.remove(key);
-					obj.destroy();
-					openfl.Assets.cache.removeBitmapData(key);
-				}
-			}
-
-			// clear gpu vram
-			GPUFunctions.disposeAllTextures();
-			// clear songs
-			for (i in 0...idk.length)
-			{
-				Assets.cache.clear(idk[i] + "songs");
-				Assets.cache.clear(idk[i] + "sans/sounds");
-				Assets.cache.clear(idk[i] + "cuphead/sounds");
-				Assets.cache.clear(idk[i] + "bendy/sounds");
-				Assets.cache.clear(idk[i] + "shared/sounds");
-			}
-			openfl.Assets.cache.clear("songs");
-			openfl.Assets.cache.clear("assets/songs");
-			// garbage disposal
-			System.gc();
-		}
-		Main.dumping = false;
-		// */
-	}
-
-	public static var dumping:Bool = false;
-
-	public static function switchState(target:FlxState)
-	{
-		dumping = true;
-		FlxG.switchState(target);
-	}
-
 	public function toggleFPS(fpsEnabled:Bool):Void
 	{
 		fpsCounter.visible = fpsEnabled;

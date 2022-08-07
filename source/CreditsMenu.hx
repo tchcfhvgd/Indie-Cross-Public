@@ -346,9 +346,9 @@ class CreditsMenu extends MusicBeatState
 	var selctionHighlighter:FlxSprite;
 
 	var credIcons:Array<FlxSprite> = [];
-	var bigIconsAssets:Array<BitmapData> = [];
+	var bigIconsAssets:Array<FlxGraphic> = [];
 
-	var bgAssets:Array<BitmapData> = [];
+	var bgAssets:Array<FlxGraphic> = [];
 
 	var selXLerp:Float = 0;
 	var selYLerp:Float = 0;
@@ -387,13 +387,13 @@ class CreditsMenu extends MusicBeatState
 
 		for (i in 0...credTypes.length)
 		{
-			var bgBitmap:BitmapData = openfl.utils.Assets.getBitmapData(Paths.image("credits/bg/" + credTypes[i] + '_BG', "preload"));
+			var bgBitmap:FlxGraphic = Paths.image("credits/bg/" + credTypes[i] + '_BG', "preload");
 			bgAssets.push(bgBitmap);
 		}
 
 		for (i in 0...credits.length)
 		{
-			var bigIconAsset:BitmapData = openfl.utils.Assets.getBitmapData(Paths.image("credits/icons/big_icons/" + credits[i][0], "preload"));
+			var bigIconAsset:FlxGraphic = Paths.image("credits/icons/big_icons/" + credits[i][0], "preload");
 			bigIconsAssets.push(bigIconAsset);
 			//make the small ones use the big ones just resized, saves a bit of loading time(not really)
 
@@ -418,12 +418,9 @@ class CreditsMenu extends MusicBeatState
 			FlxMouseEventManager.add(smallIcon, null, null, hoverCallback,null,false,true,false);
 
 			credIcons.push(smallIcon);
-
-			//var bigIconAsset:BitmapData = openfl.utils.Assets.getBitmapData(Paths.image("credits/icons/big_icons/" + credits[i][0], "preload"));
-			//bigIconsAssets.push(bigIconAsset);
 		}
 
-		selctionHighlighter = new FlxSprite(3, 11).loadGraphic(openfl.utils.Assets.getBitmapData(Paths.image('credits/icons/selector', 'preload')));
+		selctionHighlighter = new FlxSprite(3, 11).loadGraphic(Paths.image('credits/icons/selector', 'preload'));
 		selctionHighlighter.setGraphicSize(Std.int(selctionHighlighter.width * 0.7));
 		selctionHighlighter.updateHitbox();
 		selctionHighlighter.antialiasing = FlxG.save.data.highquality;
@@ -539,7 +536,7 @@ class CreditsMenu extends MusicBeatState
 		{
 			allowTransit = false;
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			Main.switchState(new MainMenuState());
+			FlxG.switchState(new MainMenuState());
 		}
 	}
 

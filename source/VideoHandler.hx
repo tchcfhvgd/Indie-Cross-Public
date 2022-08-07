@@ -1,5 +1,8 @@
 package;
 
+#if android
+import android.net.Uri;
+#end
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -43,19 +46,15 @@ class VideoHandler
 		}
 
 		bitmap = new VlcBitmap();
-		bitmap.set_height(FlxG.stage.stageHeight);
-		bitmap.set_width(FlxG.stage.stageHeight * (16 / 9));
 
-		trace("Setting width to " + FlxG.stage.stageHeight * (16 / 9));
-		trace("Setting height to " + FlxG.stage.stageHeight);
+		bitmap.set_width(bitmap.calc(0));
+		bitmap.set_height(bitmap.calc(1));
 
 		bitmap.onVideoReady = onVLCVideoReady;
 		bitmap.onComplete = onVLCComplete;
 		bitmap.onError = onVLCError;
 
 		FlxG.stage.addEventListener(Event.ENTER_FRAME, update);
-		FlxG.stage.addEventListener(Event.ENTER_FRAME, fixVolume);
-		fixVolume(null);
 
 		if (repeat)
 			bitmap.repeat = -1;
@@ -81,15 +80,13 @@ class VideoHandler
 
 	function checkFile(fileName:String):String
 	{
-		var pDir = "";
-		var appDir = "file:///" + Sys.getCwd() + "/";
-
-		if (fileName.indexOf(":") == -1) // Not a path
-			pDir = appDir;
-		else if (fileName.indexOf("file://") == -1 || fileName.indexOf("http") == -1) // C:, D: etc? ..missing "file:///" ?
-			pDir = "file:///";
-
-		return pDir + fileName;
+		#if android
+		return Uri.fromFile(fileName);
+		#elseif linux
+		return 'file://' + Sys.getCwd() + fileName;
+		#elseif windows
+		return 'file:///' + Sys.getCwd() + fileName;
+		#end
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -106,15 +103,6 @@ class VideoHandler
 		if (fadeFromBlack)
 		{
 			FlxG.camera.fade(FlxColor.BLACK, 0, false);
-		}
-	}
-
-	function fixVolume(e:Event)
-	{
-		bitmap.volume = 0;
-		if (!FlxG.sound.muted && FlxG.sound.volume > 0.01) 
-		{
-			bitmap.volume = FlxG.sound.volume * 0.5 + 0.5;
 		}
 	}
 
@@ -186,7 +174,7 @@ class VideoHandler
 
 	function update(e:Event)
 	{
-		if (FlxG.keys.justPressed.ENTER)
+		if (FlxG.keys.justPressed.ENTER #if android || FlxG.android.justReleased.BACK #end)
 		{
 			trySkip();
 		}

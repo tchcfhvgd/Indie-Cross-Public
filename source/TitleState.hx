@@ -205,7 +205,7 @@ class TitleState extends MusicBeatState
 		#if debug
 		if (FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.A && videoDone)
 		{
-			Main.switchState(new AnimState());
+			FlxG.switchState(new AnimState());
 		}
 		#end
 
@@ -240,7 +240,7 @@ class TitleState extends MusicBeatState
 
 		new FlxTimer().start(2, function(tmr:FlxTimer)
 		{
-			Main.switchState(new MainMenuState());
+			FlxG.switchState(new MainMenuState());
 		});
 	}
 
@@ -272,31 +272,6 @@ class TitleState extends MusicBeatState
 
 	public static function restart()
 	{
-		#if cpp
-		var os = Sys.systemName();
-		var args = "Test.hx";
-		var app = "";
-		var workingdir = Sys.getCwd();
-
-		FlxG.log.add(app);
-
-		app = Sys.programPath();
-
-		// Launch application:
-		var result = systools.win.Tools.createProcess(app // app. path
-			, args // app. args
-			, workingdir // app. working directory
-			, false // do not hide the window
-			, false // do not wait for the application to terminate
-		);
-		// Show result:
-		if (result == 0)
-		{
-			FlxG.log.add('SUS');
-			System.exit(1337);
-		}
-		else
-			throw "Failed to restart bich";
-		#end
+		FlxG.resetGame();
 	}
 }

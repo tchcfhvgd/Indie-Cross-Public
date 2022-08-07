@@ -195,10 +195,10 @@ class OptionsMenu extends MusicBeatState
 					LoadingState.stopMusic = true;
 					fromFreeplay = false;
 
-					Main.switchState(new LoadingState());
+					FlxG.switchState(new LoadingState());
 				}
 				else
-					Main.switchState(new MainMenuState());
+					FlxG.switchState(new MainMenuState());
 			});
 		}
 		else if (isCat && !backed)

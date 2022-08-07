@@ -47,6 +47,9 @@
 	<assets path="assets/fonts" embed='true' if="windows"/>
 	<assets path="assets/fonts" embed='false' if="linux"/>
 
+	<ndll name="c++_shared" if="android" />
+	<ndll name="vlc" if="android" />
+
 	<!-- epic wacky shit -->
 	<assets path="assets/compileData/plugins/plugins/" rename='plugins/' if="windows"/>
 	<assets path="assets/compileData/plugins/plugins (but for mac)/" rename='plugins/' if="macos"/>

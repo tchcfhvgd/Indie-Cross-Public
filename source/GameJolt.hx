@@ -78,7 +78,7 @@ class GameJoltAPI
 					if (loginArg)
 					{
 						GameJoltLogin.login = true;
-						Main.switchState(new GameJoltLogin());
+						FlxG.switchState(new GameJoltLogin());
 					}
 				}
 				else
@@ -86,7 +86,7 @@ class GameJoltAPI
 					if (loginArg)
 					{
 						GameJoltLogin.login = true;
-						Main.switchState(new GameJoltLogin());
+						FlxG.switchState(new GameJoltLogin());
 					}
 					trace("User login failure!");
 				}
@@ -445,7 +445,7 @@ class GameJoltLogin extends MusicBeatState
 							FlxG.sound.music.stop();
 						}
 						GameJoltLogin.fromOptions = false;
-						Main.switchState(new MainMenuState());
+						FlxG.switchState(new MainMenuState());
 					});
 				}
 				case 'Log Out':
@@ -500,7 +500,7 @@ class GameJoltLogin extends MusicBeatState
 				FlxG.sound.music.stop();
 			}
 			GameJoltLogin.fromOptions = false;
-			Main.switchState(new MainMenuState());
+			FlxG.switchState(new MainMenuState());
 		}
 
 		super.update(elapsed);
