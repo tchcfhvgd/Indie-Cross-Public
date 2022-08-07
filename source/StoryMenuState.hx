@@ -3,7 +3,6 @@ package;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.input.gamepad.FlxGamepad;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
@@ -320,37 +319,12 @@ class StoryMenuState extends MusicBeatState
 
 		if (!lockInput)
 		{
-			var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-
-			if (gamepad != null)
-			{
-				if (gamepad.justPressed.DPAD_UP)
-				{
-					changeWeek(curWeek - 1);
-				}
-
-				if (gamepad.justPressed.DPAD_DOWN)
-				{
-					changeWeek(curWeek + 1);
-				}
-
-				if (gamepad.justPressed.DPAD_LEFT)
-				{
-					changeDifficulty(1);
-				}
-
-				if (gamepad.justPressed.DPAD_RIGHT)
-				{
-					changeDifficulty(-1);
-				}
-			}
-
-			if (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.W)
+			if (controls.UP_P)
 			{
 				changeWeek(curWeek - 1);
 			}
 
-			if (FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.S)
+			if (controls.DOWN_P)
 			{
 				changeWeek(curWeek + 1);
 			}
@@ -369,16 +343,16 @@ class StoryMenuState extends MusicBeatState
 
 			if (FlxG.keys.pressed.SHIFT) //holding shift while changing diffiuclty, change mech diff
 				{
-					if (FlxG.keys.justPressed.RIGHT || FlxG.keys.justPressed.D)
+					if (controls.RIGHT_P)
 						changeMechDifficulty(-1);
-					if (FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.A)
+					if (controls.LEFT_P)
 						changeMechDifficulty(1);
 				}
 			else //not holding shift, change chart diffiuclty
 				{
-					if (FlxG.keys.justPressed.RIGHT || FlxG.keys.justPressed.D)
+					if (controls.RIGHT_P)
 						changeDifficulty(1);
-					if (FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.A)
+					if (controls.LEFT_P)
 						changeDifficulty(-1);
 				}
 

@@ -1,6 +1,5 @@
 package;
 
-import flixel.input.gamepad.FlxGamepad;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -190,16 +189,6 @@ class VideoHandler
 		if (FlxG.keys.justPressed.ENTER)
 		{
 			trySkip();
-		}
-		
-		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-
-		if (gamepad != null)
-		{
-			if (gamepad.justPressed.B)
-			{
-				trySkip();
-			}
 		}
 
 		bitmap.volume = FlxG.sound.volume + 0.3; // shitty volume fix. then make it louder.

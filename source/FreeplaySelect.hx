@@ -5,7 +5,6 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.effects.FlxFlicker;
 import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.input.gamepad.FlxGamepad;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
@@ -81,20 +80,6 @@ class FreeplaySelect extends MusicBeatState
 
 		if (!disableInput)
 		{
-			var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-
-			if (gamepad != null)
-			{
-				if (gamepad.justPressed.DPAD_LEFT)
-				{
-					changeSelection(curSelected - 1);
-				}
-				if (gamepad.justPressed.DPAD_RIGHT)
-				{
-					changeSelection(curSelected + 1);
-				}
-			}
-
 			if (controls.ACCEPT)
 			{
 				enterSelection();
@@ -113,12 +98,12 @@ class FreeplaySelect extends MusicBeatState
 				backOut();
 			}
 
-			if (FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.A)
+			if (controls.LEFT_P)
 			{
 				changeSelection(curSelected - 1);
 			}
 
-			if (FlxG.keys.justPressed.RIGHT || FlxG.keys.justPressed.D)
+			if (controls.RIGHT_P)
 			{
 				changeSelection(curSelected + 1);
 			}

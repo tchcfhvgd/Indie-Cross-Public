@@ -4,7 +4,6 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.effects.FlxFlicker;
 import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.input.gamepad.FlxGamepad;
 import flixel.math.FlxMath;
 import flixel.system.FlxSound;
 import flixel.text.FlxText;
@@ -256,11 +255,11 @@ class PauseSubState extends MusicBeatSubstate
 			}
 		}
 
-		if (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.W)
+		if (controls.UP_P)
 		{
 			changeSelection(curSelected - 1);
 		}
-		else if (FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.S)
+		else if (controls.DOWN_P)
 		{
 			changeSelection(curSelected + 1);
 		}
@@ -272,20 +271,6 @@ class PauseSubState extends MusicBeatSubstate
 				changeSelection(curSelected - 1);
 			}
 			else
-			{
-				changeSelection(curSelected + 1);
-			}
-		}
-
-		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-
-		if (gamepad != null)
-		{
-			if (gamepad.justPressed.DPAD_UP)
-			{
-				changeSelection(curSelected - 1);
-			}
-			if (gamepad.justPressed.DPAD_DOWN)
 			{
 				changeSelection(curSelected + 1);
 			}

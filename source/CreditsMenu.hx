@@ -1,7 +1,6 @@
 package;
 
 import flixel.util.FlxTimer;
-import flixel.input.gamepad.FlxGamepad;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -598,16 +597,6 @@ class CreditsMenu extends MusicBeatState
 		if (FlxG.keys.justPressed.TAB)
 		{
 			toggleThanks();
-		}
-
-		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-
-		if (gamepad != null)
-		{
-			if (gamepad.justPressed.Y)
-			{
-				toggleThanks();
-			}
 		}
 
 		for (i in 0...credIcons.length)

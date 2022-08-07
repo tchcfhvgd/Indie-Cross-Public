@@ -7,7 +7,6 @@ import Discord.DiscordClient;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.input.gamepad.FlxGamepad;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 
@@ -125,25 +124,11 @@ class AchievementsMenuState extends MusicBeatState
 			}
 		}
 
-		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-
-		if (gamepad != null)
-		{
-			if (gamepad.justPressed.DPAD_UP)
-			{
-				changeSelection(-1);
-			}
-			if (gamepad.justPressed.DPAD_DOWN)
-			{
-				changeSelection(1);
-			}
-		}
-
-		if (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.W)
+		if (controls.UP_P)
 		{
 			changeSelection(-1);
 		}
-		if (FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.S)
+		if (controls.DOWN_P)
 		{
 			changeSelection(1);
 		}

@@ -1,5 +1,4 @@
 import flixel.FlxG;
-import flixel.input.gamepad.FlxGamepad;
 import openfl.Lib;
 
 class KadeEngineData
@@ -204,10 +203,6 @@ class KadeEngineData
 
 		FlxG.sound.volume = FlxG.save.data.volume;
 		FlxG.sound.muted = FlxG.save.data.muted;
-
-		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-
-		KeyBinds.gamepad = gamepad != null;
 
 		Conductor.recalculateTimings();
 		KeyBinds.keyCheck();

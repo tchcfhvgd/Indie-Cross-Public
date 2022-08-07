@@ -8,7 +8,6 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.effects.FlxFlicker;
 import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.input.gamepad.FlxGamepad;
 import flixel.math.FlxMath;
 import flixel.system.FlxSound;
 import flixel.text.FlxText;
@@ -525,35 +524,6 @@ class FreeplayState extends MusicBeatState
 							codeBuffer = '';
 						}
 					}
-				}
-			}
-		}
-
-		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-
-		if (gamepad != null)
-		{
-			if (gamepad.justPressed.A)
-			{
-				accept();
-			}
-			if (gamepad.justPressed.DPAD_UP)
-			{
-				changeSelection(-1);
-			}
-			if (gamepad.justPressed.DPAD_DOWN)
-			{
-				changeSelection(1);
-			}
-			if (!lockDiff)
-			{
-				if (gamepad.justPressed.DPAD_LEFT)
-				{
-					changeDiff(-1);
-				}
-				if (gamepad.justPressed.DPAD_RIGHT)
-				{
-					changeDiff(1);
 				}
 			}
 		}

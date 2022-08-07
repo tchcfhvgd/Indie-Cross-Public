@@ -6,7 +6,6 @@ import Options;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.input.gamepad.FlxGamepad;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -245,11 +244,11 @@ class OptionsMenu extends MusicBeatState
 				backOut();
 			}
 
-			if (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.W)
+			if (controls.UP_P)
 			{
 				changeSelection(curSelected - 1);
 			}
-			if (FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.S)
+			if (controls.DOWN_P)
 			{
 				changeSelection(curSelected + 1);
 			}
@@ -261,20 +260,6 @@ class OptionsMenu extends MusicBeatState
 					changeSelection(curSelected - 1);
 				}
 				else
-				{
-					changeSelection(curSelected + 1);
-				}
-			}
-
-			var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-
-			if (gamepad != null)
-			{
-				if (gamepad.justPressed.DPAD_UP)
-				{
-					changeSelection(curSelected - 1);
-				}
-				if (gamepad.justPressed.DPAD_DOWN)
 				{
 					changeSelection(curSelected + 1);
 				}
@@ -302,33 +287,19 @@ class OptionsMenu extends MusicBeatState
 	{
 		if (FlxG.keys.pressed.SHIFT || !currentSelectedCat.getOptions()[curSelected].allowFastChange)
 		{
-			if (FlxG.keys.justPressed.RIGHT)
+			if (controls.RIGHT_P)
 				currentSelectedCat.getOptions()[curSelected].right();
 			FlxG.save.flush();
-			if (FlxG.keys.justPressed.LEFT)
+			if (controls.LEFT_P)
 				currentSelectedCat.getOptions()[curSelected].left();
 			FlxG.save.flush();
 		}
 		else
 		{
-			if (FlxG.keys.pressed.RIGHT || FlxG.keys.pressed.D)
+			if (controls.RIGHT)
 				currentSelectedCat.getOptions()[curSelected].right();
-			else if (FlxG.keys.pressed.LEFT || FlxG.keys.pressed.A)
+			else if (controls.LEFT)
 				currentSelectedCat.getOptions()[curSelected].left();
-		}
-
-		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-
-		if (gamepad != null)
-		{
-			if (gamepad.justPressed.DPAD_RIGHT)
-			{
-				currentSelectedCat.getOptions()[curSelected].right();
-			}
-			if (gamepad.justPressed.DPAD_LEFT)
-			{
-				currentSelectedCat.getOptions()[curSelected].left();
-			}
 		}
 
 		versionShit.text = currentSelectedCat.getOptions()[curSelected].getValue();
@@ -342,29 +313,15 @@ class OptionsMenu extends MusicBeatState
 	{
 		if (FlxG.keys.pressed.SHIFT)
 		{
-			if (FlxG.keys.justPressed.RIGHT || FlxG.keys.justPressed.D)
+			if (controls.RIGHT_P)
 				FlxG.save.data.offset += 0.1;
-			else if (FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.A)
+			else if (controls.LEFT_P)
 				FlxG.save.data.offset -= 0.1;
 		}
-		else if (FlxG.keys.pressed.RIGHT || FlxG.keys.pressed.D)
+		else if (controls.RIGHT)
 			FlxG.save.data.offset += 0.1;
-		else if (FlxG.keys.pressed.LEFT || FlxG.keys.pressed.A)
+		else if (controls.LEFT)
 			FlxG.save.data.offset -= 0.1;
-
-		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-
-		if (gamepad != null)
-		{
-			if (gamepad.justPressed.DPAD_RIGHT)
-			{
-				FlxG.save.data.offset += 0.1;
-			}
-			if (gamepad.justPressed.DPAD_LEFT)
-			{
-				FlxG.save.data.offset -= 0.1;
-			}
-		}
 
 		versionShit.text = "Offset (Left, Right, Shift for slow): " + HelperFunctions.truncateFloat(FlxG.save.data.offset, 2) + " - Description - "
 			+ currentDescription;

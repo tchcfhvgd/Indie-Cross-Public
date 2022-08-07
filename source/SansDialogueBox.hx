@@ -1,6 +1,5 @@
 package;
 
-import flixel.input.gamepad.FlxGamepad;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.text.FlxTypeText;
@@ -19,8 +18,6 @@ class SansDialogueBox extends FlxSpriteGroup
 	var curCharacter:String = '';
 	var curSound:String = '';
 	var soundDelay:String = '';
-
-
 
 	var dialogue:Alphabet;
 	var dialogueList:Array<String> = [];

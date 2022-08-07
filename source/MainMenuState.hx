@@ -114,13 +114,13 @@ class LoginScreen extends FlxTypedSpriteGroup<FlxSprite>
 				back();
 			}
 
-			if (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.W)
+			if (controls.UP_P)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				changeSelection(curSelected - 1);
 			}
 
-			if (FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.S)
+			if (controls.DOWN_P)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				changeSelection(curSelected + 1);
@@ -582,12 +582,12 @@ class MainMenuState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('confirmMenu', 'preload'));
 			}
 
-			if (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.W)
+			if (controls.UP_P)
 			{
 				changeSelection(curSelected - 1);
 			}
 
-			if (FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.S)
+			if (controls.DOWN_P)
 			{
 				changeSelection(curSelected + 1);
 			}

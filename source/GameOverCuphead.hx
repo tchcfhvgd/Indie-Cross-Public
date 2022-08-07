@@ -3,7 +3,6 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
-import flixel.input.gamepad.FlxGamepad;
 import flixel.system.FlxSound;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
@@ -274,20 +273,6 @@ class GameOverCuphead extends MusicBeatSubstate
 							changeItem(i);
 						}
 					}
-				}
-			}
-
-			var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-
-			if (gamepad != null)
-			{
-				if (gamepad.justPressed.DPAD_UP)
-				{
-					changeItem(curSelected - 1);
-				}
-				if (gamepad.justPressed.DPAD_DOWN)
-				{
-					changeItem(curSelected + 1);
 				}
 			}
 		}

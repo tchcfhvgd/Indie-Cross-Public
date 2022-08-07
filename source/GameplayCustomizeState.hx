@@ -1,4 +1,3 @@
-import flixel.input.gamepad.FlxGamepad;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxObject;
@@ -128,28 +127,6 @@ class GameplayCustomizeState extends MusicBeatState
 
 		FlxG.camera.zoom = FlxMath.lerp(0.9, FlxG.camera.zoom, 0.95);
 		camHUD.zoom = FlxMath.lerp(1, camHUD.zoom, 0.95);
-
-		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-
-		if (gamepad != null)
-		{
-			if (gamepad.justPressed.DPAD_UP)
-			{
-				moveSick("y", -40);
-			}
-			if (gamepad.justPressed.DPAD_DOWN)
-			{
-				moveSick("y", 40);
-			}
-			if (gamepad.justPressed.DPAD_LEFT)
-			{
-				moveSick("x", -40);
-			}
-			if (gamepad.justPressed.DPAD_RIGHT)
-			{
-				moveSick("x", 40);
-			}
-		}
 
 		if (FlxG.keys.anyJustPressed([UP]))
 		{
