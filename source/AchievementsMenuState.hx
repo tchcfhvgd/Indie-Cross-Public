@@ -131,12 +131,12 @@ class AchievementsMenuState extends MusicBeatState
 			changeSelection(1);
 		}
 
-		if ((controls.BACK || (FlxG.mouse.justPressedRight && Main.focused)) && allowTransit)
+		if (controls.BACK && allowTransit)
 		{
 			backOut();
 		}
 
-		if (controls.ACCEPT || (FlxG.mouse.justPressed && Main.focused))
+		if (controls.ACCEPT)
 		{
 			accepted();
 		}

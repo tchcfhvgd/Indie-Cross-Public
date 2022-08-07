@@ -18,7 +18,6 @@ class InspectReward extends MusicBeatSubstate
 	public function new()
 	{
 		super();
-		FlxG.mouse.visible = true;
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		bg.alpha = 0;
