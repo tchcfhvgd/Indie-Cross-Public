@@ -109,6 +109,8 @@ class StoryMenuState extends MusicBeatState
 
 	var gamingCup:FlxSprite;
 	var gamingSands:FlxSprite;
+	
+	var ismech:Bool = false;
 
 	var cupTea:FlxSprite;
 
@@ -292,6 +294,9 @@ class StoryMenuState extends MusicBeatState
 			cupTea.alpha = 0.00001;
 		}
 		add(cupTea);
+		#if android
+		addVirtualPad(UP_DOWN, A_B_C);
+		#end
 
 		new FlxTimer().start(Main.transitionDuration, function(tmr:FlxTimer)
 		{
@@ -340,7 +345,8 @@ class StoryMenuState extends MusicBeatState
 					changeWeek(curWeek + 1);
 				}
 			}
-
+			
+			#if !android
 			if (FlxG.keys.pressed.SHIFT) //holding shift while changing diffiuclty, change mech diff
 				{
 					if (controls.RIGHT_P)
@@ -355,6 +361,25 @@ class StoryMenuState extends MusicBeatState
 					if (controls.LEFT_P)
 						changeDifficulty(-1);
 				}
+			#else
+			if (virtualpad.buttonC.justPressed) {
+				ismech = !ismech;
+			}
+			if (controls.RIGHT_P) {
+				if (ismech) {
+					changeMechDifficulty(-1);
+				} else {
+				    changeDifficulty(1);
+				}
+			}
+			if (controls.LEFT_P) {
+				if (ismech) {
+					changeMechDifficulty(1);
+				} else {
+				    changeDifficulty(-1);
+				}
+			}
+			#end
 
 			if (controls.ACCEPT || (FlxG.mouse.justPressed && Main.focused))
 			{

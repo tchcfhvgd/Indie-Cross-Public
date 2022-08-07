@@ -381,6 +381,10 @@ class MainMenuState extends MusicBeatState
 
 		generateButtons(270, 100);
 		changeSelection(curSelected);
+		
+		#if android
+		addVirtualPad(UP_DOWN, A_B_C);
+		#end
 
 		if (showCredits)
 		{
@@ -484,7 +488,7 @@ class MainMenuState extends MusicBeatState
 
 		if (!disableInput && videoDone)
 		{
-			if (FlxG.keys.justPressed.P && FlxG.keys.pressed.CONTROL && debugTools)
+			if (FlxG.keys.justPressed.P && FlxG.keys.pressed.CONTROL #if android || virtualpad.buttonY.justPressed #end && debugTools)
 			{
 				FlxG.save.data.freeplaylocked = [false, false, false];
 				FlxG.save.data.weeksbeat = [true, true, true];
@@ -498,7 +502,7 @@ class MainMenuState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('confirmMenu', 'preload'));
 			}
 
-			if (FlxG.keys.justPressed.DELETE)
+			if (FlxG.keys.justPressed.DELETE #if android || virtualpad.buttonC.justPressed #end)
 			{
 				persistentUpdate = false;
 				openSubState(new Prompt("Are you sure you want to erase your save?"));
@@ -520,18 +524,18 @@ class MainMenuState extends MusicBeatState
 				}
 			}
 
-			if (FlxG.keys.justPressed.I && FlxG.keys.pressed.CONTROL && debugTools)
+			if (FlxG.keys.justPressed.I && FlxG.keys.pressed.CONTROL #if android || virtualpad.buttonY.justPressed #end && debugTools)
 			{
 				//FlxG.switchState(new NotesplashOffsets());
 				FlxG.switchState(new DiffButtonOffsets());
 			}
 
-			if (FlxG.keys.justPressed.LEFT && FlxG.keys.pressed.CONTROL && debugTools)
+			if (FlxG.keys.justPressed.LEFT #if android || virtualpad.buttonLeft.justPressed #end && FlxG.keys.pressed.CONTROL #if android || virtualpad.buttonY.justPressed #end && debugTools)
 			{
 				soundX -= 25;
 			}
 
-			if (FlxG.keys.justPressed.RIGHT && FlxG.keys.pressed.CONTROL && debugTools)
+			if (FlxG.keys.justPressed.RIGHT #if android || virtualpad.buttonRight.justPressed #end && FlxG.keys.pressed.CONTROL #if android || virtualpad.buttonY.justPressed #end && debugTools)
 			{
 				soundX += 25;
 			}
@@ -544,7 +548,7 @@ class MainMenuState extends MusicBeatState
 			#if desktop
 			if (FlxG.keys.justPressed.SEMICOLON)
 			{
-				if (FlxG.keys.pressed.CONTROL)
+				if (FlxG.keys.pressed.CONTROL #if android || virtualpad.buttonY.justPressed #end)
 				{
 					DiscordClient.shutdown();
 				}
@@ -555,7 +559,7 @@ class MainMenuState extends MusicBeatState
 			}
 			#end
 
-			if (FlxG.keys.justPressed.A && FlxG.keys.pressed.CONTROL && FlxG.keys.pressed.SHIFT && debugTools)
+			if (FlxG.keys.justPressed.A #if android || virtualpad.buttonA.justPressed #end && FlxG.keys.pressed.CONTROL #if android || virtualpad.buttonY.justPressed #end && FlxG.keys.pressed.SHIFT && debugTools)
 			{
 				for (i in 0...Achievements.achievements.length)
 				{
@@ -567,7 +571,7 @@ class MainMenuState extends MusicBeatState
 
 			if (debuggers.contains(GameJoltAPI.getUserInfo()))
 			{
-				if (FlxG.keys.justPressed.D && FlxG.keys.pressed.CONTROL)
+				if (FlxG.keys.justPressed.D && FlxG.keys.pressed.CONTROL #if android || virtualpad.buttonY.justPressed #end)
 				{
 					debugTools = !debugTools;
 					trace("Debug tools is now " + (debugTools ? "enabled." : "disabled."));
@@ -575,7 +579,7 @@ class MainMenuState extends MusicBeatState
 				}
 			}*/
 
-			if (FlxG.keys.justPressed.L && FlxG.keys.pressed.CONTROL && debugTools)
+			if (FlxG.keys.justPressed.L #if android || virtualpad.buttonC.justPressed #end && FlxG.keys.pressed.CONTROL #if android || virtualpad.buttonY.justPressed #end && debugTools)
 			{
 				showcase = !showcase;
 				trace("Showcase is now " + (showcase ? "enabled." : "disabled."));
