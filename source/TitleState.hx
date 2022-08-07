@@ -233,7 +233,7 @@ class TitleState extends MusicBeatState
 			if (touch.pressed) {
 				time += 1;
 			}
-			if (time > elapsed - 1) {
+			if (time < elapsed - 1) {
 				hold = true;
 			}
 			if (time / elapsed > 1.99 && time / elapsed < 2.99 && touch.justReleased) { // hold 1 or more seconds but no more than 2 to enable credits in the menu
