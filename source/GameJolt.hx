@@ -241,7 +241,6 @@ class GameJoltLogin extends MusicBeatState
 		persistentUpdate = true;
 
 		trace("init? " + GJApi.initialized);
-		FlxG.mouse.visible = true;
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('gamejolt/Background', 'preload'));
 		bg.setGraphicSize(FlxG.width);
@@ -462,6 +461,36 @@ class GameJoltLogin extends MusicBeatState
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 
+		#if android
+		for (touch in FlxG.touches.list)
+		{
+			if (touch.justPressed)
+			{
+				if (curSelected != -1)
+				{
+					if (touch.overlaps(menuItems.members[curSelected]))
+					{
+						selectButton();
+					}
+				}
+			}
+
+			if (touch.justMoved)
+			{
+				for (i in 0...menuItems.members.length)
+				{
+					if (touch.overlaps(menuItems.members[i]))
+					{
+						changeSelection(i);
+					}
+					else
+					{
+						menuItems.members[i].playAnim('idle', true);
+					}
+				}
+			}
+		}
+		#else
 		if (FlxG.mouse.justPressed)
 		{
 			if (curSelected != -1)
@@ -487,6 +516,7 @@ class GameJoltLogin extends MusicBeatState
 				}
 			}
 		}
+		#end
 
 		if (!FlxG.sound.music.playing)
 		{

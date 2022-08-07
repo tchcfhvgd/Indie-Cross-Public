@@ -38,8 +38,6 @@ class GameOverSubstate extends MusicBeatSubstate
 	{
 		super();
 
-		FlxG.mouse.visible = true;
-
 		var daBf:String = '';
 		daBf = gameOverChar;
 
@@ -183,7 +181,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	{
 		super.update(elapsed);
 
-		if (controls.ACCEPT || (FlxG.mouse.justPressed && Main.focused))
+		if (controls.ACCEPT)
 		{
 			if (hasVOfinished)
 				{
@@ -203,7 +201,7 @@ class GameOverSubstate extends MusicBeatSubstate
 				}
 		}
 
-		if (controls.BACK || (FlxG.mouse.justPressedRight && Main.focused))
+		if (controls.BACK)
 		{
 			if (dialogueOver)
 				{

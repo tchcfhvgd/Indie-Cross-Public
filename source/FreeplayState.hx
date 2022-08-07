@@ -99,8 +99,6 @@ class FreeplayState extends MusicBeatState
 
 		persistentUpdate = true;
 
-		FlxG.mouse.visible = true;
-
 		songs = [];
 
 		if (FlxG.sound.music != null)
@@ -514,7 +512,7 @@ class FreeplayState extends MusicBeatState
 							codeAccepted(word); // IT WORKS!!! ✅
 						}
 					}
-					
+
 					for (word in secretCodes) {
 						if (!word.toUpperCase().contains(codeBuffer.substring(0, codeBuffer.length - 1)) || word.toUpperCase().contains(codeBuffer))
 							break;
@@ -528,25 +526,13 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 
-		if (FlxG.keys.justPressed.UP)
+		if (controls.UP_P)
 		{
 			changeSelection(-1);
 		}
-		if (FlxG.keys.justPressed.DOWN)
+		if (controls.DOWN_P)
 		{
 			changeSelection(1);
-		}
-
-		if (FlxG.mouse.wheel != 0)
-		{
-			if (FlxG.mouse.wheel > 0)
-			{
-				changeSelection(-1);
-			}
-			else
-			{
-				changeSelection(1);
-			}
 		}
 
 		if (FlxG.keys.justPressed.I && FlxG.keys.pressed.CONTROL && MainMenuState.debugTools)
@@ -557,38 +543,38 @@ class FreeplayState extends MusicBeatState
 		if (!lockDiff)
 		{
 			if (FlxG.keys.pressed.SHIFT) //change mech diff
-				{
-					if (FlxG.keys.justPressed.LEFT)
-						changeMechDiff(1);
-					if (FlxG.keys.justPressed.RIGHT)
-						changeMechDiff(-1);
-				}
+			{
+				if (controls.LEFT_P)
+					changeMechDiff(1);
+				if (controls.RIGHT_P)
+					changeMechDiff(-1);
+			}
 			else //change chart diff
-				{
-					if (FlxG.keys.justPressed.LEFT)
-						changeDiff(-1);
-					if (FlxG.keys.justPressed.RIGHT)
-						changeDiff(1);
-				}
+			{
+				if (controls.LEFT_P)
+					changeDiff(-1);
+				if (controls.RIGHT_P)
+					changeDiff(1);
+			}
 		}
 		else
+		{
+			if (FlxG.keys.pressed.SHIFT) //change mech diff
 			{
-				if (FlxG.keys.pressed.SHIFT) //change mech diff
-					{
-						if (FlxG.keys.justPressed.LEFT)
-							changeMechDiff(1);
-						if (FlxG.keys.justPressed.RIGHT)
-							changeMechDiff(-1);
-					}
+				if (controls.LEFT_P)
+					changeMechDiff(1);
+				if (controls.RIGHT_P)
+					changeMechDiff(-1);
 			}
+		}
 
-		if ((controls.BACK || (FlxG.mouse.justPressedRight && Main.focused)) && allowTransit)
+		if (controls.BACK && allowTransit)
 		{
 			backOut();
 		}
 
 		// gotsong doesnt work poly, dont use it lmao
-		if ((FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.Z) || (FlxG.mouse.justPressed && Main.focused))
+		if (controls.ACCEPT)
 		{
 			accept();
 		}

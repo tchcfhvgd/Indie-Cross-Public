@@ -85,7 +85,6 @@ class MusicBeatSubstate extends FlxSubState
 
 	public function new()
 	{
-		FlxG.mouse.visible = false;
 		super();
 	}
 

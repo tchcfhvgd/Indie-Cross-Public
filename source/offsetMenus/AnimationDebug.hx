@@ -99,7 +99,6 @@ class AnimationDebug extends MusicBeatState
 
 		setBrightness(0);
 
-		FlxG.mouse.visible = true;
 		FlxG.sound.music.stop();
 		var gridBG:FlxSprite = FlxGridOverlay.create(10, 10);
 		gridBG.scrollFactor.set(0, 0);

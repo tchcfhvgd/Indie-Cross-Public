@@ -62,8 +62,6 @@ class GameOverCuphead extends MusicBeatSubstate
 
 		FlxTween.tween(this, {songSpeed: 0.5}, 2);
 
-		FlxG.mouse.visible = true;
-
 		if (PlayState.SONG.song.toLowerCase() == 'knockout')
 		{
 			dialogue = ["You had your run, but now you're done!"];
@@ -244,36 +242,14 @@ class GameOverCuphead extends MusicBeatSubstate
 				endBullshit(curSelected);
 			}
 
-			if ((FlxG.mouse.justPressed && Main.focused))
-			{
-				if (FlxG.mouse.overlaps(menuItems.members[curSelected]))
-				{
-					endBullshit(curSelected);
-				}
-			}
-
-			if (FlxG.keys.justPressed.UP)
+			if (controls.UP_P)
 			{
 				changeItem(curSelected - 1);
 			}
 
-			if (FlxG.keys.justPressed.DOWN)
+			if (controls.DOWN_P)
 			{
 				changeItem(curSelected + 1);
-			}
-
-			if (FlxG.mouse.justMoved)
-			{
-				for (i in 0...menuItems.members.length)
-				{
-					if (i != curSelected)
-					{
-						if (FlxG.mouse.overlaps(menuItems.members[i]))
-						{
-							changeItem(i);
-						}
-					}
-				}
 			}
 		}
 

@@ -128,8 +128,6 @@ class StoryMenuState extends MusicBeatState
 
 		persistentUpdate = true;
 
-		FlxG.mouse.visible = true;
-
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Story Mode Menu", null);
@@ -294,6 +292,7 @@ class StoryMenuState extends MusicBeatState
 			cupTea.alpha = 0.00001;
 		}
 		add(cupTea);
+
 		#if android
 		addVirtualPad(UP_DOWN, A_B_C);
 		#end
@@ -318,7 +317,6 @@ class StoryMenuState extends MusicBeatState
 		if (Math.abs(lerpScore - intendedScore) <= 10)
 			lerpScore = intendedScore;
 
-
 		scoreText.text = "WEEK SCORE: " + lerpScore;
 		scoreText.x = FlxG.width / 2 - scoreText.width / 2;
 
@@ -334,59 +332,27 @@ class StoryMenuState extends MusicBeatState
 				changeWeek(curWeek + 1);
 			}
 
-			if (FlxG.mouse.wheel != 0)
+			if (FlxG.keys.pressed.SHIFT #if android || virtualpad.buttonC.pressed #end) //holding shift while changing diffiuclty, change mech diff
 			{
-				if (FlxG.mouse.wheel > 0)
-				{
-					changeWeek(curWeek - 1);
-				}
-				else
-				{
-					changeWeek(curWeek + 1);
-				}
-			}
-			
-			#if !android
-			if (FlxG.keys.pressed.SHIFT) //holding shift while changing diffiuclty, change mech diff
-				{
-					if (controls.RIGHT_P)
-						changeMechDifficulty(-1);
-					if (controls.LEFT_P)
-						changeMechDifficulty(1);
-				}
-			else //not holding shift, change chart diffiuclty
-				{
-					if (controls.RIGHT_P)
-						changeDifficulty(1);
-					if (controls.LEFT_P)
-						changeDifficulty(-1);
-				}
-			#else
-			if (virtualpad.buttonC.justPressed) {
-				ismech = !ismech;
-			}
-			if (controls.RIGHT_P) {
-				if (ismech) {
+				if (controls.RIGHT_P)
 					changeMechDifficulty(-1);
-				} else {
-				    changeDifficulty(1);
-				}
-			}
-			if (controls.LEFT_P) {
-				if (ismech) {
+				if (controls.LEFT_P)
 					changeMechDifficulty(1);
-				} else {
-				    changeDifficulty(-1);
-				}
 			}
-			#end
+			else //not holding shift, change chart diffiuclty
+			{
+				if (controls.RIGHT_P)
+					changeDifficulty(1);
+				if (controls.LEFT_P)
+					changeDifficulty(-1);
+			}
 
-			if (controls.ACCEPT || (FlxG.mouse.justPressed && Main.focused))
+			if (controls.ACCEPT)
 			{
 				selectWeek();
 			}
 
-			if (controls.BACK || (FlxG.mouse.justPressedRight && Main.focused))
+			if (controls.BACK)
 			{
 				backOut();
 			}

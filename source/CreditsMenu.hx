@@ -377,8 +377,6 @@ class CreditsMenu extends MusicBeatState
 
 		persistentUpdate = true;
 
-		FlxG.mouse.visible = true;
-
 		bg = new FlxSprite().loadGraphic(Paths.image('credits/bg/Leader_BG', 'preload'));
 		bg.updateHitbox();
 		bg.screenCenter();
@@ -586,7 +584,7 @@ class CreditsMenu extends MusicBeatState
 			HelperFunctions.fancyOpenURL(credits[curIcon][4]);
 		}
 
-		if ((controls.BACK || (FlxG.mouse.justPressedRight && Main.focused)) && allowTransit)
+		if (controls.BACK && allowTransit)
 		{
 			backOut();
 		}

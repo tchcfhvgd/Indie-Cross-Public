@@ -130,7 +130,6 @@ class MusicBeatState extends FNFState
 	override function create()
 	{
 		setChrome(0);
-		FlxG.mouse.visible = false;
 		
 		if (Lib.current.getChildAt(0) != null)
 		{

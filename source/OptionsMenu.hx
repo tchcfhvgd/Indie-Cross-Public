@@ -86,8 +86,6 @@ class OptionsMenu extends MusicBeatState
 
 		persistentUpdate = true;
 
-		FlxG.mouse.visible = true;
-
 		instance = this;
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menu/BG', 'preload'));
@@ -234,12 +232,12 @@ class OptionsMenu extends MusicBeatState
 
 		if (acceptInput)
 		{
-			if (controls.ACCEPT || (FlxG.mouse.justPressed && Main.focused))
+			if (controls.ACCEPT)
 			{
 				accept();
 			}
 
-			if ((controls.BACK || FlxG.keys.justPressed.BACKSPACE || (FlxG.mouse.justPressedRight && Main.focused)) && allowTransit)
+			if (controls.BACK && allowTransit)
 			{
 				backOut();
 			}
@@ -251,18 +249,6 @@ class OptionsMenu extends MusicBeatState
 			if (controls.DOWN_P)
 			{
 				changeSelection(curSelected + 1);
-			}
-
-			if (FlxG.mouse.wheel != 0)
-			{
-				if (FlxG.mouse.wheel > 0)
-				{
-					changeSelection(curSelected - 1);
-				}
-				else
-				{
-					changeSelection(curSelected + 1);
-				}
 			}
 
 			if (isCat)

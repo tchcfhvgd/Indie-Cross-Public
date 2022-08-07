@@ -4774,8 +4774,6 @@ class PlayState extends MusicBeatState
 		{
 			FlxTween.globalManager.active = true;
 
-			FlxG.mouse.visible = false;
-
 			if (vocals != null)
 			{
 				vocals.pause();

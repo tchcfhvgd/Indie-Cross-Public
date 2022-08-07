@@ -20,7 +20,7 @@ class FNFState extends FlxUIState
     {
         Paths.clearStoredMemory();
         Paths.clearUnusedMemory();
-        
+
         super.create();
 
 		if (disableNextTransIn)

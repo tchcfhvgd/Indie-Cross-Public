@@ -22,7 +22,6 @@ class Prompt extends MusicBeatSubstate
 	public function new(questionText:String = "Fuck you", ?textColor:FlxColor = FlxColor.WHITE)
 	{
 		super();
-		FlxG.mouse.visible = true;
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		bg.alpha = 0;

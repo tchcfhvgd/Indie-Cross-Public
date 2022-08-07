@@ -36,8 +36,6 @@ class SansGameover extends MusicBeatSubstate
 	{
 		super();
 
-		FlxG.mouse.visible = true;
-
 		Conductor.songPosition = 0;
 
 		FlxG.sound.music.stop();
@@ -117,12 +115,12 @@ class SansGameover extends MusicBeatSubstate
 			txt.text = curStr.substr(0, charInd);
 		}
 
-		if (controls.ACCEPT || (FlxG.mouse.justPressed && Main.focused))
+		if (controls.ACCEPT)
 		{
 			endBullshit();
 		}
 
-		if (controls.BACK || (FlxG.mouse.justPressedRight && Main.focused))
+		if (controls.BACK)
 		{
 			backOut();
 		}

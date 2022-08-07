@@ -36,8 +36,6 @@ class AchievementsMenuState extends MusicBeatState
 
 		persistentUpdate = true;
 
-		FlxG.mouse.visible = true;
-
 		#if desktop
 		DiscordClient.changePresence("Browsing the Achievements Menu", null);
 		#end
@@ -131,18 +129,6 @@ class AchievementsMenuState extends MusicBeatState
 		if (controls.DOWN_P)
 		{
 			changeSelection(1);
-		}
-
-		if (FlxG.mouse.wheel != 0)
-		{
-			if (FlxG.mouse.wheel > 0)
-			{
-				changeSelection(-1);
-			}
-			else
-			{
-				changeSelection(1);
-			}
 		}
 
 		if ((controls.BACK || (FlxG.mouse.justPressedRight && Main.focused)) && allowTransit)

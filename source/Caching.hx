@@ -81,9 +81,9 @@ class Caching extends MusicBeatState
 		FlxG.sound.volume = 1;
 		FlxG.sound.muted = false;
 		FlxG.fixedTimestep = false;
-		FlxG.mouse.useSystemCursor = true;
 		FlxG.console.autoPause = false;
 		FlxG.autoPause = FlxG.save.data.focusfreeze;
+
 		switch (FlxG.save.data.resolution)
 		{
 			case 0:

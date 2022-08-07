@@ -49,7 +49,7 @@ class PauseSubState extends MusicBeatSubstate
 	public function new()
 	{
 		super();
-		FlxG.mouse.visible = true;
+
 		FlxTween.globalManager.active = false;
 
 		var fileName:String = '';
@@ -236,7 +236,7 @@ class PauseSubState extends MusicBeatSubstate
 		mechDiffLabel.alpha = value;
 		controlsOverlay.setAlpha(value);
 
-		if (controls.ACCEPT || (FlxG.mouse.justPressed && Main.focused))
+		if (controls.ACCEPT)
 		{
 			accept();
 		}
@@ -262,18 +262,6 @@ class PauseSubState extends MusicBeatSubstate
 		else if (controls.DOWN_P)
 		{
 			changeSelection(curSelected + 1);
-		}
-
-		if (FlxG.mouse.wheel != 0)
-		{
-			if (FlxG.mouse.wheel > 0)
-			{
-				changeSelection(curSelected - 1);
-			}
-			else
-			{
-				changeSelection(curSelected + 1);
-			}
 		}
 	}
 

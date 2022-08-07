@@ -69,7 +69,7 @@ class InspectReward extends MusicBeatSubstate
 	{
 		super.update(elapsed);
 
-		if (controls.BACK || (FlxG.mouse.justPressedRight && Main.focused))
+		if (controls.BACK)
 		{
 			backOut();
 		}

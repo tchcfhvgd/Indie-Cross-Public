@@ -38,8 +38,6 @@ class FreeplaySelect extends MusicBeatState
 
 		persistentUpdate = true;
 
-		FlxG.mouse.visible = true;
-
 		#if desktop
 		DiscordClient.changePresence("Browsing the Freeplay Select", null);
 		#end
@@ -66,15 +64,6 @@ class FreeplaySelect extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		if (FlxG.mouse.visible && !accepted)
-		{
-			disableInput = false;
-		}
-		else
-		{
-			disableInput = true;
-		}
-
 		if (!FlxG.sound.music.playing)
 			FlxG.sound.playMusic(Paths.music(Main.menuMusic));
 
@@ -85,15 +74,7 @@ class FreeplaySelect extends MusicBeatState
 				enterSelection();
 			}
 
-			if (FlxG.mouse.justPressed && Main.focused)
-			{
-				if (FlxG.mouse.overlaps(freeplayItems.members[curSelected]))
-				{
-					enterSelection();
-				}
-			}
-
-			if ((controls.BACK || (FlxG.mouse.justPressedRight && Main.focused)) && allowTransit)
+			if (controls.BACK && allowTransit)
 			{
 				backOut();
 			}
@@ -106,20 +87,6 @@ class FreeplaySelect extends MusicBeatState
 			if (controls.RIGHT_P)
 			{
 				changeSelection(curSelected + 1);
-			}
-
-			if (FlxG.mouse.justMoved)
-			{
-				for (i in 0...freeplayItems.length)
-				{
-					if (curSelected != i)
-					{
-						if (FlxG.mouse.overlaps(freeplayItems.members[i]) && !FlxG.mouse.overlaps(freeplayItems.members[curSelected]))
-						{
-							changeSelection(i);
-						}
-					}
-				}
 			}
 		}
 	}

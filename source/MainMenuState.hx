@@ -109,7 +109,7 @@ class LoginScreen extends FlxTypedSpriteGroup<FlxSprite>
 
 		if (!disableInput)
 		{
-			if ((controls.BACK || (FlxG.mouse.justPressedRight && Main.focused)))
+			if (controls.BACK)
 			{
 				back();
 			}
@@ -126,31 +126,9 @@ class LoginScreen extends FlxTypedSpriteGroup<FlxSprite>
 				changeSelection(curSelected + 1);
 			}
 
-			if (FlxG.mouse.justMoved)
-			{
-				for (i in 0...buttons.length)
-				{
-					if (i != curSelected)
-					{
-						if (FlxG.mouse.overlaps(buttons[i]) && !FlxG.mouse.overlaps(buttons[curSelected]))
-						{
-							changeSelection(i);
-						}
-					}
-				}
-			}
-
 			if (controls.ACCEPT)
 			{
 				enterSelection();
-			}
-
-			if ((FlxG.mouse.justPressed && Main.focused))
-			{
-				if (FlxG.mouse.overlaps(buttons[curSelected]))
-				{
-					enterSelection();
-				}
 			}
 		}
 	}
@@ -259,7 +237,7 @@ class MainMenuState extends MusicBeatState
 	final name:String = Lib.application.meta["name"];
 	final version:String = Lib.application.meta["version"];
 	static final commitHash:String = GitHash.getGitCommitHash();
-	
+
 	static var curSelected:Int = 0;
 
 	var disableInput:Bool = false;
@@ -292,8 +270,6 @@ class MainMenuState extends MusicBeatState
 		#end
 
 		persistentUpdate = true;
-
-		FlxG.mouse.visible = true;
 
 		Application.current.window.title = Main.appTitle;
 		#if desktop
@@ -536,12 +512,12 @@ class MainMenuState extends MusicBeatState
 				FlxG.switchState(new DiffButtonOffsets());
 			}
 
-			if (FlxG.keys.justPressed.LEFT #if android || virtualpad.buttonLeft.justPressed #end && FlxG.keys.pressed.CONTROL #if android || virtualpad.buttonY.justPressed #end && debugTools)
+			if (controls.LEFT_P #if android || virtualpad.buttonLeft.justPressed #end && FlxG.keys.pressed.CONTROL #if android || virtualpad.buttonY.justPressed #end && debugTools)
 			{
 				soundX -= 25;
 			}
 
-			if (FlxG.keys.justPressed.RIGHT #if android || virtualpad.buttonRight.justPressed #end && FlxG.keys.pressed.CONTROL #if android || virtualpad.buttonY.justPressed #end && debugTools)
+			if (controls.RIGHT_P #if android || virtualpad.buttonRight.justPressed #end && FlxG.keys.pressed.CONTROL #if android || virtualpad.buttonY.justPressed #end && debugTools)
 			{
 				soundX += 25;
 			}
@@ -554,7 +530,7 @@ class MainMenuState extends MusicBeatState
 			#if desktop
 			if (FlxG.keys.justPressed.SEMICOLON)
 			{
-				if (FlxG.keys.pressed.CONTROL #if android || virtualpad.buttonY.justPressed #end)
+				if (FlxG.keys.pressed.CONTROL)
 				{
 					DiscordClient.shutdown();
 				}
@@ -621,59 +597,9 @@ class MainMenuState extends MusicBeatState
 				}
 			}
 
-			if (FlxG.mouse.justPressed && Main.focused)
-			{
-				if (FlxG.mouse.overlaps(menuItems.members[curSelected]))
-				{
-					if (showKeybindsMenu && curSelected == 0)
-					{
-						persistentUpdate = false;
-						openSubState(new KeyBindMenu());
-						showKeybindsMenu = false;
-						KeyBindMenu.backThing = function()
-						{
-							persistentUpdate = true;
-							enterSelection();
-						}
-					}
-					else
-					{
-						enterSelection();
-					}
-				}
-			}
-
-			if ((controls.BACK || (FlxG.mouse.justPressedRight && Main.focused)) && allowTransit)
+			if (controls.BACK && allowTransit)
 			{
 				backOut();
-			}
-
-			var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-
-			if (gamepad != null)
-			{
-				if (gamepad.justPressed.DPAD_UP)
-				{
-					changeSelection(curSelected - 1);
-				}
-				if (gamepad.justPressed.DPAD_DOWN)
-				{
-					changeSelection(curSelected + 1);
-				}
-			}
-
-			if (FlxG.mouse.justMoved)
-			{
-				for (i in 0...menuItems.length)
-				{
-					if (i != curSelected)
-					{
-						if (FlxG.mouse.overlaps(menuItems.members[i]) && !FlxG.mouse.overlaps(menuItems.members[curSelected]))
-						{
-							changeSelection(i);
-						}
-					}
-				}
 			}
 		}
 	}

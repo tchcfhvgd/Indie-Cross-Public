@@ -37,8 +37,6 @@ class TitleState extends MusicBeatState
 
 		super.create();
 
-		FlxG.mouse.visible = true;
-
 		bg = new FlxSprite();
 		bg.frames = Paths.getSparrowAtlas('title/Bg');
 		bg.antialiasing = FlxG.save.data.highquality;
@@ -134,7 +132,7 @@ class TitleState extends MusicBeatState
 
 		startIntro();
 	}
-	
+
 	var hold:Bool = false:
 	var time:Float = 0;
 	var creditsText:FlxText;
@@ -219,14 +217,9 @@ class TitleState extends MusicBeatState
 		}
 		#end
 
-		if (!transitioning && videoDone)
-		{
-			if (controls.ACCEPT || (FlxG.mouse.justPressed && Main.focused))
-			{
-				accept();
-			}
-		}
-		
+		if ((!transitioning && videoDone) && controls.ACCEPT)
+			accept();
+
 		//warning, next code, until end of if android is hardcoded
 		#if android
 		for (touch in FlxG.touches.list) { // i decided to do it perfect
