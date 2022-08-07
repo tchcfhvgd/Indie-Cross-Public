@@ -81,7 +81,8 @@ class LoadingState extends MusicBeatState
 
 		FlxGraphic.defaultPersist = true;
 		Thread.create(() ->
-		{	#if !android
+		{
+			#if !android
 			screen.setLoadingText("Loading sounds...");
 			for (sound in soundsToCache)
 			{

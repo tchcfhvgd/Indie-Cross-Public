@@ -57,6 +57,15 @@ class SUtil
 		{
 			if (!FileSystem.exists(SUtil.getPath()))
 				FileSystem.createDirectory(SUtil.getPath());
+
+			if (!FileSystem.exists(SUtil.getPath() + "assets"))
+				FileSystem.createDirectory(SUtil.getPath() + "assets");
+
+			if (!FileSystem.exists(SUtil.getPath() + "assets/replays"))
+				FileSystem.createDirectory(SUtil.getPath() + "assets/replays");
+
+			if (!FileSystem.exists(SUtil.getPath() + 'assets/videos'))
+				FileSystem.createDirectory(SUtil.getPath() + 'assets/videos');
 		}
 		#end
 	}
