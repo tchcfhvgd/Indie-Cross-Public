@@ -526,9 +526,6 @@ class PlayState extends MusicBeatState
 		#if cpp
 		executeModchart = openfl.utils.Assets.exists(Paths.lua(songLowercase + "/modchart"));
 		#end
-		#if !cpp
-		executeModchart = false; // FORCE disable for non cpp targets
-		#end
 
 		#if desktop
 		// Making difficulty text for Discord Rich Presence.
@@ -2948,6 +2945,10 @@ class PlayState extends MusicBeatState
 		if (SONG.song.toLowerCase() == 'imminent-demise')
 			iconP2alt.cameras = [camHUD];
 
+		#if android
+		addAndroidControls();
+		#end
+
 		startingSong = true;
 
 		if (curStage == 'hall')
@@ -3602,6 +3603,10 @@ class PlayState extends MusicBeatState
 	function startCountdown():Void
 	{
 		bumpRate = 4;
+
+		#if android
+		androidControls.visible = true;
+		#end
 
 		if (cutsceneSpr != null) cutsceneSpr.visible = false;
 
@@ -6030,7 +6035,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.screenCenter(X);
 		scoreTxt.updateHitbox();
 
-		if (controls.PAUSE && startedCountdown && canPause && !transitioningToState && songStarted)
+		if (controls.PAUSE #if android || FlxG.android.justReleased.BACK #end && startedCountdown && canPause && !transitioningToState && songStarted)
 		{
 			pauseGame();
 		}
@@ -7498,6 +7503,10 @@ class PlayState extends MusicBeatState
 		Application.current.window.onFocusOut.remove(onWindowFocusOut);
 
 		canPause = false;
+
+		#if android
+		androidControls.visible = false;
+		#end
 
 		Conductor.songPosition = FlxG.sound.music.length;
 

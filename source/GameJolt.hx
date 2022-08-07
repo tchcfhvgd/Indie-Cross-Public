@@ -475,18 +475,15 @@ class GameJoltLogin extends MusicBeatState
 				}
 			}
 
-			if (touch.justMoved)
+			for (i in 0...menuItems.members.length)
 			{
-				for (i in 0...menuItems.members.length)
+				if (touch.overlaps(menuItems.members[i]))
 				{
-					if (touch.overlaps(menuItems.members[i]))
-					{
-						changeSelection(i);
-					}
-					else
-					{
-						menuItems.members[i].playAnim('idle', true);
-					}
+					changeSelection(i);
+				}
+				else
+				{
+					menuItems.members[i].playAnim('idle', true);
 				}
 			}
 		}

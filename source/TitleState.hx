@@ -133,7 +133,7 @@ class TitleState extends MusicBeatState
 		startIntro();
 	}
 
-	var hold:Bool = false:
+	var hold:Bool = false;
 	var time:Float = 0;
 	var creditsText:FlxText;
 	var skipText:FlxText;
@@ -237,7 +237,7 @@ class TitleState extends MusicBeatState
 				FlxTween.tween(creditsText, {alpha: 0}, 1, {ease: FlxEase.quadIn, startDelay: 4});
 			}
 			if (time / elapsed > 2.99 && touch.justReleased) { // hold 3 or more seconds to restart
-				hold = false:
+				hold = false;
 				time = 0;
 				restart();
 			}

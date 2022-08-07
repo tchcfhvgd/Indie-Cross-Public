@@ -166,7 +166,7 @@ class Caching extends MusicBeatState
 
 		screen.setLoadingText("Loading cutscenes...");
 
-		for (video in videoFiles)
+		for (vid in videoFiles)
 			SUtil.copyContent(Paths.video(vid), SUtil.getPath() + Paths.video(vid));
 
 		if (!debug)

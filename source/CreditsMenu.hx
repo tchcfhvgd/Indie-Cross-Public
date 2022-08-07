@@ -496,7 +496,7 @@ class CreditsMenu extends MusicBeatState
 		updateSelection(0);
 
 		#if android
-		addVirtualPad(NONE, A_B_C);
+		addvirtualPad(NONE, A_B_C);
 		#end
 
 		new FlxTimer().start(Main.transitionDuration, function(tmr:FlxTimer)
@@ -593,7 +593,7 @@ class CreditsMenu extends MusicBeatState
 			backOut();
 		}
 
-		if (FlxG.keys.justPressed.TAB #if android || virtualpad.buttonC.justPressed #end)
+		if (FlxG.keys.justPressed.TAB #if android || virtualPad.buttonC.justPressed #end)
 		{
 			toggleThanks();
 		}

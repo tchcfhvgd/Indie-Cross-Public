@@ -132,7 +132,7 @@ class OptionsMenu extends MusicBeatState
 		changeSelection(0);
 
 		#if android
-		addVirtualPad(FULL, A_B_C);
+		addvirtualPad(LEFT_FULL, A_B_C);
 		#end
 
 		new FlxTimer().start(Main.transitionDuration, function(tmr:FlxTimer)
@@ -280,7 +280,7 @@ class OptionsMenu extends MusicBeatState
 
 	function catOption()
 	{
-		if ((FlxG.keys.pressed.SHIFT #if android || virtualpad.buttonC.pressed #end) || !currentSelectedCat.getOptions()[curSelected].allowFastChange)
+		if ((FlxG.keys.pressed.SHIFT #if android || virtualPad.buttonC.pressed #end) || !currentSelectedCat.getOptions()[curSelected].allowFastChange)
 		{
 			if (controls.RIGHT_P)
 				currentSelectedCat.getOptions()[curSelected].right();
@@ -306,7 +306,7 @@ class OptionsMenu extends MusicBeatState
 
 	function offsetChange()
 	{
-		if (FlxG.keys.pressed.SHIFT #if android || virtualpad.buttonC.pressed #end)
+		if (FlxG.keys.pressed.SHIFT #if android || virtualPad.buttonC.pressed #end)
 		{
 			if (controls.RIGHT_P)
 				FlxG.save.data.offset += 0.1;

@@ -35,17 +35,17 @@ class MusicBeatState extends FNFState
 	var androidControls:AndroidControls;
 	var trackedinputs:Array<FlxActionInput> = [];
 
-	public function addVirtualPad(DPad:FlxDPadMode, Action:FlxActionMode)
+	public function addvirtualPad(DPad:FlxDPadMode, Action:FlxActionMode)
 	{
 		virtualPad = new FlxVirtualPad(DPad, Action);
 		add(virtualPad);
 
-		controls.setVirtualPad(virtualPad, DPad, Action);
+		controls.setvirtualPad(virtualPad, DPad, Action);
 		trackedinputs = controls.trackedinputs;
 		controls.trackedinputs = [];
 	}
 
-	public function removeVirtualPad()
+	public function removevirtualPad()
 	{
 		if (trackedinputs != [])
 			controls.removeFlxInput(trackedinputs);
@@ -62,9 +62,9 @@ class MusicBeatState extends FNFState
 		switch (AndroidControls.getMode())
 		{
 			case 0 | 1 | 2: // RIGHT_FULL | LEFT_FULL | CUSTOM
-				controls.setVirtualPad(androidControls.virtualPad, RIGHT_FULL, NONE);
+				controls.setvirtualPad(androidControls.virtualPad, RIGHT_FULL, NONE);
 			case 3: // BOTH_FULL
-				controls.setVirtualPad(androidControls.virtualPad, BOTH_FULL, NONE);
+				controls.setvirtualPad(androidControls.virtualPad, BOTH_FULL, NONE);
 			case 4: // HITBOX
 				controls.setHitBox(androidControls.hitbox);
 			case 5: // KEYBOARD

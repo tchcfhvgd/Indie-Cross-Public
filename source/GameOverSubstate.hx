@@ -112,7 +112,7 @@ class GameOverSubstate extends MusicBeatSubstate
 					});
 
 					#if android
-					addVirtualPad(NONE, A_B);
+					addvirtualPad(NONE, A_B);
 					#end
 				}
 			case 'bendy':
@@ -139,12 +139,12 @@ class GameOverSubstate extends MusicBeatSubstate
 								gameOverSpr.animation.play('loop', true);
 								playMusic = true;
 								#if android
-								addVirtualPad(NONE, A_B);
+								addvirtualPad(NONE, A_B);
 								#end
 							}
 							#if android
 							else
-								addVirtualPad(NONE, A_B);
+								addvirtualPad(NONE, A_B);
 							#end
 						}
 					});

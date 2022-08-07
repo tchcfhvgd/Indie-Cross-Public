@@ -340,7 +340,7 @@ class FreeplayState extends MusicBeatState
 		add(cupTea);
 
 		#if android
-		addVirtualPad(FULL, A_B);
+		addvirtualPad(LEFT_FULL, A_B);
 		addPadCamera();
 		#end
 
@@ -547,7 +547,7 @@ class FreeplayState extends MusicBeatState
 
 		if (!lockDiff)
 		{
-			if (FlxG.keys.pressed.SHIFT #if android || virtualpad.buttonC.pressed #end) //change mech diff
+			if (FlxG.keys.pressed.SHIFT #if android || virtualPad.buttonC.pressed #end) //change mech diff
 			{
 				if (controls.LEFT_P)
 					changeMechDiff(1);
@@ -564,7 +564,7 @@ class FreeplayState extends MusicBeatState
 		}
 		else
 		{
-			if (FlxG.keys.pressed.SHIFT #if android || virtualpad.buttonC.pressed #end) //change mech diff
+			if (FlxG.keys.pressed.SHIFT #if android || virtualPad.buttonC.pressed #end) //change mech diff
 			{
 				if (controls.LEFT_P)
 					changeMechDiff(1);

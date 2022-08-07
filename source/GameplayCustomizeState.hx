@@ -106,7 +106,7 @@ class GameplayCustomizeState extends MusicBeatState
 		add(text);
 
 		#if android
-		addVirtualPad(FULL, A_B);
+		addvirtualPad(LEFT_FULL, A_B);
 		addPadCamera();
 		#end
 
@@ -155,7 +155,7 @@ class GameplayCustomizeState extends MusicBeatState
 		for (i in strumLineNotes)
 			i.y = strumLine.y;
 
-		if (FlxG.keys.justPressed.R #if android || virtualpad.buttonA.justPressed #end)
+		if (FlxG.keys.justPressed.R #if android || virtualPad.buttonA.justPressed #end)
 		{
 			sick.x = defaultX;
 			sick.y = defaultY;

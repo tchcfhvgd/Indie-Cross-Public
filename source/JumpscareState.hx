@@ -44,7 +44,7 @@ class JumpscareState extends MusicBeatState
         FNFState.disableNextTransOut = true;
 
         #if android
-        addVirtualPad(NONE, A_B);
+        addvirtualPad(NONE, A_B);
         #end
     }
 

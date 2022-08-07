@@ -57,15 +57,15 @@ class Prompt extends MusicBeatSubstate
 		text2.alpha = 0;
 		
 		#if android
-		addVirtualPad(NONE, A_B);
-		virtualpad.alpha = 0;
+		addvirtualPad(NONE, A_B);
+		virtualPad.alpha = 0;
 		#end
 
 		FlxTween.tween(bg, {alpha: 0.6}, entertime, {ease: FlxEase.quartInOut});
 		FlxTween.tween(text, {alpha: 1}, entertime, {ease: FlxEase.quartInOut});
 		FlxTween.tween(text2, {alpha: 1}, entertime, {ease: FlxEase.quartInOut});
 		FlxTween.tween(icon, {alpha: 1}, entertime, {ease: FlxEase.quartInOut});
-		FlxTween.tween(virtualpad, {alpha: 1}, entertime, {ease: FlxEase.quartInOut});
+		FlxTween.tween(virtualPad, {alpha: 1}, entertime, {ease: FlxEase.quartInOut});
 		
 
 		new FlxTimer().start(entertime, function(tmr:FlxTimer)

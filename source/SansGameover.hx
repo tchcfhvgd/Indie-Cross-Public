@@ -90,7 +90,7 @@ class SansGameover extends MusicBeatSubstate
 		});
 
 		#if android
-		addVirtualPad(NONE, A_B);
+		addvirtualPad(NONE, A_B);
 		#end
 	}
 
