@@ -431,6 +431,9 @@ class StoryMenuState extends MusicBeatState
 				{
 					persistentUpdate = false;
 					lockInput = true;
+					#if android
+				    removeVirtualPad();
+				    #end
 					openSubState(new Prompt("Would You Like to Resume Your Current Week?"));
 					Prompt.acceptThing = function()
 					{
@@ -446,6 +449,9 @@ class StoryMenuState extends MusicBeatState
 						leftDuringWeek = false;
 						lockInput = false;
 						persistentUpdate = true;
+						#if android
+		                addVirtualPad(UP_DOWN, A_B_C);
+		                #end
 					}
 				}
 				else

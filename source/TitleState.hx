@@ -121,13 +121,23 @@ class TitleState extends MusicBeatState
 		blackOverlay.screenCenter();
 		blackOverlay.scrollFactor.set();
 		add(blackOverlay);
+		
+		creditsText = new FlxText(0, FlxG.height - 26, 0, "the credits would be shown in the menu", 18);
+		creditsText.alpha = 0;
+		creditsText.setFormat(HelperFunctions.returnMenuFont(creditsText), 18, FlxColor.WHITE, RIGHT);
+		creditsText.scrollFactor.set();
+		creditsText.screenCenter(X);
+		add(creditsText);
 
 		vidSpr = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
 		add(vidSpr);
 
 		startIntro();
 	}
-
+	
+	var hold:Bool = false:
+	var time:Float = 0;
+	var creditsText:FlxText;
 	var skipText:FlxText;
 
 	function startIntro()
@@ -216,6 +226,35 @@ class TitleState extends MusicBeatState
 				accept();
 			}
 		}
+		
+		//warning, next code, until end of if android is hardcoded
+		#if android
+		for (touch in FlxG.touches.list) { // i decided to do it perfect
+			if (touch.pressed) {
+				time += 1;
+			}
+			if (time > elapsed - 1) {
+				hold = true;
+			}
+			if (time / elapsed > 1.99 && time / elapsed < 2.99 && touch.justReleased) { // hold 1 or more seconds but no more than 2 to enable credits in the menu
+				hold = false;
+				time = 0;
+				MainMenuState.showCredits = true;
+				FlxTween.tween(creditsText, {alpha: 1}, 1, {ease: FlxEase.quadIn});
+				FlxTween.tween(creditsText, {alpha: 0}, 1, {ease: FlxEase.quadIn, startDelay: 4});
+			}
+			if (time / elapsed > 2.99 && touch.justReleased) { // hold 3 or more seconds to restart
+				hold = false:
+				time = 0;
+				restart();
+			}
+			if (touch.justReleased && !hold) {
+				hold = false;
+				time = 0;
+				accept();
+			}
+		}
+		#end
 
 		if (FlxG.keys.justPressed.ANY && !videoDone)
 		{
