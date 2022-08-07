@@ -50,6 +50,7 @@ class KeyBindMenu extends FlxSubState
 	var state:String = "select";
 
 	var canChange:Bool = false;
+	var gamepad:Bool = false;
 
 	override function create()
 	{
