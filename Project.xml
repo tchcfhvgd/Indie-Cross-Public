@@ -34,17 +34,17 @@
 	<assets path="assets/android" if="android"/> <!-- to not have the android assets in another builds -saw -->
 	<assets path="assets/preload" rename="assets"/>
 	<assets path="assets/songs"  library="songs"/>
-	<assets path="assets/hiddenContent" embed="true" library="hiddenContent" if="windows"/>
+	<assets path="assets/hiddenContent" embed="true" library="hiddenContent" unless="linux"/>
 	<assets path="assets/hiddenContent" embed="false" library="hiddenContent" if="linux"/> <!-- linux hates embedding :/ -->
 	<assets path="assets/shared"  library="shared"/>
 	<assets path="assets/bendy"  library="bendy"/>
 	<assets path="assets/sans"  library="sans"/>
 	<assets path="assets/cup"  library="cup"/>
 	<assets path="assets/achievements"  library="achievements"/>
-	<assets path="assets/notes" embed="true" library="notes" if="windows"/>
+	<assets path="assets/notes" embed="true" library="notes" unless="linux"/>
 	<assets path="assets/notes" embed="false" library="notes" if="linux"/>
 	<assets path="assets/videos"/>
-	<assets path="assets/fonts" embed='true' if="windows"/>
+	<assets path="assets/fonts" embed='true' unless="linux"/>
 	<assets path="assets/fonts" embed='false' if="linux"/>
 
 	<ndll name="c++_shared" if="android" />
@@ -78,7 +78,7 @@
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
 	<!--Make's-the-game-use-less-ram-->
-	<haxedef name="HXCPP_GC_BIG_BLOCKS"/>
+	<haxedef name="HXCPP_GC_BIG_BLOCKS" unless="debug" />
 
 	<!--Makes crash messages show up in release build, essential for the crash message (lol)-->
 	<haxedef name="HXCPP_CHECK_POINTER" if="release" />
