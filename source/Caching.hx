@@ -8,7 +8,6 @@ import flixel.graphics.FlxGraphic;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
-import sys.thread.Thread;
 
 using StringTools;
 
@@ -124,10 +123,7 @@ class Caching extends MusicBeatState
 
 		FlxG.save.data.optimize = false;
 
-		Thread.create(() ->
-		{
-			loadingFiles();
-		});
+		loadingFiles();
 	}
 
 	final videoFiles:Array<String> = [
