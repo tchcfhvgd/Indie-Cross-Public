@@ -89,7 +89,7 @@ class AchievementsMenuState extends MusicBeatState
 		changeSelection();
 
 		#if android
-		addvirtualPad(UP_DOWN, A_B_C);
+		addVirtualPad(UP_DOWN, A_B_C);
 		#end
 
 		new FlxTimer().start(Main.transitionDuration, function(tmr:FlxTimer)
@@ -111,7 +111,7 @@ class AchievementsMenuState extends MusicBeatState
 		if (FlxG.keys.justPressed.DELETE #if android || virtualPad.buttonC.justPressed #end)
 		{
 			#if android
-			removevirtualPad();
+			removeVirtualPad();
 			#end
 			persistentUpdate = false;
 			openSubState(new Prompt("Are you sure you want to clear your achievements?"));
@@ -127,7 +127,7 @@ class AchievementsMenuState extends MusicBeatState
 			{
 				persistentUpdate = true;
 				#if android
-				addvirtualPad(UP_DOWN, A_B_C);
+				addVirtualPad(UP_DOWN, A_B_C);
 				#end
 			}
 		}

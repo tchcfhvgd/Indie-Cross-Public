@@ -57,7 +57,7 @@ class Prompt extends MusicBeatSubstate
 		text2.alpha = 0;
 		
 		#if android
-		addvirtualPad(NONE, A_B);
+		addVirtualPad(NONE, A_B);
 		virtualPad.alpha = 0;
 		#end
 

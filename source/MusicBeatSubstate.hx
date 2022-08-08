@@ -28,7 +28,7 @@ class MusicBeatSubstate extends FlxSubState
 	var virtualPad:FlxVirtualPad;
 	var trackedinputs:Array<FlxActionInput> = [];
 
-	public function addvirtualPad(DPad:FlxDPadMode, Action:FlxActionMode)
+	public function addVirtualPad(DPad:FlxDPadMode, Action:FlxActionMode)
 	{
 		virtualPad = new FlxVirtualPad(DPad, Action);
 		add(virtualPad);
@@ -38,13 +38,13 @@ class MusicBeatSubstate extends FlxSubState
 		controls.trackedinputs = [];
 	}
 	
-	public function addvirtualPadNoControls(DPad:FlxDPadMode, Action:FlxActionMode)
+	public function addVirtualPadNoControls(DPad:FlxDPadMode, Action:FlxActionMode)
 	{
 		virtualPad = new FlxVirtualPad(DPad, Action);
 		add(virtualPad);
 	}
 
-	public function removevirtualPad()
+	public function removeVirtualPad()
 	{
 		if (trackedinputs != [])
 			controls.removeFlxInput(trackedinputs);

@@ -359,7 +359,7 @@ class MainMenuState extends MusicBeatState
 		changeSelection(curSelected);
 		
 		#if android
-		addvirtualPad(UP_DOWN, A_B_C);
+		addVirtualPad(UP_DOWN, A_B_C);
 		#end
 
 		if (showCredits)
@@ -485,7 +485,7 @@ class MainMenuState extends MusicBeatState
 			if (FlxG.keys.justPressed.DELETE #if android || virtualPad.buttonC.justPressed #end)
 			{
 				#if android
-				removevirtualPad();
+				removeVirtualPad();
 				#end
 				persistentUpdate = false;
 				openSubState(new Prompt("Are you sure you want to erase your save?"));
@@ -505,7 +505,7 @@ class MainMenuState extends MusicBeatState
 				{
 					persistentUpdate = true;
 					#if android
-		            addvirtualPad(UP_DOWN, A_B_C);
+		            addVirtualPad(UP_DOWN, A_B_C);
 		            #end
 				}
 			}

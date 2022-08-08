@@ -35,7 +35,7 @@ class MusicBeatState extends FNFState
 	var androidControls:AndroidControls;
 	var trackedinputs:Array<FlxActionInput> = [];
 
-	public function addvirtualPad(DPad:FlxDPadMode, Action:FlxActionMode)
+	public function addVirtualPad(DPad:FlxDPadMode, Action:FlxActionMode)
 	{
 		virtualPad = new FlxVirtualPad(DPad, Action);
 		add(virtualPad);
@@ -45,7 +45,7 @@ class MusicBeatState extends FNFState
 		controls.trackedinputs = [];
 	}
 
-	public function removevirtualPad()
+	public function removeVirtualPad()
 	{
 		if (trackedinputs != [])
 			controls.removeFlxInput(trackedinputs);

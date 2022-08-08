@@ -194,7 +194,7 @@ class PauseSubState extends MusicBeatSubstate
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 
 		#if android
-		addvirtualPad(UP_DOWN, A_B);
+		addVirtualPad(UP_DOWN, A_B);
 		#end
 
 		cancelSound.play(true);

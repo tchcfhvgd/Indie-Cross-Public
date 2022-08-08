@@ -106,7 +106,7 @@ class GameplayCustomizeState extends MusicBeatState
 		add(text);
 
 		#if android
-		addvirtualPad(LEFT_FULL, A_B);
+		addVirtualPad(LEFT_FULL, A_B);
 		addPadCamera();
 		#end
 

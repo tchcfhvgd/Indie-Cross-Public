@@ -195,7 +195,7 @@ class GameOverCuphead extends MusicBeatSubstate
 		changeItem(3);
 
 		#if android
-		addvirtualPad(UP_DOWN, A);
+		addVirtualPad(UP_DOWN, A);
 		virtualPad.alpha = 0;
 		#end
 

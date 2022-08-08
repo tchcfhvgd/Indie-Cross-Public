@@ -294,7 +294,7 @@ class StoryMenuState extends MusicBeatState
 		add(cupTea);
 
 		#if android
-		addvirtualPad(UP_DOWN, A_B_C);
+		addVirtualPad(UP_DOWN, A_B_C);
 		#end
 
 		new FlxTimer().start(Main.transitionDuration, function(tmr:FlxTimer)
@@ -396,7 +396,7 @@ class StoryMenuState extends MusicBeatState
 				if (PlayState.storyWeek == curWeek && leftDuringWeek && PlayState.isStoryMode && PlayState.storyDifficulty == curDifficulty)
 				{
 					#if android
-					removevirtualPad();
+					removeVirtualPad();
 					#end
 					persistentUpdate = false;
 					lockInput = true;
@@ -416,7 +416,7 @@ class StoryMenuState extends MusicBeatState
 						lockInput = false;
 						persistentUpdate = true;
 						#if android
-		                addvirtualPad(UP_DOWN, A_B_C);
+		                addVirtualPad(UP_DOWN, A_B_C);
 		                #end
 					}
 				}

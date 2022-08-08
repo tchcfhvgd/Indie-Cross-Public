@@ -496,7 +496,7 @@ class CreditsMenu extends MusicBeatState
 		updateSelection(0);
 
 		#if android
-		addvirtualPad(NONE, A_B_C);
+		addVirtualPad(NONE, A_B_C);
 		#end
 
 		new FlxTimer().start(Main.transitionDuration, function(tmr:FlxTimer)

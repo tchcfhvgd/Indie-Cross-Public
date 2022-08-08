@@ -55,7 +55,7 @@ class FreeplaySelect extends MusicBeatState
 		changeSelection(curSelected);
 
 		#if android
-		addvirtualPad(LEFT_RIGHT, A_B);
+		addVirtualPad(LEFT_RIGHT, A_B);
 		#end
 
 		new FlxTimer().start(Main.transitionDuration, function(tmr:FlxTimer)
