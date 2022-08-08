@@ -25,7 +25,7 @@ import sys.io.File;
  */
 class SUtil
 {
-	final videoFiles:Array<String> = [
+	static final videoFiles:Array<String> = [
 		"credits",
 		"gose",
 		"intro",
