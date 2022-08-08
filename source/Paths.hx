@@ -201,18 +201,20 @@ class Paths
 	public static var currentTrackedSounds:Map<String, Sound> = [];
 	public static function returnSound(path:String, key:String, ?library:String):Sound
 	{
-		// I hate this so god damn much
-		var gottenPath:String = SUtil.getPath() + getPath('$path/$key.$SOUND_EXT', SOUND, library);
-		gottenPath = gottenPath.substring(gottenPath.indexOf(':') + 1, gottenPath.length);
-		// trace(gottenPath);
-		if(!currentTrackedSounds.exists(gottenPath))
-		{
-			var folder:String = '';
-			if(path == 'songs') folder = 'songs:';
+		var gottenPath = getPath('$path/$key.$SOUND_EXT', SOUND, library);
+		if (OpenFlAssets.exists(gottenPath, SOUND)) {
+			if(!currentTrackedSounds.exists(gottenPath))
+			{
+				var folder:String = '';
+				if(path == 'songs') folder = 'songs:';
 
-			currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(folder + getPath('$path/$key.$SOUND_EXT', SOUND, library)));
+				currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(folder + gottenPath));
+			}
+			localTrackedAssets.push(gottenPath);
+			return currentTrackedSounds.get(gottenPath);
 		}
-		localTrackedAssets.push(gottenPath);
-		return currentTrackedSounds.get(gottenPath);
+
+		trace('oh no its returning null NOOOO');
+		return null;
 	}
 }
