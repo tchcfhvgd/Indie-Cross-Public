@@ -10,7 +10,7 @@ import openfl.system.Capabilities;
 
 #if windows
 @:headerCode("#include <windows.h>")
-#elseif linux
+#elseif (linux || android)
 @:headerCode("#include <stdio.h>")
 #end
 class SpecsDetector extends FlxState
@@ -36,8 +36,13 @@ class SpecsDetector extends FlxState
 		var cpu:Bool = Capabilities.supports64BitProcesses; // too lazy for changing this
 		var ram:UInt64 = obtainRAM();
 
+		#if android
+		if (ram >= 4096)
+			return true;
+		#else
 		if (cpu && ram >= 4096)
 			return true;
+		#end
 		else
 		{
 			return messageBox("INDIE CROSS",
@@ -60,7 +65,7 @@ class SpecsDetector extends FlxState
 
 		return (allocatedRAM / 1024);
 	")
-	#elseif linux
+	#elseif (linux || android)
 	@:functionCode('
 		// swag linux 😎😎😎😎😎
 		FILE *meminfo = fopen("/proc/meminfo", "r");
