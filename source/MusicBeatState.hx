@@ -74,7 +74,7 @@ class MusicBeatState extends FNFState
 		controls.trackedinputs = [];
 
 		var camControls = new flixel.FlxCamera();
-		FlxG.cameras.add(camControls);
+		FlxG.cameras.add(camControls, false);
 		camControls.bgColor.alpha = 0;
 
 		androidControls.cameras = [camControls];
@@ -96,7 +96,7 @@ class MusicBeatState extends FNFState
 		if (virtualPad != null)
 		{
 			var camControls = new flixel.FlxCamera();
-			FlxG.cameras.add(camControls);
+			FlxG.cameras.add(camControls, false);
 			camControls.bgColor.alpha = 0;
 			virtualPad.cameras = [camControls];
 		}
