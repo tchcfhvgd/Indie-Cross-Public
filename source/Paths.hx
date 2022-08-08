@@ -120,7 +120,7 @@ class Paths
 		return getPath('data/$key.lua', TEXT, library);
 
 	inline static public function video(key:String)
-		return 'videos/videos/$key.mp4';
+		return 'assets/videos/$key.mp4';
 
 	static public function sound(key:String, ?library:String):Sound
 		return returnSound('sounds', key, library);
