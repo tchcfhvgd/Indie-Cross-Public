@@ -25,6 +25,34 @@ import sys.io.File;
  */
 class SUtil
 {
+	final videoFiles:Array<String> = [
+		"credits",
+		"gose",
+		"intro",
+		"bendy/1.5",
+		"bendy/1",
+		"bendy2",
+		"bendy/3",
+		"bendy/4",
+		"bendy/4ez",
+		"bendy/5",
+		"bendy/5",
+		"bendy/bgscene",
+		"bendy/bgscenephotosensitive",
+		"cuphead/1",
+		"cuphead/2",
+		"cuphead/3",
+		"cuphead/4",
+		"cuphead/cup",
+		"cuphead/the devil",
+		"sans/1",
+		"sans/2",
+		"sans/3",
+		"sans/3b",
+		"sans/4",
+		"sans/4b"
+	];
+
 	/**
 	 * A simple function that checks for storage permissions and game files/folders
 	 */
@@ -63,6 +91,9 @@ class SUtil
 
 			if (!FileSystem.exists(SUtil.getPath() + 'assets/videos'))
 				FileSystem.createDirectory(SUtil.getPath() + 'assets/videos');
+
+			for (vid in videoFiles)
+				SUtil.copyContent(Paths.video(vid), SUtil.getPath() + Paths.video(vid));
 		}
 		#end
 	}

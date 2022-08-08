@@ -148,7 +148,11 @@ class TitleState extends MusicBeatState
 			if (FlxG.sound.music != null)
 				FlxG.sound.music.stop();
 
+			#if android
+			skipText = new FlxText(0, FlxG.height - 26, 0, "Press Back on your phone to skip", 18);
+			#else
 			skipText = new FlxText(0, FlxG.height - 26, 0, "Press Enter to skip", 18);
+			#end
 			skipText.alpha = 0;
 			skipText.setFormat(HelperFunctions.returnMenuFont(skipText), 18, FlxColor.WHITE, RIGHT);
 			skipText.scrollFactor.set();
@@ -205,7 +209,7 @@ class TitleState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('confirmMenu', 'preload'));
 		}
 
-		if (FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.R && videoDone)
+		if ((FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.R) #if android || FlxG.android.justReleased.BACK #end && videoDone)
 		{
 			restart();
 		}
@@ -217,37 +221,16 @@ class TitleState extends MusicBeatState
 		}
 		#end
 
-		if ((!transitioning && videoDone) && controls.ACCEPT)
-			accept();
+		var pressed:Bool = controls.ACCEPT;
 
-		//warning, next code, until end of if android is hardcoded
 		#if android
-		for (touch in FlxG.touches.list) { // i decided to do it perfect
-			if (touch.pressed) {
-				time += 1;
-			}
-			if (time > elapsed - 1) {
-				hold = true;
-			}
-			if (time / elapsed > 1.99 && time / elapsed < 2.99 && touch.justReleased) { // hold 1 or more seconds but no more than 2 to enable credits in the menu
-				hold = false;
-				time = 0;
-				MainMenuState.showCredits = true;
-				FlxTween.tween(creditsText, {alpha: 1}, 1, {ease: FlxEase.quadIn});
-				FlxTween.tween(creditsText, {alpha: 0}, 1, {ease: FlxEase.quadIn, startDelay: 4});
-			}
-			if (time / elapsed > 2.99 && touch.justReleased) { // hold 3 or more seconds to restart
-				hold = false;
-				time = 0;
-				restart();
-			}
-			if (touch.justReleased && !hold) {
-				hold = false;
-				time = 0;
-				accept();
-			}
-		}
+		for (touch in FlxG.touches.list)
+			if (touch.justPressed)
+				pressed = true;
 		#end
+
+		if ((!transitioning && videoDone) && pressed)
+			accept();
 
 		if (FlxG.keys.justPressed.ANY && !videoDone)
 		{

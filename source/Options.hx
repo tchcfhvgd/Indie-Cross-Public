@@ -1094,14 +1094,13 @@ class CustomizeAndroidControls extends Option
 
 	public override function press():Bool
 	{
-		trace("switch");
-		FlxG.switchState(new GameplayCustomizeState());
+		OptionsMenu.instance.openSubState(new android.AndroidControlsSubState());
 		return false;
 	}
 
 	private override function updateDisplay():String
 	{
-		return "Customize Gameplay";
+		return "Customize Android Controls";
 	}
 }
 #end

@@ -372,7 +372,11 @@ class MainMenuState extends MusicBeatState
 			if (FlxG.sound.music != null)
 				FlxG.sound.music.stop();
 
+			#if android
+			skipText = new FlxText(0, FlxG.height - 26, 0, "Press Back on your phone to skip", 18);
+			#else
 			skipText = new FlxText(0, FlxG.height - 26, 0, "Press Enter to skip", 18);
+			#end
 			skipText.alpha = 0;
 			skipText.setFormat(HelperFunctions.returnMenuFont(skipText), 18, FlxColor.WHITE, RIGHT);
 			skipText.scrollFactor.set();
@@ -464,7 +468,7 @@ class MainMenuState extends MusicBeatState
 
 		if (!disableInput && videoDone)
 		{
-			if (FlxG.keys.justPressed.P && FlxG.keys.pressed.CONTROL #if android || virtualPad.buttonY.justPressed #end && debugTools)
+			if (FlxG.keys.justPressed.P && FlxG.keys.pressed.CONTROL #end && debugTools)
 			{
 				FlxG.save.data.freeplaylocked = [false, false, false];
 				FlxG.save.data.weeksbeat = [true, true, true];
@@ -506,7 +510,7 @@ class MainMenuState extends MusicBeatState
 				}
 			}
 
-			if (FlxG.keys.justPressed.I && FlxG.keys.pressed.CONTROL #if android || virtualPad.buttonY.justPressed #end && debugTools)
+			if (FlxG.keys.justPressed.I && FlxG.keys.pressed.CONTROL && debugTools)
 			{
 				//FlxG.switchState(new NotesplashOffsets());
 				FlxG.switchState(new DiffButtonOffsets());
@@ -541,7 +545,7 @@ class MainMenuState extends MusicBeatState
 			}
 			#end
 
-			if (FlxG.keys.justPressed.A #if android || virtualPad.buttonA.justPressed #end && FlxG.keys.pressed.CONTROL #if android || virtualPad.buttonY.justPressed #end && FlxG.keys.pressed.SHIFT && debugTools)
+			if (FlxG.keys.justPressed.A && FlxG.keys.pressed.CONTROL && FlxG.keys.pressed.SHIFT && debugTools)
 			{
 				for (i in 0...Achievements.achievements.length)
 				{
@@ -561,7 +565,7 @@ class MainMenuState extends MusicBeatState
 				}
 			}*/
 
-			if (FlxG.keys.justPressed.L #if android || virtualPad.buttonC.justPressed #end && FlxG.keys.pressed.CONTROL #if android || virtualPad.buttonY.justPressed #end && debugTools)
+			if (FlxG.keys.justPressed.L && FlxG.keys.pressed.CONTROL && debugTools)
 			{
 				showcase = !showcase;
 				trace("Showcase is now " + (showcase ? "enabled." : "disabled."));

@@ -123,66 +123,6 @@ class Caching extends MusicBeatState
 
 		FlxG.save.data.optimize = false;
 
-		loadingFiles();
-	}
-
-	final videoFiles:Array<String> = [
-		"credits",
-		"gose",
-		"intro",
-		"bendy/1.5",
-		"bendy/1",
-		"bendy2",
-		"bendy/3",
-		"bendy/4",
-		"bendy/4ez",
-		"bendy/5",
-		"bendy/5",
-		"bendy/bgscene",
-		"bendy/bgscenephotosensitive",
-		"cuphead/1",
-		"cuphead/2",
-		"cuphead/3",
-		"cuphead/4",
-		"cuphead/cup",
-		"cuphead/the devil",
-		"sans/1",
-		"sans/2",
-		"sans/3",
-		"sans/3b",
-		"sans/4",
-		"sans/4b",
-	];
-
-	function loadingFiles()
-	{
-		screen.max = 9;
-
-		screen.progress = 8;
-
-		screen.setLoadingText("Loading cutscenes...");
-
-		for (vid in videoFiles)
-			SUtil.copyContent(Paths.video(vid), SUtil.getPath() + Paths.video(vid));
-
-		if (!debug)
-		{
-			trace('starting vid cache');
-			var video = new VideoHandler();
-			var vidSprite = new FlxSprite(0, 0);
-			video.finishCallback = null;
-
-			video.playMP4(SUtil.getPath() + Paths.video('bendy/1.5'), false, vidSprite, false, false, true);
-			video.kill();
-			trace('finished vid cache');
-		}
-
-		screen.progress = 9;
-
-		FlxGraphic.defaultPersist = false;
-
-		screen.setLoadingText("Done!");
-
 		end();
 	}
 
