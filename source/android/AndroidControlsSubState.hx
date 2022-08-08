@@ -2,7 +2,7 @@ package android;
 
 import android.flixel.FlxButton;
 import android.flixel.FlxHitbox;
-import android.flixel.FlxvirtualPad;
+import android.flixel.FlxVirtualPad;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
@@ -20,7 +20,7 @@ import openfl.utils.Assets;
 class AndroidControlsSubState extends FlxSubState
 {
 	final controlsItems:Array<String> = ['Pad-Right', 'Pad-Left', 'Pad-Custom', 'Pad-Duo', 'Hitbox', 'Keyboard'];
-	var virtualPad:FlxvirtualPad;
+	var virtualPad:FlxVirtualPad;
 	var hitbox:FlxHitbox;
 	var upPozition:FlxText;
 	var downPozition:FlxText;
@@ -62,7 +62,7 @@ class AndroidControlsSubState extends FlxSubState
 		resetButton.visible = false;
 		add(resetButton);
 
-		virtualPad = new FlxvirtualPad(NONE, NONE);
+		virtualPad = new FlxVirtualPad(NONE, NONE);
 		virtualPad.visible = false;
 		add(virtualPad);
 
@@ -229,7 +229,7 @@ class AndroidControlsSubState extends FlxSubState
 			case 'Pad-Custom':
 				hitbox.visible = false;
 				virtualPad.destroy();
-				virtualPad = AndroidControls.getCustomMode(new FlxvirtualPad(RIGHT_FULL, NONE));
+				virtualPad = AndroidControls.getCustomMode(new FlxVirtualPad(RIGHT_FULL, NONE));
 				add(virtualPad);
 			case 'Pad-Duo':
 				hitbox.visible = false;
