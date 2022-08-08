@@ -468,7 +468,7 @@ class MainMenuState extends MusicBeatState
 
 		if (!disableInput && videoDone)
 		{
-			if (FlxG.keys.justPressed.P && FlxG.keys.pressed.CONTROL #end && debugTools)
+			if (FlxG.keys.justPressed.P && FlxG.keys.pressed.CONTROL && debugTools)
 			{
 				FlxG.save.data.freeplaylocked = [false, false, false];
 				FlxG.save.data.weeksbeat = [true, true, true];
