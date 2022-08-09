@@ -2962,15 +2962,19 @@ class PlayState extends MusicBeatState
 		switch (AndroidControls.getMode()) {
 			case 0:
 			    _vPad = new FlxVirtualPad(RIGHT_FULL, NONE);
+			    _vPad.visible = false;
 				add(_vPad);
 			case 1:
 			    _vPad = new FlxVirtualPad(LEFT_FULL, NONE);
+			    _vPad.visible = false;
 				add(_vPad);
 			case 2:
 			    _vPad = AndroidControls.getCustomMode(new FlxVirtualPad(RIGHT_FULL, NONE));
+			    _vPad.visible = false;
 				add(_vPad);
 			case 3:
 			    _vPad = new FlxVirtualPad(BOTH_FULL, NONE);
+			    _vPad.visible = false;
 				add(_vPad);
 			case 4:
 			    var additionalHitboxNumber:Int = 0;
@@ -2984,6 +2988,7 @@ class PlayState extends MusicBeatState
 					additionalHitboxNumber = 4;
 				}
 			    _hitbox = new FlxHitbox(additionalHitboxNumber, FlxG.save.data.mechsInputVariants);
+			    _hitbox.visible = false;
 				add(_hitbox);
 		}
 		#end
@@ -3654,7 +3659,11 @@ class PlayState extends MusicBeatState
 		bumpRate = 4;
 
 		#if android
-		androidControls.visible = true;
+		if (AndroidControls.getMode() == 0 || AndroidControls.getMode() == 1 || AndroidControls.getMode() == 2 || AndroidControls.getMode() == 3)
+		    _vPad.visible = true;
+		} else if (AndroidControls.getMode() == 4) {
+			_hitbox.visible = true;
+		}
 		#end
 
 		if (cutsceneSpr != null)
@@ -7577,7 +7586,11 @@ class PlayState extends MusicBeatState
 		canPause = false;
 
 		#if android
-		androidControls.visible = false;
+		if (AndroidControls.getMode() == 0 || AndroidControls.getMode() == 1 || AndroidControls.getMode() == 2 || AndroidControls.getMode() == 3)
+		    _vPad.visible = false;
+		} else if (AndroidControls.getMode() == 4) {
+			_hitbox.visible = false;
+		}
 		#end
 
 		Conductor.songPosition = FlxG.sound.music.length;
