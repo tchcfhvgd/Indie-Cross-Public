@@ -191,5 +191,4 @@ class SUtil
 			Hardware.toast("Error!\nClouldn't copy the file because:\n" + e, 2);
 		#end
 	}
-	#end
 }
