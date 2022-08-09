@@ -78,10 +78,11 @@ class PlayState extends MusicBeatState
 	public static var instance:PlayState = null;
 	
 	var inputDodge:Bool = false;
-	var inputAttack:Bool = false;
+	var inputAttackLeft:Bool = false;
+	var inputAttackRight:Bool = false;
 	
 	var _hitbox:FlxHitbox;
-	var _vpad:FlxVirtualPad;
+	var _vPad:FlxVirtualPad;
 
 	var bendy:FlxSprite;
 	var jumpscareStatic:FlxSprite;
