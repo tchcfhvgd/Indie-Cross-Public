@@ -91,6 +91,7 @@ class SansGameover extends MusicBeatSubstate
 
 		#if android
 		addVirtualPad(NONE, A_B);
+		addPadCamera();
 		#end
 	}
 

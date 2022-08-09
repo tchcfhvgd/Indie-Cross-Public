@@ -294,7 +294,7 @@ class StoryMenuState extends MusicBeatState
 		add(cupTea);
 
 		#if android
-		addVirtualPad(UP_DOWN, A_B_C);
+		addVirtualPad(LEFT_FULL, A_B_C);
 		#end
 
 		new FlxTimer().start(Main.transitionDuration, function(tmr:FlxTimer)

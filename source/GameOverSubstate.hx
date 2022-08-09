@@ -113,6 +113,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 					#if android
 					addVirtualPad(NONE, A_B);
+					addPadCamera();
 					#end
 				}
 			case 'bendy':
@@ -140,11 +141,15 @@ class GameOverSubstate extends MusicBeatSubstate
 								playMusic = true;
 								#if android
 								addVirtualPad(NONE, A_B);
+								addPadCamera();
 								#end
 							}
 							#if android
 							else
+							{
 								addVirtualPad(NONE, A_B);
+								addPadCamera();
+							}
 							#end
 						}
 					});
