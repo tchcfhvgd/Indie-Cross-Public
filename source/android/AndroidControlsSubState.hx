@@ -37,6 +37,8 @@ class AndroidControlsSubState extends FlxSubState
 
 	override function create()
 	{
+		persistentUpdate = true;
+
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		bg.alpha = 0.00001; // no lag on tween
 		bg.scrollFactor.set();

@@ -1,81 +1,59 @@
 package;
 
 import flixel.FlxG;
+import openfl.media.SoundTransform;
+import flixel.tweens.FlxTween;
 import openfl.media.Sound;
 import openfl.media.SoundChannel;
-import openfl.media.SoundTransform;
-import openfl.utils.Assets;
+import openfl.Assets;
 
+/**
+ * OpenFL Sound Streamer, only works with the newest Github OpenFL version!
+ * @author Smokey
+ */
 class SoundSystem
 {
 	public var sound:Sound;
+	public var channel:SoundChannel;
 
-	var channel:SoundChannel;
+	var fadeTween:FlxTween;
 	var volume:Float = 1;
-	var force:Bool = false;
 
 	public function new()
 	{
 		sound = new Sound();
 	}
 
-	public function loadSound(key:String, cache:Bool = true)
+	public function loadSound(key:Sound)
 	{
 		if (sound != null)
-		{
-			sound = Assets.getMusic(key, cache);
-		}
+			sound = key;
 		else
-			trace('Sound is null!');
+			trace('sound is null dickhead');
 	}
 
-	public function play(?startTime:Float = 0.0, ?loops:Int = 0)
+	public function play()
 	{
-		channel = sound.play(startTime, loops);
-		changeVolume(FlxG.sound.volume, true);
+		channel = sound.play();
+		channel.soundTransform = new SoundTransform(volume);
 	}
 
-	public function changeVolume(vol:Float, overrideForce:Bool = false)
+	public function changeVolume(vol:Float)
 	{
 		if (channel != null)
-		{
 			channel.soundTransform = new SoundTransform(vol);
-		}
-
-		if (overrideForce)
-			force = true;
 
 		volume = vol;
-		trace(volume);
 	}
 
-	public function getPosition()
+	public function stop()
 	{
 		if (channel != null)
 		{
-			return channel.position;
-		}
-		else
-			return 0;
-	}
-
-	// how do i pause :(
-	public function stop()
-	{
-		if (channel != null && sound != null)
-		{
 			channel.stop();
+			channel = null;
 		}
 		else
-			trace('No sound was found!');
+			trace('No sound found in the channel!');
 	}
-	/*
-		public function tweenPan()
-		{
-			if (channel != null)
-			{
-				channel.soundTransform.pan = FlxTween.num(-1, 1)
-			}
-		}
-	 */
 }

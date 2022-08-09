@@ -560,17 +560,9 @@ class CreditsMenu extends MusicBeatState
 			for (touch in FlxG.touches.list)
 			{
 				if ((curIcon == i && touch.overlaps(credIcons[curIcon])) && !thanksOpen)
-				{
 					smallIcon.alpha = 1.0;
-					if (touch.justReleased)
-					{
-						FlxG.openURL(credits[curIcon][4]);
-					}
-				}
 				else
-				{
 					smallIcon.alpha = 0.5;
-				}
 			}
 			#else
 			if ((curIcon == i && FlxG.mouse.overlaps(credIcons[curIcon])) && !thanksOpen)

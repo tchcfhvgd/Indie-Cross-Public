@@ -4781,8 +4781,6 @@ class PlayState extends MusicBeatState
 		}
 
 		super.openSubState(SubState);
-
-		Paths.clearUnusedMemory();
 	}
 
 	var jumpscareTimerMin:Int = 60;
@@ -4931,8 +4929,6 @@ class PlayState extends MusicBeatState
 		}
 
 		super.closeSubState();
-
-		Paths.clearUnusedMemory();
 	}
 
 	function resyncVocals():Void

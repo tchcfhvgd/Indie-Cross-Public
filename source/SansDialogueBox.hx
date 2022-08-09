@@ -163,7 +163,7 @@ class SansDialogueBox extends FlxSpriteGroup
 			if (soundDelay == 'invalid')
 			{
 				trace('sound is not timed');
-				if (OpenFlAssets.exists(Paths.sound(curSound, 'sans').toString()))
+				if (Paths.sound(curSound, 'sans') != null)
 					FlxG.sound.play(Paths.sound(curSound, 'sans'));
 			}
 			else
@@ -172,7 +172,7 @@ class SansDialogueBox extends FlxSpriteGroup
 
 				new FlxTimer().start(Std.parseFloat(soundDelay), function(tmr:FlxTimer)
 				{
-					if (OpenFlAssets.exists(Paths.sound(curSound, 'sans').toString()))
+					if (Paths.sound(curSound, 'sans') != null)
 						FlxG.sound.play(Paths.sound(curSound, 'sans'));
 				});
 			}

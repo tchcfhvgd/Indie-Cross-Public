@@ -213,7 +213,11 @@ class StoryMenuState extends MusicBeatState
 
 		diffmechTween = FlxTween.tween(this, {}, 0);
 
+		#if android
+		holdshifttext = new FlxText(8, 257, 0, "Hold 'C' Button to change", 24);
+		#else
 		holdshifttext = new FlxText(8, 257, 0, "Hold 'SHIFT' to change", 24);
+		#end
 		holdshifttext.setFormat(HelperFunctions.returnMenuFont(scoreText), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		holdshifttext.borderSize = 1.5;
 		holdshifttext.antialiasing = FlxG.save.data.highquality;
@@ -445,6 +449,9 @@ class StoryMenuState extends MusicBeatState
 			case 0:
 				FNFState.disableNextTransOut = true;
 				waitDuration = 1.1;
+				#if android
+				virtualPad.alpha = 0;
+				#end
 				cupTea.alpha = 1;
 				cupTea.animation.play('start', true, true);
 				FlxG.sound.play(Paths.sound('boing', 'cup'), 1);

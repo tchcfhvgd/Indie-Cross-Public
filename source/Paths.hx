@@ -133,49 +133,49 @@ class Paths
 	inline static public function video(key:String)
 		return 'assets/videos/$key.mp4';
 
-	static public function sound(key:String, ?library:String):Sound
-		return returnSound('sounds', key, library);
+	static public function sound(key:String, ?library:String, ?cache:Bool = true):Sound
+		return returnSound('sounds', key, library, cache);
 
-	inline static public function soundRandom(key:String, min:Int, max:Int, ?library:String)
-		return returnSound('sounds', key + FlxG.random.int(min, max), library);
+	inline static public function soundRandom(key:String, min:Int, max:Int, ?library:String, ?cache:Bool = true)
+		return returnSound('sounds', key + FlxG.random.int(min, max), library, cache);
 
-	inline static public function music(key:String, ?library:String):Sound
-		return returnSound('music', key, library);
+	inline static public function music(key:String, ?library:String, ?cache:Bool = true):Sound
+		return returnSound('music', key, library, cache);
 
-	inline static public function voices(song:String)
+	inline static public function voices(song:String, ?cache:Bool = true)
 	{
 		var songLowercase = StringTools.replace(song, " ", "-").toLowerCase();
-		return returnSound('songs', '${songLowercase}/Voices');
+		return returnSound('songs', '${songLowercase}/Voices', null, cache);
 	}
 
-	inline static public function voicesHidden(song:String)
+	inline static public function voicesHidden(song:String, ?cache:Bool = true)
 	{
 		var songLowercase = StringTools.replace(song, " ", "-").toLowerCase();
-		return returnSound('songs', '${songLowercase}/Voices', 'hiddenContent');
+		return returnSound('songs', '${songLowercase}/Voices', 'hiddenContent', cache);
 	}
 
-	inline static public function voicesEasy(song:String)
+	inline static public function voicesEasy(song:String, ?cache:Bool = true)
 	{
 		var songLowercase = StringTools.replace(song, " ", "-").toLowerCase();
-		return returnSound('songs', '${songLowercase}/Voices-easy');
+		return returnSound('songs', '${songLowercase}/Voices-easy', null, cache);
 	}
 
-	inline static public function inst(song:String)
+	inline static public function inst(song:String, ?cache:Bool = true)
 	{
 		var songLowercase = StringTools.replace(song, " ", "-").toLowerCase();
-		return returnSound('songs', '${songLowercase}/Inst');
+		return returnSound('songs', '${songLowercase}/Inst', null, cache);
 	}
 
-	inline static public function instHidden(song:String)
+	inline static public function instHidden(song:String, ?cache:Bool = true)
 	{
 		var songLowercase = StringTools.replace(song, " ", "-").toLowerCase();
-		return returnSound('songs', '${songLowercase}/Inst', 'hiddenContent');
+		return returnSound('songs', '${songLowercase}/Inst', 'hiddenContent', cache);
 	}
 
-	inline static public function instEasy(song:String)
+	inline static public function instEasy(song:String, ?cache:Bool = true)
 	{
 		var songLowercase = StringTools.replace(song, " ", "-").toLowerCase();
-		return returnSound('songs', '${songLowercase}/Inst-easy');
+		return returnSound('songs', '${songLowercase}/Inst-easy', null, cache);
 	}
 
 	inline static public function image(key:String, ?library:String):FlxGraphic
@@ -214,19 +214,25 @@ class Paths
 
 	public static var currentTrackedSounds:Map<String, Sound> = [];
 
-	public static function returnSound(path:String, key:String, ?library:String):Sound
+	public static function returnSound(path:String, key:String, ?library:String, ?cache:Bool = true):Sound
 	{
 		var gottenPath:String = getPath('$path/$key.$SOUND_EXT', SOUND, library);
-		gottenPath = gottenPath.substring(gottenPath.indexOf(':') + 1, gottenPath.length);
-		if (!currentTrackedSounds.exists(gottenPath))
+		if (OpenFlAssets.exists(path, SOUND))
 		{
-			var folder:String = '';
-			if (path == 'songs')
-				folder = 'songs:';
+			gottenPath = gottenPath.substring(gottenPath.indexOf(':') + 1, gottenPath.length);
+			if (!currentTrackedSounds.exists(gottenPath))
+			{
+				var folder:String = '';
+				if (path == 'songs')
+					folder = 'songs:';
 
-			currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(folder + getPath('$path/$key.$SOUND_EXT', SOUND, library)));
+				currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(folder + getPath('$path/$key.$SOUND_EXT', SOUND, library), cache));
+			}
+			localTrackedAssets.push(gottenPath);
+			return currentTrackedSounds.get(gottenPath);
 		}
-		localTrackedAssets.push(gottenPath);
-		return currentTrackedSounds.get(gottenPath);
+
+		trace('oh no its returning null NOOOO');
+		return null;
 	}
 }

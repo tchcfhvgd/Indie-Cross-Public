@@ -154,16 +154,15 @@ class SUtil
 					+ FlxStringUtil.formatTime(Date.now().getTime(), true) + '.log',
 					errMsg + "\n");
 			}
+			#if android
 			catch (e:Dynamic)
-				#if android
 				Hardware.toast("Error!\nClouldn't save the crash dump because:\n" + e, 2);
-				#end
+			#end
 
 			System.exit(1);
 		});
 	}
 
-	#if android
 	public static function saveContent(fileName:String = 'file', fileExtension:String = '.json', fileData:String = 'you forgot to add something in your code')
 	{
 		try
@@ -174,8 +173,10 @@ class SUtil
 			File.saveContent(SUtil.getPath() + 'saves/' + fileName + fileExtension, fileData);
 			Hardware.toast("File Saved Successfully!", 2);
 		}
+		#if android
 		catch (e:Dynamic)
 			Hardware.toast("Error!\nClouldn't save the file because:\n" + e, 2);
+		#end
 	}
 
 	public static function copyContent(copyPath:String, savePath:String)
@@ -185,8 +186,10 @@ class SUtil
 			if (!FileSystem.exists(savePath) && OpenFlAssets.exists(copyPath))
 				File.saveBytes(savePath, OpenFlAssets.getBytes(copyPath));
 		}
+		#if android
 		catch (e:Dynamic)
 			Hardware.toast("Error!\nClouldn't copy the file because:\n" + e, 2);
+		#end
 	}
 	#end
 }
