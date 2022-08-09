@@ -129,6 +129,11 @@ class MusicBeatState extends FNFState
 
 	override function create()
 	{
+		// dump
+		Paths.clearStoredMemory();
+		if (!Std.isOfType(this, PlayState))
+			Paths.clearUnusedMemory();
+
 		setChrome(0);
 		
 		if (Lib.current.getChildAt(0) != null)

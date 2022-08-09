@@ -27,7 +27,6 @@ class SpecsDetector extends FlxState
 		KadeEngineData.initSave();
 		super.create();
 
-		FlxG.save.data.cachestart = checkSpecs();
 		FlxG.switchState(new Caching());
 	}
 

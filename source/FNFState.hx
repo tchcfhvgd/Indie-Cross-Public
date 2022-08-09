@@ -18,9 +18,6 @@ class FNFState extends FlxUIState
 
     override function create()
     {
-        Paths.clearStoredMemory();
-        Paths.clearUnusedMemory();
-
         super.create();
 
 		if (disableNextTransIn)

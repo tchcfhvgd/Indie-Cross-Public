@@ -92,6 +92,15 @@ class SUtil
 			if (!FileSystem.exists(SUtil.getPath() + 'assets/videos'))
 				FileSystem.createDirectory(SUtil.getPath() + 'assets/videos');
 
+			if (!FileSystem.exists(SUtil.getPath() + 'assets/videos/bendy'))
+				FileSystem.createDirectory(SUtil.getPath() + 'assets/videos/bendy');
+
+			if (!FileSystem.exists(SUtil.getPath() + 'assets/videos/cuphead'))
+				FileSystem.createDirectory(SUtil.getPath() + 'assets/videos/cuphead');
+
+			if (!FileSystem.exists(SUtil.getPath() + 'assets/videos/sans'))
+				FileSystem.createDirectory(SUtil.getPath() + 'assets/videos/sans');
+
 			for (vid in videoFiles)
 				SUtil.copyContent(Paths.video(vid), SUtil.getPath() + Paths.video(vid));
 		}

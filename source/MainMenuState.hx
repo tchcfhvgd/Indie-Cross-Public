@@ -557,7 +557,7 @@ class MainMenuState extends MusicBeatState
 
 			if (debuggers.contains(GameJoltAPI.getUserInfo()))
 			{
-				if (FlxG.keys.justPressed.D && FlxG.keys.pressed.CONTROL #if android || virtualPad.buttonY.justPressed #end)
+				if (FlxG.keys.justPressed.D && FlxG.keys.pressed.CONTROL)
 				{
 					debugTools = !debugTools;
 					trace("Debug tools is now " + (debugTools ? "enabled." : "disabled."));

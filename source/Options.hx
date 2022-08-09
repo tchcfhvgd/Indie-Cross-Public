@@ -317,29 +317,6 @@ class FocusPause extends Option
 		return FlxG.save.data.focuspause ? "Focus Song Pause ON" : "Focus Song Pause OFF";
 	}
 }
-//i believe this is the only way to cause that weird pause bug issue where time will reverse or go into the future retriggering events, can just remove this for now and fix later?
-
-class CacheStart extends Option
-{
-	public function new(desc:String)
-	{
-		super();
-		description = desc;
-	}
-
-	public override function press():Bool
-	{
-		FlxG.save.data.cachestart = !FlxG.save.data.cachestart;
-		display = updateDisplay();
-		TitleState.restart();
-		return true;
-	}
-
-	private override function updateDisplay():String
-	{
-		return FlxG.save.data.cachestart ? "Game Caching ON" : "Game Caching OFF";
-	}
-}
 
 class HighQuality extends Option
 {

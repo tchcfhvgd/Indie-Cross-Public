@@ -37,6 +37,7 @@ class Caching extends MusicBeatState
 		super.create();
 
 		screen = new LoadingScreen();
+		screen.max = 9;
 		add(screen);
 
 		trace("Starting caching...");
@@ -112,8 +113,6 @@ class Caching extends MusicBeatState
 			case 8:
 				FlxG.resizeWindow(3840,2160);
 				FlxG.resizeGame(3840,2160);
-
-
 		}
 
 		//GameJoltAPI.connect();
@@ -123,7 +122,11 @@ class Caching extends MusicBeatState
 
 		FlxG.save.data.optimize = false;
 
-		end();
+		new FlxTimer().start(1, function(tmr:FlxTimer)
+		{
+			screen.setLoadingText("Done!");
+			end();
+		});
 	}
 
 	function end()
