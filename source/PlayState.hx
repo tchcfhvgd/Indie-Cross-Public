@@ -3659,7 +3659,7 @@ class PlayState extends MusicBeatState
 		bumpRate = 4;
 
 		#if android
-		if (AndroidControls.getMode() == 0 || AndroidControls.getMode() == 1 || AndroidControls.getMode() == 2 || AndroidControls.getMode() == 3)
+		if (AndroidControls.getMode() == 0 || AndroidControls.getMode() == 1 || AndroidControls.getMode() == 2 || AndroidControls.getMode() == 3) {
 		    _vPad.visible = true;
 		} else if (AndroidControls.getMode() == 4) {
 			_hitbox.visible = true;
