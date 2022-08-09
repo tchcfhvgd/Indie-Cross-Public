@@ -169,6 +169,36 @@ class ShowMS extends Option
 	}
 }
 
+class MechsInputVariants extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		FlxG.save.data.mechsInputVariants += 1;
+		if (FlxG.save.data.mechsInputVariants > 2) {
+			FlxG.save.data.mechsInputVariants = 0;
+		}
+		display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		if (FlxG.save.data.mechsInputVariants == 0) {
+		    return "bottom hitboxes";
+		} else if (FlxG.save.data.mechsInputVariants == 1) {
+			return "top hitboxes";
+		} else if (FlxG.save.data.mechsInputVariants == 2) {
+			return "vpad buttons";
+		}
+	}
+}
+
 class ShowSubtitles extends Option
 {
 	public function new(desc:String)

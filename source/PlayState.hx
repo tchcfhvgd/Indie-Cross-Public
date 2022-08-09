@@ -67,10 +67,21 @@ import sys.thread.Thread;
 import Discord.DiscordClient;
 import sys.FileSystem;
 #end
+#if android
+import android.flixel.FlxHitbox;
+import android.flixel.FlxVirtualPad;
+import android.AndroidControls;
+#end
 
 class PlayState extends MusicBeatState
 {
 	public static var instance:PlayState = null;
+	
+	var inputDodge:Bool = false;
+	var inputAttack:Bool = false;
+	
+	var _hitbox:FlxHitbox;
+	var _vpad:FlxVirtualPad;
 
 	var bendy:FlxSprite;
 	var jumpscareStatic:FlxSprite;
@@ -2946,7 +2957,33 @@ class PlayState extends MusicBeatState
 			iconP2alt.cameras = [camHUD];
 
 		#if android
-		addAndroidControls();
+		//addAndroidControls(); we'll rework it
+		switch (AndroidControls.getMode()) {
+			case 0:
+			    _vPad = new FlxVirtualPad(RIGHT_FULL, NONE);
+				add(_vPad);
+			case 1:
+			    _vPad = new FlxVirtualPad(LEFT_FULL, NONE);
+				add(_vPad);
+			case 2:
+			    _vPad = AndroidControls.getCustomMode(new FlxVirtualPad(RIGHT_FULL, NONE));
+				add(_vPad);
+			case 3:
+			    _vPad = new FlxVirtualPad(BOTH_FULL, NONE);
+				add(_vPad);
+			case 4:
+			    var additionalHitboxNumber:Int = 0;
+			    if (SONG.song.toLowerCase() == "technicolor-tussle") {
+				    additionalHitboxNumber = 1;
+				} else if (SONG.song.toLowerCase() == "knockout" || SONG.song.toLowerCase() == "sansational" || SONG.song.toLowerCase() == "burning-in-hell" || SONG.song.toLowerCase() == 'devils-gambit') {
+					additionalHitboxNumber = 2;
+				} else if (SONG.song.toLowerCase() == "last-reel" && storyDifficulty >= 1) {
+					additionalHitboxNumber = 3;
+				} else if (SONG.song.toLowerCase() == "whoopee" || SONG.song.toLowerCase() == "satanic-funkin") {
+					additionalHitboxNumber = 4;
+				}
+			    _hitbox = new FlxHitbox(additionalHitboxNumber, FlxG.save.data.mechsInputVariants);
+				add(_hitbox);
 		#end
 
 		startingSong = true;
@@ -5015,13 +5052,29 @@ class PlayState extends MusicBeatState
 		#if !debug
 		perfectMode = false;
 		#end
+		
+		inputDodge = false;
+		inputAttackLeft = false;
+		inputAttackRight = false;
+		
+		#if android
+		if (_hitbox.buttonSpaceAlt.justPressed || _hitbox.buttonSpaceMid.justPressed) {
+			inputDodge = true;
+		}
+		if (_hitbox.buttonSpaceLeft.justPressed) {
+			inputAttackLeft = true;
+		}
+		if (_hitbox.buttonSpaceRight.justPressed) {
+			inputAttackRight = true;
+		}
+		#end
 
 		if (SONG.song.toLowerCase() == "satanic-funkin"
 			|| SONG.song.toLowerCase() == "despair"
 			|| (SONG.song.toLowerCase() == "last-reel" && storyDifficulty >= 1)
 			|| SONG.song.toLowerCase() == "despair")
 		{
-			if ((controls.DODGE && dodgeHud.alpha > 0.001) && !inputSpacePressed && !PlayStateChangeables.botPlay)
+			if (((controls.DODGE || inputDodge) && dodgeHud.alpha > 0.001) && !inputSpacePressed && !PlayStateChangeables.botPlay)
 			{
 				dodgeAmt++;
 				bfMechDodge();
@@ -5030,12 +5083,12 @@ class PlayState extends MusicBeatState
 
 		if ((SONG.song.toLowerCase() == "last-reel" && storyDifficulty >= 1) || SONG.song.toLowerCase() == "despair")
 		{
-			if (controls.ATTACKLEFT && attackHud.alpha > 0.001)
+			if ((controls.ATTACKLEFT || inputAttackLeft) && attackHud.alpha > 0.001)
 			{
 				trace("attack left that is not shift");
 				bfAttack(true);
 			}
-			if (controls.ATTACKRIGHT && attackHud.alpha > 0.001)
+			if ((controls.ATTACKRIGHT || inputAttckRight) && attackHud.alpha > 0.001)
 			{
 				trace("attack right that is not shift");
 				bfAttack(false);
@@ -5325,7 +5378,7 @@ class PlayState extends MusicBeatState
 
 		if (sansCanAttack)
 		{
-			if (((controls.ATTACKLEFT || controls.ATTACKRIGHT) && attackHud.alpha > 0.001)
+			if (((controls.ATTACKLEFT || controls.ATTACKRIGHT || inputAttackLeft || inputAttackRight) && attackHud.alpha > 0.001)
 				&& attackCooldown == 0
 				&& !battleMode
 				&& !PlayStateChangeables.botPlay
@@ -5688,7 +5741,7 @@ class PlayState extends MusicBeatState
 			boyfriend.y = 1248.7 + Math.sin((Conductor.songPosition / 1000) * (Conductor.bpm / 60) * 2.5) * 20;
 		}
 
-		if (canPressSpace && (controls.DODGE && dodgeHud.alpha > 0.001) && !PlayStateChangeables.botPlay && !MainMenuState.showcase)
+		if (canPressSpace && ((controls.DODGE || inputDodge) && dodgeHud.alpha > 0.001) && !PlayStateChangeables.botPlay && !MainMenuState.showcase)
 		{
 			dodgeAmt++;
 			pressedSpace = true;
@@ -5731,7 +5784,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.screenCenter(X);
 		scoreTxt.updateHitbox();
 
-		if (((controls.ATTACKLEFT || controls.ATTACKRIGHT) && attackHud.alpha > 0.001) && !PlayStateChangeables.botPlay)
+		if (((controls.ATTACKLEFT || controls.ATTACKRIGHT || inputAttackLeft || inputAttackRight) && attackHud.alpha > 0.001) && !PlayStateChangeables.botPlay)
 		{
 			useAttackSlot();
 		}
