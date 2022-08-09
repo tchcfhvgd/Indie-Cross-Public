@@ -225,7 +225,10 @@ class TitleState extends MusicBeatState
 
 		#if android
 		for (touch in FlxG.touches.list)
-			if (touch.justPressed)
+                        if (FlxG.android.justReleased.BACK) {
+                                MainMenuState.showCredits = true;
+                        }
+			if (touch.justReleased && !FlxG.android.justReleased.BACK)
 				pressed = true;
 		#end
 
