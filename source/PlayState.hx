@@ -7586,7 +7586,7 @@ class PlayState extends MusicBeatState
 		canPause = false;
 
 		#if android
-		if (AndroidControls.getMode() == 0 || AndroidControls.getMode() == 1 || AndroidControls.getMode() == 2 || AndroidControls.getMode() == 3)
+		if (AndroidControls.getMode() == 0 || AndroidControls.getMode() == 1 || AndroidControls.getMode() == 2 || AndroidControls.getMode() == 3) {
 		    _vPad.visible = false;
 		} else if (AndroidControls.getMode() == 4) {
 			_hitbox.visible = false;
