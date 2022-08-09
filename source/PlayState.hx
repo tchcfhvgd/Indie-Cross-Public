@@ -2984,6 +2984,7 @@ class PlayState extends MusicBeatState
 				}
 			    _hitbox = new FlxHitbox(additionalHitboxNumber, FlxG.save.data.mechsInputVariants);
 				add(_hitbox);
+		}
 		#end
 
 		startingSong = true;
