@@ -7,17 +7,15 @@ import openfl.media.Sound;
 import openfl.media.SoundChannel;
 import openfl.Assets;
 
-
-
 /**
  * OpenFL Sound Streamer, only works with the newest Github OpenFL version!
  * @author Smokey
  */
- 
 class MikuSoundSystem
 {
 	public var sound:Sound;
 	public var channel:SoundChannel;
+
 	var fadeTween:FlxTween;
 	var volume:Float = 1;
 

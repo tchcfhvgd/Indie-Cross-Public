@@ -101,13 +101,7 @@ class CreditsMenu extends MusicBeatState
 			"1",
 			"https://twitter.com/Sector0003"
 		],
-		[
-			'Shadowfi', 
-			"mozo", 
-			'Developer', 
-			"0", 
-			"https://twitter.com/Shadowfi1385"
-		],
+		['Shadowfi', "mozo", 'Developer', "0", "https://twitter.com/Shadowfi1385"],
 		[
 			'Gedehari',
 			"Good at programming, bad at everything else.",
@@ -129,13 +123,7 @@ class CreditsMenu extends MusicBeatState
 			"1",
 			"https://twitter.com/polybiusproxy"
 		],
-		[
-			'Smokey', 
-			"kenny's a bitch", 
-			'Developer', 
-			"0", 
-			"https://twitter.com/Smokey_5_"
-		],
+		['Smokey', "kenny's a bitch", 'Developer', "0", "https://twitter.com/Smokey_5_"],
 		[
 			'Hexar',
 			"brightfyre is a 5head",
@@ -143,13 +131,7 @@ class CreditsMenu extends MusicBeatState
 			"0",
 			"https://twitter.com/hexar__"
 		],
-		[
-			'volv',
-			"how did i get here?",
-			"Developer",
-			"0",
-			"https://twitter.com/_Volved"
-		],
+		['volv', "how did i get here?", "Developer", "0", "https://twitter.com/_Volved"],
 		[
 			'KadeDev',
 			"pasc *kissing noises*",
@@ -157,24 +139,8 @@ class CreditsMenu extends MusicBeatState
 			"0",
 			"https://twitter.com/KadeDeveloper"
 		],
-		[
-			'Taeyai', 
-			"I can do anything!", 
-			"Developer", 
-			"0", 
-			"https://twitter.com/Taeyai_"
-		],
-		[
-			'isophoro',
-			"play vs isophoro",
-			'Developer',
-			"3",
-			"https://twitter.com/isophoro"
-		],
-
-
-
-
+		['Taeyai', "I can do anything!", "Developer", "0", "https://twitter.com/Taeyai_"],
+		['isophoro', "play vs isophoro", 'Developer', "3", "https://twitter.com/isophoro"],
 		[
 			'Saster',
 			"quality content, as usual",
@@ -280,17 +246,7 @@ class CreditsMenu extends MusicBeatState
 			"1",
 			"https://www.youtube.com/c/Brandxns/featured"
 		],
-
-
-
-
-		[
-			'Kal',
-			"i love snas",
-			"Charter",
-			"0",
-			"https://twitter.com/Kal_050"
-		],
+		['Kal', "i love snas", "Charter", "0", "https://twitter.com/Kal_050"],
 		[
 			'DJ',
 			"The amount of dandruff in your hair bro, if i were to smack your shit. It would be a smoke screen",
@@ -305,17 +261,10 @@ class CreditsMenu extends MusicBeatState
 			"2",
 			"https://twitter.com/Cerbera_fnf"
 		],
-		[
-			'Cval', 
-			"what the? im jads?", 
-			"Charter", 
-			"0", 
-			"https://twitter.com/cval_brown"
-		]
+		['Cval', "what the? im jads?", "Charter", "0", "https://twitter.com/cval_brown"]
 	];
 
-	var specialThanksMain:String = 
-		"James Dijit (VA of Sammy)\n
+	var specialThanksMain:String = "James Dijit (VA of Sammy)\n
 		Dextermanning (Devil vocals)\n
 		Fliper (Pixel art for the First Sans Cutscene)\n
 		OblivionFall (Additional Anims and Special Effects)\n
@@ -326,19 +275,16 @@ class CreditsMenu extends MusicBeatState
 		Axelorca (Menu SFX)\n
 		TentaRJ/Firubii (Original Flixel Gamejolt support)\n
 		CanadianGoose (Cuphead Gameover Editor)\n
-		Yoshubs (Additional Programming)"
-	;
+		Yoshubs (Additional Programming)";
 
-	var specialThanksExtra:String = 
-		'Penkaru\n
+	var specialThanksExtra:String = 'Penkaru\n
 		Uniquegeese, StickyBM\n
 		Woops, RayZord\n
 		8owser16, Core\n
 		VaporTheGamer, 8-BitRyan\n
 		Dawko, niffirg\n
 		Mikeeey, JellyFish\n
-		HugeNate (i love hugenate)\n'
-	;
+		HugeNate (i love hugenate)\n';
 
 	var bg:FlxSprite;
 	var bigIcon:FlxSprite;
@@ -393,11 +339,10 @@ class CreditsMenu extends MusicBeatState
 		{
 			var bigIconAsset:FlxGraphic = Paths.image("credits/icons/big_icons/" + credits[i][0], "preload");
 			bigIconsAssets.push(bigIconAsset);
-			//make the small ones use the big ones just resized, saves a bit of loading time(not really)
-
+			// make the small ones use the big ones just resized, saves a bit of loading time(not really)
 
 			var smallIcon:FlxSprite = new FlxSprite().loadGraphic(bigIconAsset);
-			smallIcon.setGraphicSize(102,102);
+			smallIcon.setGraphicSize(102, 102);
 			smallIcon.updateHitbox();
 
 			if (i < 28)
@@ -413,7 +358,7 @@ class CreditsMenu extends MusicBeatState
 
 			add(smallIcon);
 			smallIcon.ID = i;
-			FlxMouseEventManager.add(smallIcon, null, null, hoverCallback,null,false,true,false);
+			FlxMouseEventManager.add(smallIcon, null, null, hoverCallback, null, false, true, false);
 
 			credIcons.push(smallIcon);
 		}
@@ -525,14 +470,17 @@ class CreditsMenu extends MusicBeatState
 		{
 			thanksOpen = false;
 			FlxTween.tween(selctionHighlighter, {alpha: 1}, 0.5, {ease: FlxEase.quadOut});
-			FlxTween.tween(specialThanksText, {alpha: 1	}, 0.5, {ease: FlxEase.quadOut});
+			FlxTween.tween(specialThanksText, {alpha: 1}, 0.5, {ease: FlxEase.quadOut});
 			FlxTween.tween(thanksTitle, {alpha: 0}, 0.5, {ease: FlxEase.quadOut});
 			FlxTween.tween(lthanks, {alpha: 0}, 0.5, {ease: FlxEase.quadOut});
 			FlxTween.tween(rthanks, {alpha: 0}, 0.5, {ease: FlxEase.quadOut});
-			FlxTween.tween(thanksOverlay, {alpha: 0}, 0.5, {ease: FlxEase.quadOut, onComplete: function(twn:FlxTween)
-			{
-				whiteTweening = false;
-			}});
+			FlxTween.tween(thanksOverlay, {alpha: 0}, 0.5, {
+				ease: FlxEase.quadOut,
+				onComplete: function(twn:FlxTween)
+				{
+					whiteTweening = false;
+				}
+			});
 		}
 		else
 		{
@@ -552,31 +500,37 @@ class CreditsMenu extends MusicBeatState
 			whiteTweening = true;
 			if (!thanksOpen)
 			{
-				//open menu
+				// open menu
 				thanksOpen = true;
 				FlxTween.tween(selctionHighlighter, {alpha: 0}, 0.5, {ease: FlxEase.quadOut});
 				FlxTween.tween(specialThanksText, {alpha: 0}, 0.5, {ease: FlxEase.quadOut});
 				FlxTween.tween(thanksTitle, {alpha: 1}, 0.5, {ease: FlxEase.quadOut});
 				FlxTween.tween(lthanks, {alpha: 1}, 0.5, {ease: FlxEase.quadOut});
 				FlxTween.tween(rthanks, {alpha: 1}, 0.5, {ease: FlxEase.quadOut});
-				FlxTween.tween(thanksOverlay, {alpha: 0.7}, 0.5, {ease: FlxEase.quadOut, onComplete: function(twn:FlxTween)
-				{
-					whiteTweening = false;
-				}});
+				FlxTween.tween(thanksOverlay, {alpha: 0.7}, 0.5, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						whiteTweening = false;
+					}
+				});
 			}
 			else
 			{
-				//close menu
+				// close menu
 				thanksOpen = false;
 				FlxTween.tween(selctionHighlighter, {alpha: 1}, 0.5, {ease: FlxEase.quadOut});
-				FlxTween.tween(specialThanksText, {alpha: 1	}, 0.5, {ease: FlxEase.quadOut});
+				FlxTween.tween(specialThanksText, {alpha: 1}, 0.5, {ease: FlxEase.quadOut});
 				FlxTween.tween(thanksTitle, {alpha: 0}, 0.5, {ease: FlxEase.quadOut});
 				FlxTween.tween(lthanks, {alpha: 0}, 0.5, {ease: FlxEase.quadOut});
 				FlxTween.tween(rthanks, {alpha: 0}, 0.5, {ease: FlxEase.quadOut});
-				FlxTween.tween(thanksOverlay, {alpha: 0}, 0.5, {ease: FlxEase.quadOut, onComplete: function(twn:FlxTween)
-				{
-					whiteTweening = false;
-				}});
+				FlxTween.tween(thanksOverlay, {alpha: 0}, 0.5, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						whiteTweening = false;
+					}
+				});
 			}
 		}
 	}

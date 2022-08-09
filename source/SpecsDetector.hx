@@ -42,16 +42,16 @@ class SpecsDetector extends FlxState
 		if (cpu && ram >= 4096)
 			return true;
 		#end
-		else
-		{
-			#if android
-			return messageBox("INDIE CROSS",
-				"Your Phone does not meet the requirements Indie Cross has.\nWhile you can still play the mod, you may experience framedrops and/or lag spikes.\n\nDo you want to play anyway?");
-			#else
-			return messageBox("INDIE CROSS",
-				"Your PC does not meet the requirements Indie Cross has.\nWhile you can still play the mod, you may experience framedrops and/or lag spikes.\n\nDo you want to play anyway?");
-			#end
-		}
+	else
+	{
+		#if android
+		return messageBox("INDIE CROSS",
+			"Your Phone does not meet the requirements Indie Cross has.\nWhile you can still play the mod, you may experience framedrops and/or lag spikes.\n\nDo you want to play anyway?");
+		#else
+		return messageBox("INDIE CROSS",
+			"Your PC does not meet the requirements Indie Cross has.\nWhile you can still play the mod, you may experience framedrops and/or lag spikes.\n\nDo you want to play anyway?");
+		#end
+	}
 
 		return true;
 	}

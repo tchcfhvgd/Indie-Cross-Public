@@ -66,7 +66,6 @@ class Song
 			rawJson = rawJson.substr(0, rawJson.length - 1);
 		}
 
-
 		return parseJSONshit(rawJson);
 	}
 

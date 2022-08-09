@@ -4,90 +4,88 @@ import flixel.util.FlxColor;
 import flixel.FlxSprite;
 import flixel.FlxG;
 
-
 using StringTools;
 
 class JumpscareState extends MusicBeatState
 {
-    public static var allowRetry:Bool = false;
-    var screen:FlxSprite;
-    var accepted:Bool = false;
+	public static var allowRetry:Bool = false;
 
-    override function create()
-    {
-        super.create();
-        
-        /*screen = new FlxSprite(0, 0).loadGraphic(Paths.image('bonusSongs/BlackScreen', 'shared'));
-        screen.scrollFactor.set(0, 0);
-        add(screen);*/
+	var screen:FlxSprite;
+	var accepted:Bool = false;
 
-       
-        if (PlayState.SONG.song.toLowerCase() == 'despair')
-        {
-            FlxG.sound.playMusic(Paths.music('fuck you', 'bendy'));
-            FlxG.sound.play(Paths.sound('trolled', 'bendy'));
-            FNFState.disableNextTransIn = true;
-        }
+	override function create()
+	{
+		super.create();
 
-        if (PlayState.SONG.song.toLowerCase() == 'devils-gambit')
-        {
-           FlxG.sound.playMusic(Paths.music('fuck you', 'cup'));
-           FlxG.sound.play(Paths.sound('trolled', 'cup'));
-        }
+		/*screen = new FlxSprite(0, 0).loadGraphic(Paths.image('bonusSongs/BlackScreen', 'shared'));
+			screen.scrollFactor.set(0, 0);
+			add(screen); */
 
-        if (PlayState.SONG.song.toLowerCase() == 'bad-time')
-        {
-            FlxG.sound.playMusic(Paths.music('fuck you', 'sans'));
-            FlxG.sound.play(Paths.sound('trolled', 'sans'));
-        }
+		if (PlayState.SONG.song.toLowerCase() == 'despair')
+		{
+			FlxG.sound.playMusic(Paths.music('fuck you', 'bendy'));
+			FlxG.sound.play(Paths.sound('trolled', 'bendy'));
+			FNFState.disableNextTransIn = true;
+		}
 
-        FNFState.disableNextTransOut = true;
+		if (PlayState.SONG.song.toLowerCase() == 'devils-gambit')
+		{
+			FlxG.sound.playMusic(Paths.music('fuck you', 'cup'));
+			FlxG.sound.play(Paths.sound('trolled', 'cup'));
+		}
 
-        #if android
-        addVirtualPad(NONE, A_B);
-        #end
-    }
+		if (PlayState.SONG.song.toLowerCase() == 'bad-time')
+		{
+			FlxG.sound.playMusic(Paths.music('fuck you', 'sans'));
+			FlxG.sound.play(Paths.sound('trolled', 'sans'));
+		}
 
+		FNFState.disableNextTransOut = true;
+
+		#if android
+		addVirtualPad(NONE, A_B);
+		#end
+	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-        if (!accepted)
-        {
-            if (controls.ACCEPT)
-            {
-                accept();
-            }
-    
-            if (controls.BACK)
-            {
-                backOut();
-            }
-        }
+		if (!accepted)
+		{
+			if (controls.ACCEPT)
+			{
+				accept();
+			}
+
+			if (controls.BACK)
+			{
+				backOut();
+			}
+		}
 	}
 
-    function accept()
-    {
-        if (allowRetry)
-        {
-            accepted = true;
-            FlxG.sound.music.stop();
-            FlxG.sound.play(Paths.sound('click', 'bendy'));
+	function accept()
+	{
+		if (allowRetry)
+		{
+			accepted = true;
+			FlxG.sound.music.stop();
+			FlxG.sound.play(Paths.sound('click', 'bendy'));
 
-            FlxG.camera.fade(FlxColor.BLACK, 1, false, function()
-            {
-                FlxG.switchState(new PlayState());
-            });
-        }
-    }
+			FlxG.camera.fade(FlxColor.BLACK, 1, false, function()
+			{
+				FlxG.switchState(new PlayState());
+			});
+		}
+	}
 
-    function backOut()
-    {
-        if (MainMenuState.debugTools || allowRetry)
-        {
-            accepted = true;
-            FlxG.switchState(new FreeplayState());
-        }
-    }
+	function backOut()
+	{
+		if (MainMenuState.debugTools || allowRetry)
+		{
+			accepted = true;
+			FlxG.switchState(new FreeplayState());
+		}
+	}
 }

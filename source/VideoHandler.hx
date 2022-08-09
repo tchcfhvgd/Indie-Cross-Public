@@ -74,7 +74,6 @@ class VideoHandler
 
 			sprite = outputTo;
 		}
-
 		#end
 	}
 

@@ -14,7 +14,7 @@ class GitHash
 		}
 
 		var commitHash:String = process.stdout.readLine();
-		
+
 		return macro $v{commitHash};
 		#else
 		var commitHash:String = "";

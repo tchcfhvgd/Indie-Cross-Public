@@ -60,7 +60,7 @@ class KeyBinds
 			FlxG.save.data.rightBind = "D";
 			trace("No RIGHT");
 		}
-		
+
 		if (StringTools.contains(FlxG.save.data.rightBind, "NUMPAD"))
 			FlxG.save.data.rightBind = "D";
 
@@ -69,7 +69,7 @@ class KeyBinds
 			FlxG.save.data.attackLeftBind = "SHIFT";
 			trace("No attackLeftBind");
 		}
-		
+
 		if (StringTools.contains(FlxG.save.data.attackLeftBind, "NUMPAD"))
 			FlxG.save.data.attackLeftBind = "SHIFT";
 
@@ -78,7 +78,7 @@ class KeyBinds
 			FlxG.save.data.attackRightBind = "SHIFT";
 			trace("No attackRightBind");
 		}
-		
+
 		if (StringTools.contains(FlxG.save.data.attackRightBind, "NUMPAD"))
 			FlxG.save.data.attackRightBind = "SHIFT";
 
@@ -87,7 +87,7 @@ class KeyBinds
 			FlxG.save.data.dodgeBind = "SPACE";
 			trace("No dodgeBind");
 		}
-		
+
 		if (StringTools.contains(FlxG.save.data.dodgeBind, "NUMPAD"))
 			FlxG.save.data.dodgeBind = "SPACE";
 

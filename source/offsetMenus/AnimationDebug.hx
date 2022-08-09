@@ -115,9 +115,7 @@ class AnimationDebug extends MusicBeatState
 		layeringbullshit = new FlxTypedGroup<FlxSprite>();
 		add(layeringbullshit);
 
-		var tabs = [
-			{name: "Character", label: "Character"}
-		];
+		var tabs = [{name: "Character", label: "Character"}];
 
 		UI_box = new FlxUITabMenu(null, tabs, true);
 		UI_box.cameras = [camHUD];
@@ -129,11 +127,7 @@ class AnimationDebug extends MusicBeatState
 		var characterTab = new FlxUI(null, UI_box);
 		characterTab.name = "Character";
 
-		var characters:Array<String> = 
-		[
-			PlayState.dad.curCharacter,
-			PlayState.boyfriend.curCharacter
-		];
+		var characters:Array<String> = [PlayState.dad.curCharacter, PlayState.boyfriend.curCharacter];
 
 		var cumfart = new FlxUIDropDownMenu(50, 50, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
@@ -151,7 +145,7 @@ class AnimationDebug extends MusicBeatState
 			trace('flipX: ' + char.flipX);
 		};
 
-		//player.checked = char.flipX;
+		// player.checked = char.flipX;
 
 		var saveButton:FlxButton = new FlxButton(100, 125, "Save", function()
 		{
@@ -294,7 +288,8 @@ class AnimationDebug extends MusicBeatState
 	{
 		if (char != null)
 		{
-			if (char.animation.curAnim != null) textAnim.text = char.animation.curAnim.name;
+			if (char.animation.curAnim != null)
+				textAnim.text = char.animation.curAnim.name;
 			ghostBF.flipX = char.flipX;
 		}
 
@@ -415,7 +410,7 @@ class AnimationDebug extends MusicBeatState
 			updateTexts();
 			genBoyOffsets(false);
 			char.playAnim(animList[curAnim]);
-			
+
 			ghostBF.playAnim(animList[0]);
 		}
 

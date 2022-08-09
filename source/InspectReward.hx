@@ -11,6 +11,7 @@ import flixel.util.FlxColor;
  * @author BrightFyre
  */
 using StringTools;
+
 class InspectReward extends MusicBeatSubstate
 {
 	var icon:AchieveIcon;
@@ -33,8 +34,7 @@ class InspectReward extends MusicBeatSubstate
 		add(icon);
 
 		var descText:FlxText = new FlxText(20, icon.y + 300, 0,
-			Achievements.achievements[AchievementsMenuState.curSelected].name + ' - ' + Achievements.achievements[AchievementsMenuState.curSelected].desc,
-			64);
+			Achievements.achievements[AchievementsMenuState.curSelected].name + ' - ' + Achievements.achievements[AchievementsMenuState.curSelected].desc, 64);
 
 		if (Achievements.achievements[AchievementsMenuState.curSelected].name.contains("Unworthy"))
 		{

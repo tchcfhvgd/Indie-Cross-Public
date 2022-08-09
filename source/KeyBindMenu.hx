@@ -20,7 +20,15 @@ class KeyBindMenu extends FlxSubState
 	var warningTween:FlxTween;
 	var keyText:Array<String> = ["LEFT", "DOWN", "UP", "RIGHT", "LEFT ATTACK", "RIGHT ATTACK", "DODGE"];
 	var defaultKeys:Array<String> = ["A", "S", "W", "D", "SHIFT", "SHIFT", "SPACE"];
-	var defaultGpKeys:Array<String> = ["DPAD_LEFT", "DPAD_DOWN", "DPAD_UP", "DPAD_RIGHT", "LEFT_TRIGGER", 'RIGHT_TRIGGER', "A"];
+	var defaultGpKeys:Array<String> = [
+		"DPAD_LEFT",
+		"DPAD_DOWN",
+		"DPAD_UP",
+		"DPAD_RIGHT",
+		"LEFT_TRIGGER",
+		'RIGHT_TRIGGER',
+		"A"
+	];
 	var curSelected:Int = 0;
 
 	var keys:Array<String> = [
@@ -280,8 +288,9 @@ class KeyBindMenu extends FlxSubState
 			{
 				var textStart = (i == curSelected) ? "> " : "  ";
 				keyTextDisplay.text += textStart + keyText[i] + ": " + keys[i];
-				
-				if (keyText[i].toLowerCase() == 'left' || keyText[i].toLowerCase() == 'right' || keyText[i].toLowerCase() == 'up' || keyText[i].toLowerCase() == 'down')
+
+				if (keyText[i].toLowerCase() == 'left' || keyText[i].toLowerCase() == 'right' || keyText[i].toLowerCase() == 'up'
+					|| keyText[i].toLowerCase() == 'down')
 					keyTextDisplay.text += " / " + keyText[i] + " ARROW\n";
 				else
 					keyTextDisplay.text += "\n";

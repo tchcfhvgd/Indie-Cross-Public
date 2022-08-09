@@ -87,26 +87,26 @@ class DiscordClient
 		// poly is stupid 🙄 -- stfu u piece of shit
 
 		/*
-		if (Type.getClass(FlxG.state) == PlayState)
-		{
-			if (details.contains(PlayState.instance.storyDifficultyText))
+			if (Type.getClass(FlxG.state) == PlayState)
 			{
-				if (details.contains(PlayState.SONG.song))
+				if (details.contains(PlayState.instance.storyDifficultyText))
 				{
-					details = 'CONFIDENTIAL [' + PlayState.instance.storyDifficultyText + ']';
+					if (details.contains(PlayState.SONG.song))
+					{
+						details = 'CONFIDENTIAL [' + PlayState.instance.storyDifficultyText + ']';
+					}
 				}
 			}
-		}
-		else
-		{
-			trace('aw hell naw im not on playstate');
-
-			if (details.contains('Freeplay - Listening to '))
+			else
 			{
-				details = 'Freeplay - [CONFIDENTIAL]';
+				trace('aw hell naw im not on playstate');
+
+				if (details.contains('Freeplay - Listening to '))
+				{
+					details = 'Freeplay - [CONFIDENTIAL]';
+				}
 			}
-		}
-		*/
+		 */
 
 		DiscordRpc.presence({
 			details: details,

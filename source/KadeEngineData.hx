@@ -185,7 +185,7 @@ class KadeEngineData
 
 		if (FlxG.save.data.gamma == null)
 			FlxG.save.data.gamma = 1;
-		
+
 		if (FlxG.save.data.resolution == null)
 			FlxG.save.data.resolution = 5;
 
@@ -194,9 +194,9 @@ class KadeEngineData
 
 		if (FlxG.save.data.seenCredits == null)
 			FlxG.save.data.seenCredits = false;
-		
+
 		if (FlxG.save.data.achievementsIndie == null)
-			Achievements.defaultAchievements(); 
+			Achievements.defaultAchievements();
 
 		if (FlxG.save.data.shownalerts == null)
 			FlxG.save.data.shownalerts = [false, false, false];

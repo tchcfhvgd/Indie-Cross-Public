@@ -28,9 +28,9 @@ class OptionsMenu extends MusicBeatState
 			new DownscrollOption("Change the layout of the strumline."),
 			new GhostTapOption("Ghost Tapping is when you tap a direction and it doesn't give you a miss."),
 			new BotPlay("Showcase your charts and mods with autoplay."),
-			new ResetButtonOption("Toggle pressing R to gameover."), 
-			new Hitsounds("Toggle hitsounds."), 
-			new Judgement("Customize your Hit Timings (LEFT or RIGHT)"), 
+			new ResetButtonOption("Toggle pressing R to gameover."),
+			new Hitsounds("Toggle hitsounds."),
+			new Judgement("Customize your Hit Timings (LEFT or RIGHT)"),
 			new AccuracyDOption("Change how accuracy is calculated. (Accurate = Simple, Complex = Milisecond Based)")
 		]),
 		new OptionCategory("Appearance", [
@@ -45,7 +45,7 @@ class OptionsMenu extends MusicBeatState
 		new OptionCategory("Performance", [
 			new Photosensitive("Turn off visual effects that may harm your vision."),
 			new HighQuality("Enable low quality mode for a smoother playing experience."),
-			//new CacheStart("Enables caching and loading of images before the game starts and songs.")
+			// new CacheStart("Enables caching and loading of images before the game starts and songs.")
 		]),
 		new OptionCategory("Window", [
 			#if !android
@@ -64,9 +64,8 @@ class OptionsMenu extends MusicBeatState
 		]),
 		new OptionCategory("Accessibility", [
 			new ShowSubtitles("Show subtitles during cutscenes."),
-			new Colorblind("")
-			//new LogInGJ("Log into gamejolt for achievements & perks"),
-			//new LogOutGJ("Log out of your gamejolt account")
+			new Colorblind("") // new LogInGJ("Log into gamejolt for achievements & perks"),
+				// new LogOutGJ("Log out of your gamejolt account")
 		])
 	];
 
@@ -96,7 +95,7 @@ class OptionsMenu extends MusicBeatState
 		instance = this;
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menu/BG', 'preload'));
-		//bg.setGraphicSize(Std.int(bg.width * 0.675));
+		// bg.setGraphicSize(Std.int(bg.width * 0.675));
 		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = FlxG.save.data.highquality;
@@ -167,7 +166,8 @@ class OptionsMenu extends MusicBeatState
 			grpControls.clear();
 			for (i in 0...currentSelectedCat.getOptions().length)
 			{
-				var controlLabel:Alphabet = new Alphabet(0, ((FlxMath.remapToRange(i, 0, 1, 0, 1.3) * 120) + (FlxG.height * 0.48)) , currentSelectedCat.getOptions()[i].getDisplay(), true, false);
+				var controlLabel:Alphabet = new Alphabet(0, ((FlxMath.remapToRange(i, 0, 1, 0, 1.3) * 120) + (FlxG.height * 0.48)),
+					currentSelectedCat.getOptions()[i].getDisplay(), true, false);
 				controlLabel.isMenuItem = true;
 				controlLabel.targetY = i;
 				grpControls.add(controlLabel);
@@ -217,14 +217,15 @@ class OptionsMenu extends MusicBeatState
 			grpControls.clear();
 			for (i in 0...options.length)
 			{
-				var controlLabel:Alphabet = new Alphabet(0, ((FlxMath.remapToRange(i, 0, 1, 0, 1.3) * 120) + (FlxG.height * 0.48)) , options[i].getName(), true, false);
+				var controlLabel:Alphabet = new Alphabet(0, ((FlxMath.remapToRange(i, 0, 1, 0, 1.3) * 120) + (FlxG.height * 0.48)), options[i].getName(),
+					true, false);
 				controlLabel.isMenuItem = true;
 				controlLabel.targetY = i;
 				grpControls.add(controlLabel);
 			}
 
 			trace('outOfCatSel: ' + outOfCatSel);
-			//curSelected = outOfCatSel;
+			// curSelected = outOfCatSel;
 			curSelected = 0;
 
 			changeSelection(curSelected);
@@ -282,7 +283,8 @@ class OptionsMenu extends MusicBeatState
 
 	function catOption()
 	{
-		if ((FlxG.keys.pressed.SHIFT #if android || virtualPad.buttonC.pressed #end) || !currentSelectedCat.getOptions()[curSelected].allowFastChange)
+		if ((FlxG.keys.pressed.SHIFT #if android || virtualPad.buttonC.pressed #end)
+			|| !currentSelectedCat.getOptions()[curSelected].allowFastChange)
 		{
 			if (controls.RIGHT_P)
 				currentSelectedCat.getOptions()[curSelected].right();

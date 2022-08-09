@@ -5,6 +5,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.math.FlxPoint;
 import flixel.math.FlxMath;
+
 using StringTools;
 
 class CupBullet extends FlxSprite
@@ -16,10 +17,13 @@ class CupBullet extends FlxSprite
 	public var hsp:Float = 0;
 	public var vsp:Float = 0;
 	public var cantmove = false;
+
 	static public var pewOrder:Int = 0;
+
 	var triggered:Bool = false;
 
 	public var pew:Void->Void = null;
+
 	var realOffset:FlxPoint;
 
 	public function new(type:String, sX:Float, sY:Float)
@@ -71,7 +75,8 @@ class CupBullet extends FlxSprite
 				animation.addByPrefix('fire', 'BulletFX_H-Tween_02 instance 1', 24, false);
 				animation.addByPrefix('fire-alt', 'BulletFX_H-Tween_03 instance 1', 24, false);
 
-				switch (pewOrder) {
+				switch (pewOrder)
+				{
 					case 1:
 						realOffset.y = 25;
 					case 2:
@@ -86,11 +91,11 @@ class CupBullet extends FlxSprite
 				frames = Paths.getSparrowAtlas('bull/Cupheadshoot', 'cup');
 				animation.addByPrefix('fire', 'BulletFlashFX instance 1', 24, false);
 				animation.play('fire');
-				
+
 			case 'hadokenFX':
 				frames = Paths.getSparrowAtlas('bull/Cuphead Hadoken', 'cup');
 				animation.addByPrefix('fire', 'BurstFX', 24, false);
-				animation.play('fire');	
+				animation.play('fire');
 
 			case 'laser':
 				frames = Paths.getSparrowAtlas('bull/NMcupheadBull', 'cup');
@@ -106,7 +111,7 @@ class CupBullet extends FlxSprite
 					case 3:
 						animation.addByPrefix('fire', 'Shot04 instance 1', 24, false);
 					case 4:
-						animation.addByPrefix('fire', 'Shot05 instance 1', 24, false);		
+						animation.addByPrefix('fire', 'Shot05 instance 1', 24, false);
 				}
 				animation.play('fire');
 				scale.y = 1.25;
@@ -117,13 +122,15 @@ class CupBullet extends FlxSprite
 
 		alpha = 0.0001; // making this very low instead of 0 will remove the lag when cuphead shoots it
 
-		if (PlayState.SONG.song.toLowerCase() == 'knockout') blend = BlendMode.ADD;
+		if (PlayState.SONG.song.toLowerCase() == 'knockout')
+			blend = BlendMode.ADD;
 
 		updateHitbox();
 
 		offset.x = frameWidth / 2 + realOffset.x;
 		offset.y = frameHeight / 2 + realOffset.y;
 	}
+
 	var aaa = 0.0;
 
 	override function update(elapsed:Float)
@@ -158,12 +165,11 @@ class CupBullet extends FlxSprite
 				switch (state)
 				{
 					case 'shoot':
-						if (PlayState.SONG.song.toLowerCase() != 'devils-gambit') hsp = 12;
-						else hsp = 18;
+						if (PlayState.SONG.song.toLowerCase() != 'devils-gambit') hsp = 12; else hsp = 18;
 				}
 
 			case 'roundabout':
-				scale.set(1.5,1.5);
+				scale.set(1.5, 1.5);
 				aaa = 5;
 				switch (state)
 				{

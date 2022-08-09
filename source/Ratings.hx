@@ -8,7 +8,8 @@ class Ratings
 
 		if (PlayState.instance.misses == 0 && PlayState.instance.bads == 0 && PlayState.instance.shits == 0 && PlayState.instance.goods == 0) // Marvelous (SICK) Full Combo
 			ranking = "(MFC)";
-		else if (PlayState.instance.misses == 0 && PlayState.instance.bads == 0 && PlayState.instance.shits == 0 && PlayState.instance.goods >= 1) // Good Full Combo (Nothing but Goods & Sicks)
+		else
+			if (PlayState.instance.misses == 0 && PlayState.instance.bads == 0 && PlayState.instance.shits == 0 && PlayState.instance.goods >= 1) // Good Full Combo (Nothing but Goods & Sicks)
 			ranking = "(GFC)";
 		else if (PlayState.instance.misses == 0) // Regular FC
 			ranking = "(FC)";
@@ -127,19 +128,20 @@ class Ratings
 				+ " (Max "
 				+ maxNPS
 				+ ")"
-				+ ((!PlayStateChangeables.botPlay || (PlayStateChangeables.botPlay && MainMenuState.showcase)) ? " | " : "") : "") 
-							+ // 	NPS
-							((!PlayStateChangeables.botPlay || (PlayStateChangeables.botPlay && MainMenuState.showcase)) ? "social credit points: " + (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score) 
-							+ // Score
-							(FlxG.save.data.accuracyDisplay ? // Accuracy Toggle
-							" | skill issues: "
-							+ PlayState.instance.misses
-							+ // 	Misses/Combo Breaks
-							" | wackyness: "
-							+ ((PlayStateChangeables.botPlay && !MainMenuState.showcase) ? "N/A" : HelperFunctions.truncateFloat(accuracy, 2) + " %")
-							+ // 	Accuracy
-							" | "
-							+ GenerateLetterRank(accuracy) : "") : ""); // 	Letter Rank
+				+ ((!PlayStateChangeables.botPlay
+					|| (PlayStateChangeables.botPlay && MainMenuState.showcase)) ? " | " : "") : "") + // 	NPS
+				((!PlayStateChangeables.botPlay || (PlayStateChangeables.botPlay && MainMenuState.showcase)) ? "social credit points: "
+					+ (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score)
+					+ // Score
+					(FlxG.save.data.accuracyDisplay ? // Accuracy Toggle
+						" | skill issues: "
+						+ PlayState.instance.misses
+						+ // 	Misses/Combo Breaks
+						" | wackyness: "
+						+ ((PlayStateChangeables.botPlay && !MainMenuState.showcase) ? "N/A" : HelperFunctions.truncateFloat(accuracy, 2) + " %")
+						+ // 	Accuracy
+						" | "
+						+ GenerateLetterRank(accuracy) : "") : ""); // 	Letter Rank
 		}
 		else
 		{
@@ -149,11 +151,12 @@ class Ratings
 				+ " (Max "
 				+ maxNPS
 				+ ")"
-				+ ((!PlayStateChangeables.botPlay || (PlayStateChangeables.botPlay && MainMenuState.showcase)) ? " | " : "") : "") 
-							+ // 	NPS
-							(!PlayStateChangeables.botPlay || (PlayStateChangeables.botPlay && MainMenuState.showcase) ? "Score: " + (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score)
-							 + // Score
-							(FlxG.save.data.accuracyDisplay ? // Accuracy Toggle
+				+ ((!PlayStateChangeables.botPlay
+					|| (PlayStateChangeables.botPlay && MainMenuState.showcase)) ? " | " : "") : "") + // 	NPS
+				(!PlayStateChangeables.botPlay
+					|| (PlayStateChangeables.botPlay && MainMenuState.showcase) ? "Score: " + (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : ""
+						+ score) + // Score
+						(FlxG.save.data.accuracyDisplay ? // Accuracy Toggle
 							" | Misses: "
 							+ PlayState.instance.misses
 							+ // 	Misses/Combo Breaks

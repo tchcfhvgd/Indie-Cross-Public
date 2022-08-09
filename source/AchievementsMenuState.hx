@@ -210,8 +210,9 @@ class AchievementsMenuState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 		}
 
-		//chooses what title text to use
-		if (Achievements.achievements[achievementIndex[curSelected]].sec && !FlxG.save.data.achievementsIndie[Achievements.achievements[curSelected].id])
+		// chooses what title text to use
+		if (Achievements.achievements[achievementIndex[curSelected]].sec
+			&& !FlxG.save.data.achievementsIndie[Achievements.achievements[curSelected].id])
 		{
 			descText.text = "?";
 		}

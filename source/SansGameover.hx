@@ -165,12 +165,12 @@ class SansGameover extends MusicBeatSubstate
 			if (!isEnding)
 			{
 				isEnding = true;
-	
+
 				if (FlxG.sound.music != null)
 				{
 					FlxG.sound.music.fadeOut(2, 0);
 				}
-	
+
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()
 				{
 					FlxG.resetState();

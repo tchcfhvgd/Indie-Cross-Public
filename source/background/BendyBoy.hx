@@ -134,6 +134,6 @@ class BendyBoy extends FlxSprite
 
 	public function addOffset(name:String, x:Float = 0, y:Float = 0)
 	{
-		animOffsets[name] = [x/1.7, y/1.7];
+		animOffsets[name] = [x / 1.7, y / 1.7];
 	}
 }

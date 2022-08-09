@@ -6,58 +6,58 @@ import flixel.FlxG;
 
 class AnimState extends MusicBeatState
 {
-    var loaded:Bool = false;
-    var leAssets:AssetManager;
-    var leAnimation:Animation;
+	var loaded:Bool = false;
+	var leAssets:AssetManager;
+	var leAnimation:Animation;
 
-    override function create()
-    {
-        super.create();
+	override function create()
+	{
+		super.create();
 
-        var sans:AssetManager = new AssetManager();
-        sans.enqueue("assets/shared/images/characters/Saness");
-        sans.loadQueue(onLoad);
-    }
+		var sans:AssetManager = new AssetManager();
+		sans.enqueue("assets/shared/images/characters/Saness");
+		sans.loadQueue(onLoad);
+	}
 
-    function onLoad(assets:AssetManager):Void
-    {
-        trace('no way i loaded wtf?!?!?');
+	function onLoad(assets:AssetManager):Void
+	{
+		trace('no way i loaded wtf?!?!?');
 
-        loaded = true;
-        leAssets = assets;
+		loaded = true;
+		leAssets = assets;
 
-        leAnimation = leAssets.createAnimation("Idle");
-        
-        for (anim in leAssets.getAnimationAtlasNames("", []))
-        {
-            trace(anim);
-        }
+		leAnimation = leAssets.createAnimation("Idle");
 
-        FlxG.stage.addChild(leAnimation);
-    }
+		for (anim in leAssets.getAnimationAtlasNames("", []))
+		{
+			trace(anim);
+		}
 
-    override function update(elapsed:Float)
-    {
-        super.update(elapsed);
+		FlxG.stage.addChild(leAnimation);
+	}
 
-        if (loaded)
-        {
-            if (FlxG.keys.justPressed.UP)
-            {
-                leAnimation = leAssets.createAnimation("Up");
-            }
-            else if (FlxG.keys.justPressed.DOWN)
-            {
-                leAnimation = leAssets.createAnimation("Down");
-            }
-            else if (FlxG.keys.justPressed.LEFT)
-            {
-                leAnimation = leAssets.createAnimation("Left");
-            }
-            else if (FlxG.keys.justPressed.RIGHT)
-            {
-                leAnimation = leAssets.createAnimation("Right");
-            }
-        }
-    }
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		if (loaded)
+		{
+			if (FlxG.keys.justPressed.UP)
+			{
+				leAnimation = leAssets.createAnimation("Up");
+			}
+			else if (FlxG.keys.justPressed.DOWN)
+			{
+				leAnimation = leAssets.createAnimation("Down");
+			}
+			else if (FlxG.keys.justPressed.LEFT)
+			{
+				leAnimation = leAssets.createAnimation("Left");
+			}
+			else if (FlxG.keys.justPressed.RIGHT)
+			{
+				leAnimation = leAssets.createAnimation("Right");
+			}
+		}
+	}
 }

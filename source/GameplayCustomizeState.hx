@@ -93,8 +93,7 @@ class GameplayCustomizeState extends MusicBeatState
 		generateStaticArrows(0);
 		generateStaticArrows(1);
 
-		text = new FlxText(5, FlxG.height + 40, 0,
-			"Use the arrow keys to move the rating position.\nPress R to reset.\nPress Escape to go back.", 12);
+		text = new FlxText(5, FlxG.height + 40, 0, "Use the arrow keys to move the rating position.\nPress R to reset.\nPress Escape to go back.", 12);
 		text.scrollFactor.set();
 		text.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 
@@ -255,7 +254,6 @@ class GameplayCustomizeState extends MusicBeatState
 			}
 
 			babyArrow.animation.play('static');
-
 
 			switch (player)
 			{

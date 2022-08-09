@@ -119,7 +119,7 @@ class TitleState extends MusicBeatState
 		blackOverlay.screenCenter();
 		blackOverlay.scrollFactor.set();
 		add(blackOverlay);
-		
+
 		creditsText = new FlxText(0, FlxG.height - 26, 0, "the credits would be shown in the menu", 18);
 		creditsText.alpha = 0;
 		creditsText.setFormat(HelperFunctions.returnMenuFont(creditsText), 18, FlxColor.WHITE, RIGHT);

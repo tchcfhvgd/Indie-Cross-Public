@@ -107,9 +107,9 @@ class ChartingState extends MusicBeatState
 	override function create()
 	{
 		super.create();
-		
+
 		setBrightness(0);
-		
+
 		curSection = lastSection;
 
 		if (PlayState.SONG != null)
@@ -286,7 +286,9 @@ class ChartingState extends MusicBeatState
 
 		if (!MainMenuState.debugTools)
 		{
-			if (PlayState.SONG.song.toLowerCase() == 'devils-gambit' || PlayState.SONG.song.toLowerCase() == 'bad-time' || PlayState.SONG.song.toLowerCase() == 'despair')
+			if (PlayState.SONG.song.toLowerCase() == 'devils-gambit'
+				|| PlayState.SONG.song.toLowerCase() == 'bad-time'
+				|| PlayState.SONG.song.toLowerCase() == 'despair')
 				noEscape = true;
 		}
 	}
@@ -839,7 +841,7 @@ class ChartingState extends MusicBeatState
 				}
 			});
 		}
-		
+
 		if (curBeat % 4 == 0 && curStep >= 16 * (curSection + 1))
 		{
 			trace(curStep);
@@ -870,27 +872,27 @@ class ChartingState extends MusicBeatState
 					jumpscareStatic.animation.play('static');
 					FlxG.sound.play(Paths.sound('Lights_Turn_On'));
 					FlxG.sound.play(Paths.sound('scare_bendy'));
-	
+
 					FlxG.sound.music.pause();
 					vocals.pause();
-	
+
 					FlxTransitionableState.skipNextTransIn = true;
 					FlxTransitionableState.skipNextTransOut = true;
-	
+
 					new FlxTimer().start(0.66, function(tmr:FlxTimer)
 					{
 						jumpscareStatic.visible = true;
 						FlxTween.color(jumpscareStatic, 1.85, FlxColor.WHITE, FlxColor.BLACK, {ease: FlxEase.quadOut});
 						bendy.alpha = 0.0;
 					});
-	
+
 					JumpscareState.allowRetry = false;
 					new FlxTimer().start(3, function(tmr:FlxTimer)
 					{
 						FlxG.switchState(new JumpscareState());
 					});
 				}
-	
+
 				if (PlayState.SONG.song.toLowerCase() == 'devils-gambit' && cuphead.alpha == 0)
 				{
 					cuphead.alpha = 1;
@@ -898,24 +900,24 @@ class ChartingState extends MusicBeatState
 					jumpscareStatic.animation.play('static');
 					FlxG.sound.play(Paths.sound('Lights_Turn_On'));
 					FlxG.sound.play(Paths.sound('scare_cuphead'));
-	
+
 					FlxTransitionableState.skipNextTransIn = true;
 					FlxTransitionableState.skipNextTransOut = true;
-	
+
 					new FlxTimer().start(0.91, function(tmr:FlxTimer)
 					{
 						jumpscareStatic.visible = true;
 						FlxTween.color(jumpscareStatic, 1.85, FlxColor.WHITE, FlxColor.BLACK, {ease: FlxEase.quadOut});
 						cuphead.alpha = 0.0;
 					});
-	
+
 					JumpscareState.allowRetry = false;
 					new FlxTimer().start(3, function(tmr:FlxTimer)
 					{
 						FlxG.switchState(new JumpscareState());
 					});
 				}
-	
+
 				if (PlayState.SONG.song.toLowerCase() == 'bad-time' && sans.alpha == 0)
 				{
 					sans.alpha = 1;
@@ -923,17 +925,17 @@ class ChartingState extends MusicBeatState
 					jumpscareStatic.animation.play('static');
 					FlxG.sound.play(Paths.sound('Lights_Turn_On'));
 					FlxG.sound.play(Paths.sound('scare_sans'));
-	
+
 					FlxTransitionableState.skipNextTransIn = true;
 					FlxTransitionableState.skipNextTransOut = true;
-	
+
 					new FlxTimer().start(0.875, function(tmr:FlxTimer)
 					{
 						jumpscareStatic.visible = true;
 						FlxTween.color(jumpscareStatic, 1.85, FlxColor.WHITE, FlxColor.BLACK, {ease: FlxEase.quadOut});
 						sans.alpha = 0.0;
 					});
-	
+
 					JumpscareState.allowRetry = false;
 					new FlxTimer().start(3, function(tmr:FlxTimer)
 					{
@@ -1063,17 +1065,21 @@ class ChartingState extends MusicBeatState
 			// therefore we control YOU :)
 			// look behind you
 			var notAllowed:Array<String> = [
-				'gose', 'saness', 'satanic-funkin', 'bad-to-the-bone', 'bonedoggle', 'ritual', 'freaky-machine', 'devils-gambit', 'bad-time', 'despair', 'burning-in-hell', 'final-stretch'
+				'gose', 'saness', 'satanic-funkin', 'bad-to-the-bone', 'bonedoggle', 'ritual', 'freaky-machine', 'devils-gambit', 'bad-time', 'despair',
+				'burning-in-hell', 'final-stretch'
 			];
 
 			for (i in 0...notAllowed.length)
 			{
 				if ((!_song.song.toLowerCase().contains(notAllowed[i]) || MainMenuState.debugTools)
-				|| (FlxG.save.data.hasgenocided && _song.song.toLowerCase() == 'burning-in-hell') || (FlxG.save.data.haspacifisted && _song.song.toLowerCase() == 'final-stretch')
-				|| (FlxG.save.data.weeksbeat[0] && _song.song.toLowerCase() == 'statanic-funkin')
-				|| (FlxG.save.data.weeksbeat[1] && (FlxG.save.data.hasgenocided && _song.song.toLowerCase() == 'bad-to-the-bone') || (FlxG.save.data.haspacifisted && _song.song.toLowerCase() == 'bonedoggle'))
-				|| (FlxG.save.data.weeksbeat[2] && (_song.song.toLowerCase() == 'ritual' || _song.song.toLowerCase() == 'freaky-machine'))
-				)
+					|| (FlxG.save.data.hasgenocided && _song.song.toLowerCase() == 'burning-in-hell')
+					|| (FlxG.save.data.haspacifisted && _song.song.toLowerCase() == 'final-stretch')
+					|| (FlxG.save.data.weeksbeat[0] && _song.song.toLowerCase() == 'statanic-funkin')
+					|| (FlxG.save.data.weeksbeat[1]
+						&& (FlxG.save.data.hasgenocided && _song.song.toLowerCase() == 'bad-to-the-bone')
+						|| (FlxG.save.data.haspacifisted && _song.song.toLowerCase() == 'bonedoggle'))
+					|| (FlxG.save.data.weeksbeat[2]
+						&& (_song.song.toLowerCase() == 'ritual' || _song.song.toLowerCase() == 'freaky-machine')))
 				{
 					lastSection = curSection;
 					PlayState.SONG = _song;
@@ -1521,7 +1527,7 @@ class ChartingState extends MusicBeatState
 			{
 				var sustainVis:FlxSprite = new FlxSprite(note.x + (GRID_SIZE / 2),
 					note.y + GRID_SIZE).makeGraphic(8,
-					Math.floor(FlxMath.remapToRange(daSus, 0, Conductor.stepCrochet * _song.notes[curSection].lengthInSteps, 0, gridBG.height)));
+						Math.floor(FlxMath.remapToRange(daSus, 0, Conductor.stepCrochet * _song.notes[curSection].lengthInSteps, 0, gridBG.height)));
 				curRenderedSustains.add(sustainVis);
 			}
 		}
@@ -1568,7 +1574,8 @@ class ChartingState extends MusicBeatState
 		{
 			if (i[0] == note.strumTime && i[1] % 4 == note.noteData)
 			{
-				if (i == curSelectedNote) curSelectedNote = null;
+				if (i == curSelectedNote)
+					curSelectedNote = null;
 
 				_song.notes[curSection].sectionNotes.remove(i);
 				break;

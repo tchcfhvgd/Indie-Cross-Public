@@ -20,9 +20,9 @@ class Character extends FlxSprite
 
 	public var daZoom:Float = 1;
 	public var specialAnimList:Array<String> = [];
-	public var notSoSpecialAnimList:Array<String> = ['idle','sing'];//list for animations that are common and can get overridden, aka singing, idle ect 
-	/*make sure to push stuff into this BEFORE adding an offset*/
+	public var notSoSpecialAnimList:Array<String> = ['idle', 'sing']; // list for animations that are common and can get overridden, aka singing, idle ect
 
+	/*make sure to push stuff into this BEFORE adding an offset*/
 	public var singDuration:Float = 6;
 
 	public var preventDance = false;
@@ -30,7 +30,7 @@ class Character extends FlxSprite
 
 	public var idleReplacement:String = '';
 
-	public var constantLooping = false; //only to be used for nightmare run for bendy only
+	public var constantLooping = false; // only to be used for nightmare run for bendy only
 
 	public var loopedIdle:Bool = false;
 
@@ -48,7 +48,6 @@ class Character extends FlxSprite
 
 		switch (curCharacter)
 		{
-
 			case 'dad':
 				frames = Paths.getSparrowAtlas('characters/DADDY_DEAREST', 'shared');
 				animation.addByPrefix('idle', 'Dad idle dance', 24, false);
@@ -181,7 +180,7 @@ class Character extends FlxSprite
 				addOffset('singLEFT', 400, -161);
 				addOffset('singDOWN', -7, -297);
 
-				//addOffset('Attack', -156, -130);
+				// addOffset('Attack', -156, -130);
 				addOffset('Intro', 720, 34);
 				addOffset('End1', -30, -236);
 				addOffset('End2', 31, -100);
@@ -252,7 +251,7 @@ class Character extends FlxSprite
 
 				setZoom(2.5);
 				constantLooping = true;
-				
+
 			case 'bendyChaseDark':
 				frames = Paths.getSparrowAtlas('characters/dark/Bendy_run_Remastered', 'shared');
 				animation.addByPrefix('idle', 'Bendy Run instance 1', 24, true);
@@ -300,7 +299,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 				setZoom(1.4);
-				
+
 				x -= 50;
 
 				flipX = true;
@@ -406,7 +405,7 @@ class Character extends FlxSprite
 				addOffset('regret', -30, -35);
 
 				loopedIdle = true;
-				
+
 				scale.set(1.7, 1.7);
 				playAnim('idle');
 
@@ -461,12 +460,11 @@ class Character extends FlxSprite
 				animation.addByPrefix('singDOWN-alt', 'Down Tired instance 1', 24, false);
 				animation.addByPrefix('singLEFT-alt', 'Left Tired instance 1', 24, false);
 				animation.addByPrefix('miss-alt', 'SansDodgeTired instance 1', 24, false);
-				
+
 				animation.addByPrefix('idleLeft-alt', 'Sans FNF Tired instance 1', 24, false);
 				animation.addByPrefix('idleRight-alt', 'Sans FNF Tired instance 1', 24, false);
 
 				animation.addByPrefix('snap', 'Snap to UT mode instance 1', 24, false);
-
 
 				addOffset('idleLeft');
 				addOffset('idleRight');
@@ -504,12 +502,12 @@ class Character extends FlxSprite
 				addOffset("singDOWN", 4, -12);
 
 				playAnim('idle');
-				//setZoom(1.75);
+			// setZoom(1.75);
 			/*
 				case 'saness':
 					frames = 
 					playAnim('idle');
-				*/
+			 */
 
 			case 'papyrus':
 				frames = Paths.getSparrowAtlas('characters/Papyrus', 'shared');
@@ -629,7 +627,7 @@ class Character extends FlxSprite
 				addOffset('miss', 0, 0);
 
 				playAnim('idleLeft');
-			
+
 			case 'bfSammy':
 				frames = Paths.getSparrowAtlas('characters/BoyFriend_Sammy', 'shared');
 				moroAnim('idle', 'BF idle dance', false);
@@ -1086,15 +1084,15 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS instance 1', 24, false);
 				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS instance 1', 24, false);
 
-				addOffset('idle',-5,0);
-				addOffset('singUP',-53,55);
-				addOffset('singRIGHT',-37,-1);
-				addOffset('singLEFT',24,-3);
-				addOffset('singDOWN',-26,-37);
-				addOffset('singUPmiss',-55,14);
-				addOffset('singRIGHTmiss',-63,24);
-				addOffset('singLEFTmiss',-30,21);
-				addOffset('singDOWNmiss',-27,-24);
+				addOffset('idle', -5, 0);
+				addOffset('singUP', -53, 55);
+				addOffset('singRIGHT', -37, -1);
+				addOffset('singLEFT', 24, -3);
+				addOffset('singDOWN', -26, -37);
+				addOffset('singUPmiss', -55, 14);
+				addOffset('singRIGHTmiss', -63, 24);
+				addOffset('singLEFTmiss', -30, 21);
+				addOffset('singDOWNmiss', -27, -24);
 				addOffset('dodge,-21,-15');
 
 				playAnim('idle');
@@ -1234,7 +1232,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHT', 'Right Normal instance 1', 24, false);
 				animation.addByPrefix('singDOWN', 'Down Normal instance 1', 24, false);
 				animation.addByPrefix('singLEFT', 'Left instance 1', 24, false);
-				animation.addByPrefix('hey', 'Up Normal instance 1', 24, false); //idk
+				animation.addByPrefix('hey', 'Up Normal instance 1', 24, false); // idk
 
 				addOffset('idle', -1, 2);
 				addOffset('singUP', 52, 64);
@@ -1249,7 +1247,7 @@ class Character extends FlxSprite
 				addOffset('bendyIsTrans', -6, -17);
 				addOffset('ugh', -33, 72);
 				addOffset("you've got this", 22, -29);
-				addOffset('hey', 52, 62); 
+				addOffset('hey', 52, 62);
 
 				loopedIdle = true;
 
@@ -1258,8 +1256,7 @@ class Character extends FlxSprite
 
 				updateHitbox();
 			case 'none':
-				//gave it a case to prevent crash
-
+				// gave it a case to prevent crash
 		}
 
 		dance();
@@ -1400,13 +1397,15 @@ class Character extends FlxSprite
 		}
 	}
 
-	public function playAnim(AnimName:String, Force:Bool = false, Reversed:Bool = false, Frame:Int = 0, playafterfin:Bool = false, whatanimtoplay:String = ''):Void
+	public function playAnim(AnimName:String, Force:Bool = false, Reversed:Bool = false, Frame:Int = 0, playafterfin:Bool = false,
+			whatanimtoplay:String = ''):Void
 	{
 		if (constantLooping)
 		{
 			animation.play(AnimName, Force, Reversed, this.animation.curAnim.curFrame + 1);
 		}
-		else animation.play(AnimName, Force, Reversed, Frame);
+		else
+			animation.play(AnimName, Force, Reversed, Frame);
 
 		var daOffset = animOffsets.get(AnimName);
 		if (animOffsets.exists(AnimName))
@@ -1421,12 +1420,12 @@ class Character extends FlxSprite
 		if (playafterfin)
 		{
 			var num = animation.animNAMES.indexOf(AnimName);
-			idletimer = new FlxTimer().start(animation.animFRAMES[num]/animation.animFPS[num]+0.05, function(tmr:FlxTimer)
+			idletimer = new FlxTimer().start(animation.animFRAMES[num] / animation.animFPS[num] + 0.05, function(tmr:FlxTimer)
 			{
 				if (whatanimtoplay == '')
 					dance();
 				else
-					playAnim(whatanimtoplay,true);
+					playAnim(whatanimtoplay, true);
 			});
 			// trace(AnimName + ' frames amt: ' + animation.animFRAMES[num] + ' fps: '+animation.animFPS[num]);
 		}
@@ -1443,9 +1442,10 @@ class Character extends FlxSprite
 		animOffsets[name] = [x, y];
 	}
 
-	public function check(str:String) {
+	public function check(str:String)
+	{
 		var total = notSoSpecialAnimList.length;
-		var amt=0;
+		var amt = 0;
 		for (i in 0...notSoSpecialAnimList.length)
 		{
 			if (!str.contains(notSoSpecialAnimList[i]))
@@ -1457,7 +1457,8 @@ class Character extends FlxSprite
 			return false;
 	}
 
-	public function onpause(isp:Bool) {
+	public function onpause(isp:Bool)
+	{
 		if (isp)
 		{
 			if (idletimer != null)

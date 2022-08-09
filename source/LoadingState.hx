@@ -37,16 +37,24 @@ class LoadingState extends MusicBeatState
 		{
 			case 0:
 				library = "cup";
-		
+
 				soundsToCache = ["parry", "knockout", "death"];
 
-				imagesToCache = ['knock', 'ready_wallop', 'bull/Roundabout', 'bull/GreenShit', 'bull/Cupheadshoot', 'bull/Cuphead Hadoken','mozo'];
-				
+				imagesToCache = [
+					'knock',
+					'ready_wallop',
+					'bull/Roundabout',
+					'bull/GreenShit',
+					'bull/Cupheadshoot',
+					'bull/Cuphead Hadoken',
+					'mozo'
+				];
+
 				FNFState.disableNextTransIn = true;
-			
+
 			case 1:
 				library = "sans";
-			
+
 				soundsToCache = ["notice", "sansattack", "dodge", "readygas", "shootgas"];
 
 				imagesToCache = ["DodgeMechs"];
@@ -54,20 +62,17 @@ class LoadingState extends MusicBeatState
 				switch (PlayState.SONG.song.toLowerCase())
 				{
 					case 'bad-time':
-						imagesToCache = imagesToCache.concat([	
-							'Gaster_blasterss',
-							'DodgeMechsBS-Shader'
-						]);
+						imagesToCache = imagesToCache.concat(['Gaster_blasterss', 'DodgeMechsBS-Shader']);
 				}
-			
+
 			case 2:
 				library = "bendy";
-			
+
 				soundsToCache = ['inked'];
 
 				imagesToCache = ['Damage01', 'Damage02', 'Damage03', 'Damage04'];
 		}
-		
+
 		// Hardcoded for now
 		if (PlayState.SONG.song.toLowerCase() == 'ritual')
 			FNFState.disableNextTransIn = true;
@@ -104,7 +109,7 @@ class LoadingState extends MusicBeatState
 
 			screen.setLoadingText("Done!");
 			trace("Done caching");
-			
+
 			FlxG.camera.fade(FlxColor.BLACK, 1, false);
 			new FlxTimer().start(1, function(_:FlxTimer)
 			{

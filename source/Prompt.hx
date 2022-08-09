@@ -13,7 +13,7 @@ import flixel.util.FlxColor;
  */
 class Prompt extends MusicBeatSubstate
 {
-    public static var acceptThing:Void->Void;
+	public static var acceptThing:Void->Void;
 	public static var backThing:Void->Void;
 
 	var entertime:Float = 0.4;
@@ -55,7 +55,7 @@ class Prompt extends MusicBeatSubstate
 		add(text2);
 		text2.screenCenter(X);
 		text2.alpha = 0;
-		
+
 		#if android
 		addVirtualPad(NONE, A_B);
 		virtualPad.alpha = 0;
@@ -66,7 +66,6 @@ class Prompt extends MusicBeatSubstate
 		FlxTween.tween(text2, {alpha: 1}, entertime, {ease: FlxEase.quartInOut});
 		FlxTween.tween(icon, {alpha: 1}, entertime, {ease: FlxEase.quartInOut});
 		FlxTween.tween(virtualPad, {alpha: 1}, entertime, {ease: FlxEase.quartInOut});
-		
 
 		new FlxTimer().start(entertime, function(tmr:FlxTimer)
 		{
@@ -89,7 +88,7 @@ class Prompt extends MusicBeatSubstate
 				}
 				close();
 			}
-	
+
 			if (controls.ACCEPT)
 			{
 				acceptThing();

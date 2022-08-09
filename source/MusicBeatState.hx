@@ -135,7 +135,7 @@ class MusicBeatState extends FNFState
 			Paths.clearUnusedMemory();
 
 		setChrome(0);
-		
+
 		if (Lib.current.getChildAt(0) != null)
 		{
 			(cast(Lib.current.getChildAt(0), Main)).setFPSCap(FlxG.save.data.fpsCap);

@@ -1,7 +1,7 @@
 package;
 
-//import GameJolt.GameJoltAPI;
-//import GameJolt.GameJoltLogin;
+// import GameJolt.GameJoltAPI;
+// import GameJolt.GameJoltLogin;
 import Shaders.FXHandler;
 import flixel.FlxG;
 import flixel.util.FlxColor;
@@ -401,6 +401,7 @@ class SongPositionOption extends Option
 		return "Song Position " + (!FlxG.save.data.songPosition ? "off" : "on");
 	}
 }
+
 class Hitsounds extends Option
 {
 	public function new(desc:String)
@@ -604,8 +605,6 @@ class Colorblind extends Option
 	}
 }
 
-
-
 class Resolution extends Option
 {
 	public function new(desc:String)
@@ -618,8 +617,8 @@ class Resolution extends Option
 
 	public override function press():Bool
 	{
-		FlxG.resizeWindow(intToMode(FlxG.save.data.resolution)[0],intToMode(FlxG.save.data.resolution)[1]);
-		FlxG.resizeGame(intToMode(FlxG.save.data.resolution)[0],intToMode(FlxG.save.data.resolution)[1]);
+		FlxG.resizeWindow(intToMode(FlxG.save.data.resolution)[0], intToMode(FlxG.save.data.resolution)[1]);
+		FlxG.resizeGame(intToMode(FlxG.save.data.resolution)[0], intToMode(FlxG.save.data.resolution)[1]);
 		trace(FlxG.width);
 		trace(FlxG.height);
 		display = updateDisplay();
@@ -633,7 +632,7 @@ class Resolution extends Option
 
 		FlxG.save.data.resolution -= 1;
 		trace(FlxG.save.data.resolution);
-		//FlxG.resizeWindow(intToMode(FlxG.save.data.resolution)[0],intToMode(FlxG.save.data.resolution)[1]);
+		// FlxG.resizeWindow(intToMode(FlxG.save.data.resolution)[0],intToMode(FlxG.save.data.resolution)[1]);
 
 		return true;
 	}
@@ -654,32 +653,23 @@ class Resolution extends Option
 		switch (i)
 		{
 			case 0:
-				resolution = 
-				[640,360];
+				resolution = [640, 360];
 			case 1:
-				resolution = 
-				[768,432];
+				resolution = [768, 432];
 			case 2:
-				resolution = 
-				[896,504];
+				resolution = [896, 504];
 			case 3:
-				resolution = 
-				[1024,576];
+				resolution = [1024, 576];
 			case 4:
-				resolution = 
-				[1152,648];
+				resolution = [1152, 648];
 			case 5:
-				resolution = 
-				[1280,720];
+				resolution = [1280, 720];
 			case 6:
-				resolution = 
-				[1920,1080];
+				resolution = [1920, 1080];
 			case 7:
-				resolution = 
-				[2560,1440];
+				resolution = [2560, 1440];
 			case 8:
-				resolution = 
-				[3840,2160];
+				resolution = [3840, 2160];
 		}
 		return resolution;
 	}
@@ -691,7 +681,6 @@ class Resolution extends Option
 
 		FlxG.save.data.resolution += 1;
 		trace(FlxG.save.data.resolution);
-
 
 		return true;
 	}
@@ -1083,7 +1072,7 @@ class CustomizeAndroidControls extends Option
 #end
 
 /*class LogInGJ extends Option
-{
+	{
 	public function new(desc:String)
 	{
 		super();
@@ -1102,10 +1091,10 @@ class CustomizeAndroidControls extends Option
 	{
 		return "Log In to Gamejolt";
 	}
-}
+	}
 
-class LogOutGJ extends Option
-{
+	class LogOutGJ extends Option
+	{
 	public function new(desc:String)
 	{
 		super();
@@ -1124,7 +1113,6 @@ class LogOutGJ extends Option
 		return "Log Out of Gamejolt";
 	}
 }*/
-
 class OffsetMenu extends Option
 {
 	public function new(desc:String)

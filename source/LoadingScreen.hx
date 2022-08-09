@@ -9,23 +9,25 @@ import flixel.util.FlxColor;
 
 class LoadingScreen extends FlxTypedGroup<FlxSprite>
 {
-    public var progress:Int = 0;
+	public var progress:Int = 0;
 	public var max:Int = 10;
-    
-    var loadingImage:FlxSprite;
-    var loadTxtBg:FlxSprite;
+
+	var loadingImage:FlxSprite;
+	var loadTxtBg:FlxSprite;
 	var loadTxtProgress:FlxSprite;
-    var loadTxt:FlxText;
-    
-    public function new()
-    {
-        super();
+	var loadTxt:FlxText;
+
+	public function new()
+	{
+		super();
 
 		loadingImage = new FlxSprite(0, 0);
 
 		if (PlayState.SONG != null)
 		{
-			if (PlayState.SONG.song.toLowerCase() == "devils-gambit" || PlayState.SONG.song.toLowerCase() == "bad-time" || PlayState.SONG.song.toLowerCase() == "despair")
+			if (PlayState.SONG.song.toLowerCase() == "devils-gambit"
+				|| PlayState.SONG.song.toLowerCase() == "bad-time"
+				|| PlayState.SONG.song.toLowerCase() == "despair")
 			{
 				if (!FlxG.save.data.secretChars[5])
 				{
@@ -59,7 +61,7 @@ class LoadingScreen extends FlxTypedGroup<FlxSprite>
 		{
 			loadingImage.loadGraphic(Paths.image('Loading_screen', 'preload'));
 		}
-		
+
 		loadingImage.updateHitbox();
 		loadingImage.screenCenter();
 		add(loadingImage);
@@ -77,8 +79,8 @@ class LoadingScreen extends FlxTypedGroup<FlxSprite>
 		add(loadTxt);
 
 		loadTxtBg.makeGraphic(1, 1, 0xFF000000);
-        loadTxtBg.updateHitbox();
-        loadTxtBg.origin.set();
+		loadTxtBg.updateHitbox();
+		loadTxtBg.origin.set();
 		loadTxtBg.scale.set(1280, loadTxt.height + 5);
 		loadTxtBg.alpha = 0.8;
 		loadTxtBg.y = loadTxt.y;
@@ -91,18 +93,18 @@ class LoadingScreen extends FlxTypedGroup<FlxSprite>
 		loadTxtProgress.y = loadTxt.y;
 
 		loadTxt.y += 2;
-    }
+	}
 
-    override function update(elapsed:Float)
-    {
-        super.update(elapsed);
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
 
 		var lerpTarget:Float = 1280.0 * (progress / max);
 		loadTxtProgress.scale.x = FlxMath.lerp(loadTxtProgress.scale.x, lerpTarget, elapsed * 5);
-    }
+	}
 
-    public function setLoadingText(text:String)
-    {
-        loadTxt.text = text;
-    }
+	public function setLoadingText(text:String)
+	{
+		loadTxt.text = text;
+	}
 }

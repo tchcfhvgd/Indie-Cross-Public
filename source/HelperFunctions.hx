@@ -16,10 +16,8 @@ class HelperFunctions
 	public static var difficultyArray:Array<String> = ['Easy', "Normal", "Hard"];
 
 	public static var v1Songs:Array<String> = [
-		'snake-eyes', 'technicolor-tussle', 'knockout', 'satanic-funkin',
-		'whoopee', 'sansational', 'final-stretch', 'burning-in-hell', 'bad-to-the-bone', 'bonedoggle',
-		'imminent-demise', 'terrible-sin', 'last-reel', 'nightmare-run', 'ritual', 'freaky-machine',
-		'devils-gambit', 'bad-time', 'despair',
+		'snake-eyes', 'technicolor-tussle', 'knockout', 'satanic-funkin', 'whoopee', 'sansational', 'final-stretch', 'burning-in-hell', 'bad-to-the-bone',
+		'bonedoggle', 'imminent-demise', 'terrible-sin', 'last-reel', 'nightmare-run', 'ritual', 'freaky-machine', 'devils-gambit', 'bad-time', 'despair',
 		'gose', 'saness'
 	];
 
@@ -47,20 +45,20 @@ class HelperFunctions
 		return daList;
 	}
 
-	public static function boundTo(value:Float, min:Float, max:Float):Float 
+	public static function boundTo(value:Float, min:Float, max:Float):Float
 	{
 		var newValue:Float = value;
-		if (newValue < min) 
+		if (newValue < min)
 		{
 			newValue = min;
 		}
-		else if (newValue > max) 
+		else if (newValue > max)
 		{
 			newValue = max;
 		}
 		return newValue;
 	}
-	
+
 	public static function coolStringFile(path:String):Array<String>
 	{
 		var daList:Array<String> = path.trim().split('\n');
@@ -82,7 +80,7 @@ class HelperFunctions
 		}
 		return dumbArray;
 	}
-	
+
 	public static function truncateFloat(number:Float, precision:Int):Float
 	{
 		var num = number;
@@ -124,7 +122,7 @@ class HelperFunctions
 
 		switch (song)
 		{
-			//cuphead
+			// cuphead
 			case 'snake-eyes':
 				artistPrefix = 'Mike Geno';
 				bpm = "221";
@@ -140,7 +138,7 @@ class HelperFunctions
 				formattedName = 'Knockout';
 				hasMech = "true";
 
-			//sans
+			// sans
 			case 'whoopee':
 				artistPrefix = 'YingYang48 & Saster';
 				bpm = "120";
@@ -161,7 +159,7 @@ class HelperFunctions
 				bpm = "175";
 				formattedName = 'Final Stretch';
 
-			//bendy
+			// bendy
 			case 'imminent-demise':
 				artistPrefix = 'Saru & CDMusic';
 				bpm = "100";
@@ -182,7 +180,7 @@ class HelperFunctions
 				formattedName = 'Nightmare Run';
 				hasMech = "true";
 
-			//bonus
+			// bonus
 			case 'satanic-funkin':
 				artistPrefix = 'TheInnuendo';
 				bpm = "180";
@@ -206,8 +204,8 @@ class HelperFunctions
 				artistPrefix = 'DAGames & Saster';
 				bpm = "130";
 				formattedName = 'Freaky Machine';
-			
-			//nightmare
+
+			// nightmare
 			case 'devils-gambit':
 				artistPrefix = 'Saru & TheInnuend0';
 				bpm = "175";
@@ -224,7 +222,7 @@ class HelperFunctions
 				formattedName = 'Despair';
 				hasMech = "true";
 
-			//secret
+			// secret
 			case 'gose' | 'gose-classic':
 				artistPrefix = 'CrystalSlime';
 				bpm = "100";
@@ -236,7 +234,7 @@ class HelperFunctions
 				hasMech = "true";
 		}
 
-		//dodge stuff
+		// dodge stuff
 		switch (song.toLowerCase())
 		{
 			case 'knockout' | 'whoopee' | 'sansational' | 'burning-in-hell' | 'last-reel' | 'bad-time' | 'despair':
@@ -244,7 +242,7 @@ class HelperFunctions
 
 				mechStuff += bindDodge.toUpperCase() + ' - Dodge\n';
 		}
-		//attack stuff
+		// attack stuff
 		switch (song.toLowerCase())
 		{
 			case 'knockout' | 'sansational' | 'burning-in-hell' | 'technicolor-tussle':
@@ -271,7 +269,7 @@ class HelperFunctions
 				mechStuff += bindRight.toUpperCase() + ' - Attack (Right)\n';
 		}
 
-		switch(type.toLowerCase())
+		switch (type.toLowerCase())
 		{
 			case "artist":
 				return artistPrefix;
@@ -294,16 +292,16 @@ class HelperFunctions
 	{
 		#if !js
 		var envs = Sys.environment();
-		if (envs.exists("USERNAME")) 
+		if (envs.exists("USERNAME"))
 		{
 			return envs["USERNAME"];
 		}
-		if (envs.exists("USER")) 
+		if (envs.exists("USER"))
 		{
 			return envs["USER"];
 		}
 		#end
-	
+
 		return null;
 	}
 
@@ -318,7 +316,7 @@ class HelperFunctions
 			if (Assets.exists('assets/data/' + song.toLowerCase() + '/' + poop.toLowerCase() + '.json'))
 			{
 				var json:Dynamic;
-	
+
 				try
 				{
 					json = Assets.getText(Paths.json(song.toLowerCase() + '/' + poop.toLowerCase())).trim();
@@ -328,7 +326,7 @@ class HelperFunctions
 					trace("dang! stupid hashlink cant handle an empty file!");
 					json = null;
 				}
-	
+
 				if (json == null)
 				{
 					trace('aw fuck its null');
@@ -348,12 +346,10 @@ class HelperFunctions
 		}
 	}
 
-	
 	public static function isRecording():Bool
 	{
 		#if desktop
-		var programList:Array<String> = 
-		[
+		var programList:Array<String> = [
 			'obs32',
 			'obs64',
 			'streamlabs obs',

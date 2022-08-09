@@ -123,14 +123,13 @@ class SansDialogueBox extends FlxSpriteGroup
 					isEnding = true;
 					swagDialogue.visible = false;
 
-					box.animation.play('ending',true);
+					box.animation.play('ending', true);
 					box.animation.finishCallback = function(unused:String)
 					{
 						box.visible = false;
 						finishThing();
 						kill();
 					}
-					
 
 					new FlxTimer().start(0.5, function(tmr:FlxTimer)
 					{

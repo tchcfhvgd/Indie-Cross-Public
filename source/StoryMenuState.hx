@@ -25,7 +25,7 @@ class DiffButton extends FlxSprite
 	{
 		super(x, y);
 		animOffsets = new Map<String, Array<Dynamic>>();
-		
+
 		frames = Paths.getSparrowAtlas('story mode/Difficulties', 'preload');
 		animation.addByPrefix(HelperFunctions.mechDifficultyFromInt(2), 'Mechs Dis instance 1', 24, true);
 		animation.addByPrefix(HelperFunctions.mechDifficultyFromInt(1), 'Mechs Hard instance 1', 24, true);
@@ -37,9 +37,9 @@ class DiffButton extends FlxSprite
 
 		playAnim(HelperFunctions.mechDifficultyFromInt(StoryMenuState.curMechDifficulty), true);
 
-        offset.set(0, 0);
+		offset.set(0, 0);
 		antialiasing = FlxG.save.data.highquality;
-        scrollFactor.set();
+		scrollFactor.set();
 	}
 
 	public function setZoom(?toChange:Float = 1):Void
@@ -109,7 +109,7 @@ class StoryMenuState extends MusicBeatState
 
 	var gamingCup:FlxSprite;
 	var gamingSands:FlxSprite;
-	
+
 	var ismech:Bool = false;
 
 	var cupTea:FlxSprite;
@@ -261,7 +261,7 @@ class StoryMenuState extends MusicBeatState
 		scoreText.screenCenter();
 		scoreText.borderSize = 2.4;
 		scoreText.y += 335;
-		
+
 		trace("Line 124");
 
 		changeDifficulty();
@@ -313,7 +313,7 @@ class StoryMenuState extends MusicBeatState
 
 		// scoreText.setFormat('VCR OSD Mono', 32);
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, 0.4));
-		
+
 		if (Math.abs(lerpScore - intendedScore) <= 10)
 			lerpScore = intendedScore;
 
@@ -332,14 +332,14 @@ class StoryMenuState extends MusicBeatState
 				changeWeek(curWeek + 1);
 			}
 
-			if (FlxG.keys.pressed.SHIFT #if android || virtualPad.buttonC.pressed #end) //holding shift while changing diffiuclty, change mech diff
+			if (FlxG.keys.pressed.SHIFT #if android || virtualPad.buttonC.pressed #end) // holding shift while changing diffiuclty, change mech diff
 			{
 				if (controls.RIGHT_P)
 					changeMechDifficulty(-1);
 				if (controls.LEFT_P)
 					changeMechDifficulty(1);
 			}
-			else //not holding shift, change chart diffiuclty
+			else // not holding shift, change chart diffiuclty
 			{
 				if (controls.RIGHT_P)
 					changeDifficulty(1);
@@ -379,7 +379,7 @@ class StoryMenuState extends MusicBeatState
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			lockInput = true;
-	
+
 			FlxG.switchState(new MainMenuState());
 		}
 	}
@@ -393,7 +393,10 @@ class StoryMenuState extends MusicBeatState
 		{
 			if (stopspamming == false)
 			{
-				if (PlayState.storyWeek == curWeek && leftDuringWeek && PlayState.isStoryMode && PlayState.storyDifficulty == curDifficulty)
+				if (PlayState.storyWeek == curWeek
+					&& leftDuringWeek
+					&& PlayState.isStoryMode
+					&& PlayState.storyDifficulty == curDifficulty)
 				{
 					#if android
 					removeVirtualPad();
@@ -416,8 +419,8 @@ class StoryMenuState extends MusicBeatState
 						lockInput = false;
 						persistentUpdate = true;
 						#if android
-		                addVirtualPad(UP_DOWN, A_B_C);
-		                #end
+						addVirtualPad(UP_DOWN, A_B_C);
+						#end
 					}
 				}
 				else
@@ -491,7 +494,7 @@ class StoryMenuState extends MusicBeatState
 				PlayState.storyPlaylist = weekData[curWeek];
 			}
 		}
-		
+
 		PlayState.isStoryMode = true;
 		lockInput = true;
 

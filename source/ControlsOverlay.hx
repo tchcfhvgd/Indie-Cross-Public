@@ -11,13 +11,13 @@ using StringTools;
 
 class ControlsOverlay extends FlxSpriteGroup
 {
-    var controlsHelp:FlxText;
+	var controlsHelp:FlxText;
 
 	public function new()
 	{
 		super();
 
-        controlsHelp = new FlxText(10, 10, 0, HelperFunctions.getSongData(PlayState.SONG.song.toLowerCase(), 'mech'), 32);
+		controlsHelp = new FlxText(10, 10, 0, HelperFunctions.getSongData(PlayState.SONG.song.toLowerCase(), 'mech'), 32);
 		controlsHelp.scrollFactor.set();
 		controlsHelp.setFormat(Paths.font('vcr.ttf'), 32, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		controlsHelp.alignment = LEFT;
@@ -35,20 +35,20 @@ class ControlsOverlay extends FlxSpriteGroup
 		super.update(elapsed);
 	}
 
-    public function setAlpha(alpha:Float)
-    {
-        controlsHelp.alpha = alpha;
-    }
+	public function setAlpha(alpha:Float)
+	{
+		controlsHelp.alpha = alpha;
+	}
 
 	public function fade()
 	{
-        FlxTween.tween(controlsHelp, {alpha: 0}, Conductor.crochet / 1000, {
-            ease: FlxEase.cubeInOut, 
-            startDelay: (Conductor.crochet / 1000) * 8, 
-            onComplete: function(twn:FlxTween)
-            {
-                kill();
-            }
-        });
+		FlxTween.tween(controlsHelp, {alpha: 0}, Conductor.crochet / 1000, {
+			ease: FlxEase.cubeInOut,
+			startDelay: (Conductor.crochet / 1000) * 8,
+			onComplete: function(twn:FlxTween)
+			{
+				kill();
+			}
+		});
 	}
 }

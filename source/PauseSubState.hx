@@ -146,7 +146,7 @@ class PauseSubState extends MusicBeatSubstate
 
 		for (i in 0...menuItems.length)
 		{
-			var songText:Alphabet = new Alphabet(0, ((FlxMath.remapToRange(i, 0, 1, 0, 1.3) * 120) + (FlxG.height * 0.48)) , menuItems[i], true, false);
+			var songText:Alphabet = new Alphabet(0, ((FlxMath.remapToRange(i, 0, 1, 0, 1.3) * 120) + (FlxG.height * 0.48)), menuItems[i], true, false);
 			songText.isMenuItem = true;
 			songText.targetY = i;
 			grpMenuShit.add(songText);
@@ -167,7 +167,7 @@ class PauseSubState extends MusicBeatSubstate
 		levelDifficulty.font = HelperFunctions.returnHudFont(levelDifficulty);
 		levelDifficulty.updateHitbox();
 		add(levelDifficulty);
-		
+
 		mechDiffLabel = new FlxText(20, 84, 0, "", 32);
 		mechDiffLabel.text += HelperFunctions.mechDifficultyFromInt(PlayState.mechanicType).toUpperCase();
 		mechDiffLabel.scrollFactor.set();
@@ -188,13 +188,13 @@ class PauseSubState extends MusicBeatSubstate
 		controlsOverlay.scrollFactor.set();
 		add(controlsOverlay);
 
-
 		changeSelection();
 
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 
 		#if android
 		addVirtualPad(UP_DOWN, A_B);
+		addPadCamera();
 		#end
 
 		cancelSound.play(true);
@@ -215,13 +215,13 @@ class PauseSubState extends MusicBeatSubstate
 
 		if (!lerpOut)
 		{
-			value = FlxMath.lerp(value,1,poggers / 0.4);
+			value = FlxMath.lerp(value, 1, poggers / 0.4);
 			if (poggers < 0.4)
 				poggers += FlxG.elapsed;
 		}
 		else
 		{
-			value = FlxMath.lerp(value,0,poggers / 0.4);
+			value = FlxMath.lerp(value, 0, poggers / 0.4);
 			if (poggers < 0.4)
 				poggers += FlxG.elapsed;
 

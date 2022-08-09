@@ -4,7 +4,7 @@ import flixel.graphics.tile.FlxGraphicsShader;
 
 class DiamondTransShader extends FlxGraphicsShader
 {
-    @:glFragmentSource("
+	@:glFragmentSource("
     #pragma header
 
     // Ranges from 0 to 1 over the course of the transition.
@@ -35,13 +35,12 @@ class DiamondTransShader extends FlxGraphicsShader
         gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
     }
     ")
+	public function new()
+	{
+		super();
 
-    public function new()
-    {
-        super();
-
-        progress.value = [0.0];
-        reverse.value = [false];
-        diamondPixelSize.value = [30.0];
-    }
+		progress.value = [0.0];
+		reverse.value = [false];
+		diamondPixelSize.value = [30.0];
+	}
 }

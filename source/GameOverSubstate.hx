@@ -200,29 +200,29 @@ class GameOverSubstate extends MusicBeatSubstate
 		if (controls.ACCEPT)
 		{
 			if (hasVOfinished)
-				{
-					if (dialogueOver)
-						{
-							endBullshit();
-						}
-				}
-			else
+			{
+				if (dialogueOver)
 				{
 					endBullshit();
-					if (!isEnding)
-					{
-						var random = FlxG.random.int(1, 3);
-						FlxG.sound.play(Paths.sound('deathlines/skip/' + random));
-					}
 				}
+			}
+			else
+			{
+				endBullshit();
+				if (!isEnding)
+				{
+					var random = FlxG.random.int(1, 3);
+					FlxG.sound.play(Paths.sound('deathlines/skip/' + random));
+				}
+			}
 		}
 
 		if (controls.BACK)
 		{
 			if (dialogueOver)
-				{
-					backOut();
-				}
+			{
+				backOut();
+			}
 		}
 
 		if (playMusic && !isEnding)

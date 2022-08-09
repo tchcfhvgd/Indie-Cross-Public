@@ -327,7 +327,8 @@ class ModchartState
 
 		var sprite:FlxSprite = new FlxSprite(0, 0);
 
-		sprite.frames = FlxAtlasFrames.fromSparrow(FlxGraphic.fromBitmapData(data), openfl.utils.Assets.getText("assets/data/" + songLowercase + "/" + spritePath + ".xml"));
+		sprite.frames = FlxAtlasFrames.fromSparrow(FlxGraphic.fromBitmapData(data),
+			openfl.utils.Assets.getText("assets/data/" + songLowercase + "/" + spritePath + ".xml"));
 
 		trace(sprite.frames.frames.length);
 
@@ -1290,7 +1291,7 @@ class ModchartState
 			trace("Adding strum" + i);
 		}
 
-		//dark strums
+		// dark strums
 
 		for (i in 0...PlayState.instance.altStrumLineNotes.length)
 		{

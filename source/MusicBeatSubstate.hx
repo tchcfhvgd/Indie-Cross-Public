@@ -37,7 +37,7 @@ class MusicBeatSubstate extends FlxSubState
 		trackedinputs = controls.trackedinputs;
 		controls.trackedinputs = [];
 	}
-	
+
 	public function addVirtualPadNoControls(DPad:FlxDPadMode, Action:FlxActionMode)
 	{
 		virtualPad = new FlxVirtualPad(DPad, Action);
@@ -90,7 +90,7 @@ class MusicBeatSubstate extends FlxSubState
 
 	override function update(elapsed:Float)
 	{
-		//everyStep();
+		// everyStep();
 		var oldStep:Int = curStep;
 
 		updateCurStep();
@@ -139,10 +139,10 @@ class MusicBeatSubstate extends FlxSubState
 
 	public function beatHit():Void
 	{
-		//do literally nothing dumbass
+		// do literally nothing dumbass
 	}
 
-	//PERFORMANCE SHIT
+	// PERFORMANCE SHIT
 	var trackedAssets:Array<Dynamic> = [];
 
 	override function add(Object:flixel.FlxBasic):flixel.FlxBasic
@@ -152,24 +152,23 @@ class MusicBeatSubstate extends FlxSubState
 	}
 
 	/*override function switchState(nextState:flixel.FlxState):flixel.FlxG
-	{
-		unloadAssets();
-		return super.switchState(nextState);
+		{
+			unloadAssets();
+			return super.switchState(nextState);
 	}*/
-
-	//BRIGHT SHADER
+	// BRIGHT SHADER
 	public var brightShader(get, never):ShaderFilter;
 
 	inline function get_brightShader():ShaderFilter
 	{
 		return BrightHandler.brightShader;
 	}
-		
+
 	public function setBrightness(brightness:Float):Void
 	{
 		BrightHandler.setBrightness(brightness);
 	}
-		
+
 	public function setContrast(contrast:Float):Void
 	{
 		BrightHandler.setContrast(contrast);

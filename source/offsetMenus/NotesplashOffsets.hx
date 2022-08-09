@@ -17,15 +17,15 @@ class NotesplashOffsets extends FlxState
 {
 	var sploosh:Notesplash;
 	var camFollow:FlxObject;
-    var text:FlxText;
+	var text:FlxText;
 
 	public function new()
 	{
 		super();
 	}
 
-    var splooshX:Float = 0;
-    var splooshY:Float = 0;
+	var splooshX:Float = 0;
+	var splooshY:Float = 0;
 
 	override function create()
 	{
@@ -35,20 +35,20 @@ class NotesplashOffsets extends FlxState
 		gridBG.scrollFactor.set(0.5, 0.5);
 		add(gridBG);
 
-        var babyArrow:FlxSprite = new FlxSprite(0, 0);
-        babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets', 'notes');
-        babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
-        babyArrow.antialiasing = FlxG.save.data.highquality;
-        babyArrow.setGraphicSize(Std.int(babyArrow.width * Note.noteWidth));
-        babyArrow.animation.addByPrefix('static', 'arrowLEFT');
-        babyArrow.animation.play('static', true);
-        babyArrow.scrollFactor.set(0, 0);
-        babyArrow.updateHitbox();
-        babyArrow.screenCenter();
-        add(babyArrow);
+		var babyArrow:FlxSprite = new FlxSprite(0, 0);
+		babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets', 'notes');
+		babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
+		babyArrow.antialiasing = FlxG.save.data.highquality;
+		babyArrow.setGraphicSize(Std.int(babyArrow.width * Note.noteWidth));
+		babyArrow.animation.addByPrefix('static', 'arrowLEFT');
+		babyArrow.animation.play('static', true);
+		babyArrow.scrollFactor.set(0, 0);
+		babyArrow.updateHitbox();
+		babyArrow.screenCenter();
+		add(babyArrow);
 
-        splooshX = babyArrow.x;
-        splooshY = babyArrow.y;
+		splooshX = babyArrow.x;
+		splooshY = babyArrow.y;
 
 		loadSploosh(0);
 
@@ -58,48 +58,32 @@ class NotesplashOffsets extends FlxState
 
 		FlxG.camera.follow(camFollow);
 
-        text = new FlxText(10, 20, 0, "X: " + sploosh.offset.x + ", Y: " + sploosh.offset.y, 15);
-        text.scrollFactor.set();
-        text.color = FlxColor.BLUE;
-        add(text);
+		text = new FlxText(10, 20, 0, "X: " + sploosh.offset.x + ", Y: " + sploosh.offset.y, 15);
+		text.scrollFactor.set();
+		text.color = FlxColor.BLUE;
+		add(text);
 
-        var types:Array<String> = 
-        [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13"
-        ];
+		var types:Array<String> = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"];
 
 		var typeMenu = new FlxUIDropDownMenu(50, 50, FlxUIDropDownMenu.makeStrIdLabelArray(types, true), function(index:String)
-        {
-            remove(sploosh);
-            loadSploosh(Std.parseInt(index));
-        });
+		{
+			remove(sploosh);
+			loadSploosh(Std.parseInt(index));
+		});
 
-        typeMenu.selectedLabel = "0";
+		typeMenu.selectedLabel = "0";
 
-        add(typeMenu);
+		add(typeMenu);
 
 		super.create();
 	}
 
-    function loadSploosh(type:Int)
-    {
-        sploosh = new Notesplash(splooshX, splooshY, type, 0);
-        sploosh.play();
+	function loadSploosh(type:Int)
+	{
+		sploosh = new Notesplash(splooshX, splooshY, type, 0);
+		sploosh.play();
 		add(sploosh);
-    }
+	}
 
 	override function update(elapsed:Float)
 	{
@@ -156,15 +140,15 @@ class NotesplashOffsets extends FlxState
 			if (rightP)
 				sploosh.offset.x -= 1 * multiplier;
 
-            text.text = "X: " + sploosh.offset.x + ", Y: " + sploosh.offset.y;  
+			text.text = "X: " + sploosh.offset.x + ", Y: " + sploosh.offset.y;
 
-            sploosh.play();
+			sploosh.play();
 		}
 
-        if (FlxG.keys.justPressed.SPACE)
-        {
-            sploosh.play();
-        }
+		if (FlxG.keys.justPressed.SPACE)
+		{
+			sploosh.play();
+		}
 
 		super.update(elapsed);
 	}

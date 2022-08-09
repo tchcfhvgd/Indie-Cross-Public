@@ -29,7 +29,9 @@ class Note extends FlxSprite
 	public static var RED_NOTE:Int = 3;
 	public static var noteWidth:Float = 0.7;
 
-	var typeFile:Array<String> = ['assets', 'bones', 'bones', 'sin', 'sin', 'parry', 'tricky', 'flash', 'nmrunassets', 'sin_notes', 'ink_notes2',  'bounce', 'bounce', 'fire', 'sin_notes' ]; // the shared folder image name after 'NOTE_'
+	var typeFile:Array<String> = [
+		'assets', 'bones', 'bones', 'sin', 'sin', 'parry', 'tricky', 'flash', 'nmrunassets', 'sin_notes', 'ink_notes2', 'bounce', 'bounce', 'fire', 'sin_notes'
+	]; // the shared folder image name after 'NOTE_'
 	var typeDirName:Array<Dynamic> = [
 		['purple', 'blue', 'green', 'red'], // assets
 		['leftB', 'downB', 'upB', 'rightB'], // bones
@@ -40,7 +42,7 @@ class Note extends FlxSprite
 		['Left', 'Down', 'Up', 'Right'], // tricky
 		['Left', 'Down', 'Up', 'Right'], // flash
 		['purple', 'blue', 'green', 'red'], // nmrunassets
-		['D-Left', 'D-Down', 'D-Up', 'D-Right'], //sin_notes
+		['D-Left', 'D-Down', 'D-Up', 'D-Right'], // sin_notes
 		['left', 'down', 'up', 'right'], // ink_notes2
 		['Left instance 1', 'Down instance 1', 'Up instance 1', 'Right instance 1'], // bounce
 		[
@@ -62,21 +64,20 @@ class Note extends FlxSprite
 		[0, 0], // tricky notes (are these even used?) | 6
 		[0, 0], // flash notes | 7
 		[-16, -16], // nmrun notes | 8
-		[
-			[-53, -29],
-			[-49, 10]
-						], // nmrun tunnel death notes | 9
+		[[-53, -29], [-49, 10]], // nmrun tunnel death notes | 9
 		[-39, -34], // tunnel ink notes v2 | 10
 		[0, 0], // blue bounce notes | 11
 		[0, 0], // orange bounce notes | 12
-
-		[	// devil notes | 13
-			[-10, -20], //upscroll offset
-			[-10, 120]	//downscroll offset
-					]
+		[
+			// devil notes | 13
+			[-10, -20], // upscroll offset
+			[-10, 120] // downscroll offset
+		]
 	];
 	// if there's a difference in notes for downscroll or not
-	var typeDS:Array<Bool> = [false, false, false, false, false, false, false, false, false, true, false, false, false, true]; // the two trues are the devil fire notes and new death ink notes :)
+	var typeDS:Array<Bool> = [
+		false, false, false, false, false, false, false, false, false, true, false, false, false, true
+	]; // the two trues are the devil fire notes and new death ink notes :)
 
 	// what susඞ note the type posseses. [yes = normal, no = no sus sprite, shared = every note shares left's sustain sprites]
 	var typeSus:Array<String> = ['yes', 'shared', 'shared', 'no', 'no', 'no', 'no', 'shared', 'yes', 'no', 'no'];
@@ -146,21 +147,25 @@ class Note extends FlxSprite
 
 				noteXspriteOffset = typeOffset[noteType][1][0];
 				noteYspriteOffset = typeOffset[noteType][1][1];
-			} else {
+			}
+			else
+			{
 				noteXspriteOffset = typeOffset[noteType][0][0];
 				noteYspriteOffset = typeOffset[noteType][0][1];
 			}
-		} else {
+		}
+		else
+		{
 			noteXspriteOffset = typeOffset[noteType][0];
 			noteYspriteOffset = typeOffset[noteType][1];
 		}
-		
+
 		if (noteType == 9)
 		{
-			noteWidth = noteWidth*0.975;
+			noteWidth = noteWidth * 0.975;
 			if (PlayStateChangeables.useDownscroll)
 			{
-				noteWidth = noteWidth*1.175;
+				noteWidth = noteWidth * 1.175;
 			}
 		}
 
@@ -180,10 +185,14 @@ class Note extends FlxSprite
 			if (PlayState.curStage == 'field' || PlayState.curStage == 'devilHall')
 			{
 				frames = Paths.getSparrowAtlas('NOTE_cup', 'notes');
-			} else {
+			}
+			else
+			{
 				frames = PlayState.noteskinSprite;
 			}
-		} else {
+		}
+		else
+		{
 			frames = Paths.getSparrowAtlas('NOTE_' + typeFile[t], 'notes');
 		}
 
@@ -253,8 +262,7 @@ class Note extends FlxSprite
 		if (FlxG.save.data.downscroll && sustainNote)
 			flipY = true;
 
-		var stepHeight = (0.45 * Conductor.stepCrochet * FlxMath.roundDecimal(PlayState.songScrollSpeed,
-			2));
+		var stepHeight = (0.45 * Conductor.stepCrochet * FlxMath.roundDecimal(PlayState.songScrollSpeed, 2));
 
 		if (isSustainNote && prevNote != null)
 		{
@@ -308,10 +316,7 @@ class Note extends FlxSprite
 		}
 	}
 
-	function updateSprite()
-	{
-
-	}
+	function updateSprite() {}
 
 	override function update(elapsed:Float)
 	{

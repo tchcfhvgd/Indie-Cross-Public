@@ -10,7 +10,6 @@ import flixel.FlxSprite;
 
 class CupheadTutorialSubState extends MusicBeatSubstate
 {
-
 	public var finishCallback:Void->Void;
 
 	var alreadyPressed = false;
@@ -18,10 +17,10 @@ class CupheadTutorialSubState extends MusicBeatSubstate
 	var bScreen:FlxSprite;
 	var closeTmr:FlxTimer;
 
-	public function new(tutorial:String,renderCamera:FlxCamera)
+	public function new(tutorial:String, renderCamera:FlxCamera)
 	{
 		super();
-		// parsing the camera cuz substates are dumb and render to main camera 
+		// parsing the camera cuz substates are dumb and render to main camera
 		bScreen = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
 		bScreen.alpha = 0.001;
 		bScreen.cameras = [renderCamera];
@@ -41,7 +40,7 @@ class CupheadTutorialSubState extends MusicBeatSubstate
 		thing.animation.addByPrefix("parry", "Parry notes instance 1", 24, false);
 		thing.animation.addByPrefix("dodge", "Dodge instance 1", 24, false);
 		thing.animation.play(tutorial);
-		//thing.scale.set(0.75, 0.75);
+		// thing.scale.set(0.75, 0.75);
 		add(thing);
 		FlxTween.tween(thing, {y: thing.y - 1040}, 1.2, {ease: FlxEase.expoOut, startDelay: 0.75});
 

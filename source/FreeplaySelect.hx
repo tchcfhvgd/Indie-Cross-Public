@@ -21,9 +21,9 @@ import Discord.DiscordClient;
 class FreeplaySelect extends MusicBeatState
 {
 	static final freeplayStrings:Array<String> = ["story", "bonus", "nightmare"];
-	
+
 	static var curSelected:Int = 0;
-	
+
 	var disableInput:Bool = false;
 
 	var freeplayItems:FlxTypedGroup<FlxSprite>;
@@ -108,10 +108,14 @@ class FreeplaySelect extends MusicBeatState
 			return;
 
 		if (freeplayItems.members != null && freeplayItems.members.length > 0)
-			freeplayItems.forEach(function(_:FlxSprite) {freeplayItems.remove(_); _.destroy(); } );
-		
+			freeplayItems.forEach(function(_:FlxSprite)
+			{
+				freeplayItems.remove(_);
+				_.destroy();
+			});
+
 		for (i in 0...freeplayStrings.length)
-		{	
+		{
 			var str:String = freeplayStrings[i];
 
 			var freeplayItem:FlxSprite = new FlxSprite();
@@ -125,11 +129,11 @@ class FreeplaySelect extends MusicBeatState
 			freeplayItem.alpha = 0.5;
 			freeplayItem.shader = new WhiteOverlayShader();
 			freeplayItem.setPosition(120 + (i * sep), 20);
-			
+
 			freeplayItems.add(freeplayItem);
 		}
 	}
-	
+
 	function changeSelection(selection:Int)
 	{
 		if (!accepted)
