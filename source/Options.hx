@@ -196,6 +196,7 @@ class MechsInputVariants extends Option
 		} else if (FlxG.save.data.mechsInputVariants == 2) {
 			return "vpad buttons";
 		}
+		return "the shit is broken";
 	}
 }
 

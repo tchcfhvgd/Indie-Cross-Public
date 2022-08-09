@@ -5099,7 +5099,7 @@ class PlayState extends MusicBeatState
 				trace("attack left that is not shift");
 				bfAttack(true);
 			}
-			if ((controls.ATTACKRIGHT || inputAttckRight) && attackHud.alpha > 0.001)
+			if ((controls.ATTACKRIGHT || inputAttackRight) && attackHud.alpha > 0.001)
 			{
 				trace("attack right that is not shift");
 				bfAttack(false);
