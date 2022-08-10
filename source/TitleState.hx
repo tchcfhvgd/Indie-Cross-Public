@@ -189,6 +189,12 @@ class TitleState extends MusicBeatState
 			vidSpr.visible = false;
 			videoDone = true;
 			blackOverlay.alpha = 0;
+
+			if (FlxG.sound.music == null || !FlxG.sound.music.active)
+			{
+				FlxG.sound.playMusic(Paths.music(Main.menuMusic), 0);
+				FlxG.sound.music.fadeIn(4, 0, 1);
+			}
 		}
 		else
 		{
