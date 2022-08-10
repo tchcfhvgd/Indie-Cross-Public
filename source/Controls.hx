@@ -250,7 +250,7 @@ class Controls extends FlxActionSet
 		action.add(input);
 	}
 
-	public function setHitBox(Hitbox:FlxHitbox, MechsType:Int)
+	public function setHitBox(Hitbox:FlxHitbox, MechsType:Int, isShit:Bool = false)
 	{
 		switch (MechsType)
 		{
@@ -280,7 +280,11 @@ class Controls extends FlxActionSet
 				inline forEachBound(Control.DOWN, (action, state) -> addbutton(action, Hitbox.buttonDown, state));
 				inline forEachBound(Control.LEFT, (action, state) -> addbutton(action, Hitbox.buttonLeft, state));
 				inline forEachBound(Control.RIGHT, (action, state) -> addbutton(action, Hitbox.buttonRight, state));
-				inline forEachBound(Control.DODGE, (action, state) -> addbutton(action, Hitbox.buttonSpace, state));
+                                if (!isShit) {
+				     inline forEachBound(Control.ATTACKLEFT, (action, state) -> addbutton(action, Hitbox.buttonSpace, state));
+                                } else {
+                                     inline forEachBound(Control.DODGE, (action, state) -> addbutton(action, Hitbox.buttonSpace, state));
+                                }
 			default:
 				inline forEachBound(Control.UP, (action, state) -> addbutton(action, Hitbox.buttonUp, state));
 				inline forEachBound(Control.DOWN, (action, state) -> addbutton(action, Hitbox.buttonDown, state));
