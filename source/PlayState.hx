@@ -67,22 +67,10 @@ import sys.thread.Thread;
 import Discord.DiscordClient;
 import sys.FileSystem;
 #end
-#if android
-import android.flixel.FlxHitbox;
-import android.flixel.FlxVirtualPad;
-import android.AndroidControls;
-#end
 
 class PlayState extends MusicBeatState
 {
 	public static var instance:PlayState = null;
-	
-	var inputDodge:Bool = false;
-	var inputAttackLeft:Bool = false;
-	var inputAttackRight:Bool = false;
-	
-	var _hitbox:FlxHitbox;
-	var _vPad:FlxVirtualPad;
 
 	var bendy:FlxSprite;
 	var jumpscareStatic:FlxSprite;
@@ -1464,6 +1452,7 @@ class PlayState extends MusicBeatState
 					FlxG.sound.list.add(mechInstructMusic);
 			}
 		}
+
 		if (hasInstruction)
 		{
 			#if android
@@ -2467,9 +2456,8 @@ class PlayState extends MusicBeatState
 
 		// make da hud elements
 
-		var suffix:String = (curStage != 'hall' ? '' : 'UT');
-		attackHud = new HudIcon(6, 235, 'attack' + suffix);
-		dodgeHud = new HudIcon(6, 145 + attackHud.height, 'dodge' + suffix);
+		attackHud = new HudIcon(6, 235, 'attack');
+		dodgeHud = new HudIcon(6, 145 + attackHud.height, 'dodge');
 
 		dodgeHud.cameras = [camHUD];
 		attackHud.cameras = [camHUD];
@@ -2958,38 +2946,18 @@ class PlayState extends MusicBeatState
 			iconP2alt.cameras = [camHUD];
 
 		#if android
-		//addAndroidControls(); we'll rework it
-		switch (AndroidControls.getMode()) {
-			case 0:
-			    _vPad = new FlxVirtualPad(RIGHT_FULL, NONE);
-			    _vPad.visible = false;
-				add(_vPad);
-			case 1:
-			    _vPad = new FlxVirtualPad(LEFT_FULL, NONE);
-			    _vPad.visible = false;
-				add(_vPad);
-			case 2:
-			    _vPad = AndroidControls.getCustomMode(new FlxVirtualPad(RIGHT_FULL, NONE));
-			    _vPad.visible = false;
-				add(_vPad);
-			case 3:
-			    _vPad = new FlxVirtualPad(BOTH_FULL, NONE);
-			    _vPad.visible = false;
-				add(_vPad);
-			case 4:
-			    var additionalHitboxNumber:Int = 0;
-			    if (SONG.song.toLowerCase() == "technicolor-tussle") {
-				    additionalHitboxNumber = 1;
-				} else if (SONG.song.toLowerCase() == "knockout" || SONG.song.toLowerCase() == "sansational" || SONG.song.toLowerCase() == "burning-in-hell" || SONG.song.toLowerCase() == 'devils-gambit') {
-					additionalHitboxNumber = 2;
-				} else if (SONG.song.toLowerCase() == "last-reel" && storyDifficulty >= 1) {
-					additionalHitboxNumber = 3;
-				} else if (SONG.song.toLowerCase() == "whoopee" || SONG.song.toLowerCase() == "satanic-funkin") {
-					additionalHitboxNumber = 4;
-				}
-			    _hitbox = new FlxHitbox(additionalHitboxNumber, FlxG.save.data.mechsInputVariants);
-			    _hitbox.visible = false;
-				add(_hitbox);
+		switch (PlayState.SONG.song.toLowerCase())
+		{
+			case 'whoopee' | 'satanic-funkin' | 'ritual':
+				addAndroidControls(4);
+			case 'last-reel':
+				addAndroidControls(3);
+			case 'knockout' | 'devils-gambit' | 'despair' | 'sansational' | 'burning-in-hell':
+				addAndroidControls(2);
+			case 'technicolor-tussle':
+				addAndroidControls(1);
+			default:
+				addAndroidControls(0);
 		}
 		#end
 
@@ -3659,11 +3627,7 @@ class PlayState extends MusicBeatState
 		bumpRate = 4;
 
 		#if android
-		if (AndroidControls.getMode() == 0 || AndroidControls.getMode() == 1 || AndroidControls.getMode() == 2 || AndroidControls.getMode() == 3) {
-		    _vPad.visible = true;
-		} else if (AndroidControls.getMode() == 4) {
-			_hitbox.visible = true;
-		}
+		androidControls.visible = true;
 		#end
 
 		if (cutsceneSpr != null)
@@ -5063,29 +5027,13 @@ class PlayState extends MusicBeatState
 		#if !debug
 		perfectMode = false;
 		#end
-		
-		inputDodge = false;
-		inputAttackLeft = false;
-		inputAttackRight = false;
-		
-		#if android
-		if (_hitbox.buttonSpaceAlt.justPressed || _hitbox.buttonSpaceMid.justPressed) {
-			inputDodge = true;
-		}
-		if (_hitbox.buttonSpaceLeft.justPressed) {
-			inputAttackLeft = true;
-		}
-		if (_hitbox.buttonSpaceRight.justPressed) {
-			inputAttackRight = true;
-		}
-		#end
 
 		if (SONG.song.toLowerCase() == "satanic-funkin"
 			|| SONG.song.toLowerCase() == "despair"
 			|| (SONG.song.toLowerCase() == "last-reel" && storyDifficulty >= 1)
 			|| SONG.song.toLowerCase() == "despair")
 		{
-			if (((controls.DODGE || inputDodge) && dodgeHud.alpha > 0.001) && !inputSpacePressed && !PlayStateChangeables.botPlay)
+			if ((controls.DODGE && dodgeHud.alpha > 0.001) && !inputSpacePressed && !PlayStateChangeables.botPlay)
 			{
 				dodgeAmt++;
 				bfMechDodge();
@@ -5094,12 +5042,12 @@ class PlayState extends MusicBeatState
 
 		if ((SONG.song.toLowerCase() == "last-reel" && storyDifficulty >= 1) || SONG.song.toLowerCase() == "despair")
 		{
-			if ((controls.ATTACKLEFT || inputAttackLeft) && attackHud.alpha > 0.001)
+			if (controls.ATTACKLEFT && attackHud.alpha > 0.001)
 			{
 				trace("attack left that is not shift");
 				bfAttack(true);
 			}
-			if ((controls.ATTACKRIGHT || inputAttackRight) && attackHud.alpha > 0.001)
+			if (controls.ATTACKRIGHT && attackHud.alpha > 0.001)
 			{
 				trace("attack right that is not shift");
 				bfAttack(false);
@@ -5179,6 +5127,9 @@ class PlayState extends MusicBeatState
 		if (hasInstruction && pressedEnter && !inCutscene && !videoPlaying)
 		{
 			hasInstruction = false;
+			#if android
+			androidControls.visible = false;
+			#end
 			camGame.visible = true;
 			camHUD.visible = true;
 			camOVERLAY.visible = true;
@@ -5224,6 +5175,10 @@ class PlayState extends MusicBeatState
 				}
 			}
 		}
+		#if android
+		else if (hasInstruction && !pressedEnter && !inCutscene && !videoPlaying)
+			androidControls.visible = false;
+		#end
 
 		if (MainMenuState.debugTools)
 		{
@@ -5389,7 +5344,7 @@ class PlayState extends MusicBeatState
 
 		if (sansCanAttack)
 		{
-			if (((controls.ATTACKLEFT || controls.ATTACKRIGHT || inputAttackLeft || inputAttackRight) && attackHud.alpha > 0.001)
+			if (((controls.ATTACKLEFT || controls.ATTACKRIGHT) && attackHud.alpha > 0.001)
 				&& attackCooldown == 0
 				&& !battleMode
 				&& !PlayStateChangeables.botPlay
@@ -5752,7 +5707,7 @@ class PlayState extends MusicBeatState
 			boyfriend.y = 1248.7 + Math.sin((Conductor.songPosition / 1000) * (Conductor.bpm / 60) * 2.5) * 20;
 		}
 
-		if (canPressSpace && ((controls.DODGE || inputDodge) && dodgeHud.alpha > 0.001) && !PlayStateChangeables.botPlay && !MainMenuState.showcase)
+		if (canPressSpace && (controls.DODGE && dodgeHud.alpha > 0.001) && !PlayStateChangeables.botPlay && !MainMenuState.showcase)
 		{
 			dodgeAmt++;
 			pressedSpace = true;
@@ -5795,7 +5750,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.screenCenter(X);
 		scoreTxt.updateHitbox();
 
-		if (((controls.ATTACKLEFT || controls.ATTACKRIGHT || inputAttackLeft || inputAttackRight) && attackHud.alpha > 0.001) && !PlayStateChangeables.botPlay)
+		if (((controls.ATTACKLEFT || controls.ATTACKRIGHT) && attackHud.alpha > 0.001) && !PlayStateChangeables.botPlay)
 		{
 			useAttackSlot();
 		}
@@ -7586,11 +7541,7 @@ class PlayState extends MusicBeatState
 		canPause = false;
 
 		#if android
-		if (AndroidControls.getMode() == 0 || AndroidControls.getMode() == 1 || AndroidControls.getMode() == 2 || AndroidControls.getMode() == 3) {
-		    _vPad.visible = false;
-		} else if (AndroidControls.getMode() == 4) {
-			_hitbox.visible = false;
-		}
+		androidControls.visible = false;
 		#end
 
 		Conductor.songPosition = FlxG.sound.music.length;

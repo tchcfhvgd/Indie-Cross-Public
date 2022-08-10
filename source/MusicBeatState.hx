@@ -54,9 +54,9 @@ class MusicBeatState extends FNFState
 			remove(virtualPad);
 	}
 
-	public function addAndroidControls()
+	public function addAndroidControls(mechsType:Int = 0)
 	{
-		androidControls = new AndroidControls();
+		androidControls = new AndroidControls(mechsType);
 		androidControls.alpha = 0.8;
 
 		switch (AndroidControls.getMode())
@@ -66,7 +66,7 @@ class MusicBeatState extends FNFState
 			case 3: // BOTH_FULL
 				controls.setvirtualPad(androidControls.virtualPad, BOTH_FULL, NONE);
 			case 4: // HITBOX
-				controls.setHitBox(androidControls.hitbox);
+				controls.setHitBox(androidControls.hitbox, mechsType);
 			case 5: // KEYBOARD
 		}
 

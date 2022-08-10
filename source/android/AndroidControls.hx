@@ -12,7 +12,7 @@ class AndroidControls extends FlxSpriteGroup
 	public var virtualPad:FlxVirtualPad;
 	public var hitbox:FlxHitbox;
 
-	public function new()
+	public function new(mechsType:Int = 0)
 	{
 		super();
 
@@ -27,12 +27,12 @@ class AndroidControls extends FlxSpriteGroup
 			case 3: // BOTH_FULL
 				initControler(3);
 			case 4: // HITBOX
-				initControler(4);
+				initControler(4, mechsType);
 			case 5: // KEYBOARD
 		}
 	}
 
-	private function initControler(virtualPadMode:Int = 0):Void
+	private function initControler(virtualPadMode:Int = 0, ?mechsType:Int = 0):Void
 	{
 		switch (virtualPadMode)
 		{
@@ -49,8 +49,24 @@ class AndroidControls extends FlxSpriteGroup
 				virtualPad = new FlxVirtualPad(BOTH_FULL, NONE);
 				add(virtualPad);
 			case 4:
-				hitbox = new FlxHitbox();
-				add(hitbox);
+				switch (mechsType)
+				{
+					case 4:
+						hitbox = new FlxHitbox(4, FlxG.save.data.mechsInputVariants);
+						add(hitbox);
+					case 3:
+						hitbox = new FlxHitbox(3, FlxG.save.data.mechsInputVariants);
+						add(hitbox);
+					case 2:
+						hitbox = new FlxHitbox(2, FlxG.save.data.mechsInputVariants);
+						add(hitbox);
+					case 1:
+						hitbox = new FlxHitbox(1, FlxG.save.data.mechsInputVariants);
+						add(hitbox);
+					default:
+						hitbox = new FlxHitbox(0, FlxG.save.data.mechsInputVariants);
+						add(hitbox);
+				}
 		}
 	}
 

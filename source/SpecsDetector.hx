@@ -10,14 +10,11 @@ import openfl.system.Capabilities;
 
 #if windows
 @:headerCode("#include <windows.h>")
-#elseif (linux || android)
+#elseif linux
 @:headerCode("#include <stdio.h>")
 #end
 class SpecsDetector extends FlxState
 {
-	var cache:Bool = false;
-	var isCacheSupported:Bool = false;
-
 	override public function create()
 	{
 		#if android
@@ -32,16 +29,20 @@ class SpecsDetector extends FlxState
 
 	function checkSpecs():Bool
 	{
+		#if android
+		if (obtainRAM() >= 4194304)
+			return true;
+		else
+		{
+			return messageBox("INDIE CROSS",
+				"Your Phone does not meet the requirements Indie Cross has.\nWhile you can still play the mod, you may experience framedrops and/or lag spikes.\n\nDo you want to play anyway?");
+		}
+		#else
 		var cpu:Bool = Capabilities.supports64BitProcesses; // too lazy for changing this
 		var ram:UInt64 = obtainRAM();
 
-		#if android
-		if (ram >= 4096)
-			return true;
-		#else
 		if (cpu && ram >= 4096)
 			return true;
-		#end
 		else
 		{
 			#if android
@@ -54,11 +55,7 @@ class SpecsDetector extends FlxState
 		}
 
 		return true;
-	}
-
-	override public function update(elapsed:Float)
-	{
-		super.update(elapsed);
+		#end
 	}
 
 	#if windows
@@ -69,33 +66,56 @@ class SpecsDetector extends FlxState
 
 		return (allocatedRAM / 1024);
 	")
-	#elseif (linux || android)
+	function obtainRAM()
+		return 0;
+	#elseif linux
 	@:functionCode('
 		// swag linux 😎😎😎😎😎
 		FILE *meminfo = fopen("/proc/meminfo", "r");
 
-    	if(meminfo == NULL)
+		if(meminfo == NULL)
 			return -1;
 
-    	char line[256];
-    	while(fgets(line, sizeof(line), meminfo))
-    	{
-        	int ram;
-        	if(sscanf(line, "MemTotal: %d kB", &ram) == 1)
-        	{
-            	fclose(meminfo);
-            	return (ram / 1024);
-        	}
-    	}
+		char line[256];
+		while(fgets(line, sizeof(line), meminfo))
+		{
+			int ram;
+			if(sscanf(line, "MemTotal: %d kB", &ram) == 1)
+			{
+				fclose(meminfo);
+				return (ram / 1024);
+			}
+		}
 
-    	fclose(meminfo);
-    	return -1;
+		fclose(meminfo);
+		return -1;
 	')
-	#end
 	function obtainRAM()
+		return 0;
+	#elseif android
+	// thanks lucky dog -saw
+	function obtainRAM():Int
 	{
+		try
+		{
+			var result:String = sys.io.File.read('/proc/meminfo').readAll().toString();
+			if (result == "" || result == null || result.charAt(0) != "M")
+				return 0;
+
+			var memTotalLine:String = result.split('\n')[0];
+
+			memTotalLine = StringTools.replace(memTotalLine, ' ', '');
+			memTotalLine = StringTools.replace(memTotalLine, 'kB', '');
+			memTotalLine = StringTools.replace(memTotalLine, 'MemTotal:', '');
+
+			return Std.parseInt(memTotalLine);
+		}
+		catch (e:Dynamic)
+			android.Hardware.toast("Error!\nClouldn't optain the RAm info because:\n" + e, 2);
+
 		return 0;
 	}
+	#end
 
 	function messageBox(title:ConstCharStar = null, msg:ConstCharStar = null)
 	{
@@ -103,9 +123,7 @@ class SpecsDetector extends FlxState
 		var msgID:Int = untyped MessageBox(null, msg, title, untyped __cpp__("MB_ICONQUESTION | MB_YESNO"));
 
 		if (msgID == 7)
-		{
 			Sys.exit(0);
-		}
 
 		return true;
 		#else

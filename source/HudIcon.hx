@@ -53,12 +53,6 @@ class HudIcon extends FlxSprite
 				playAnim("idle");
 
 				setZoom(0.5);
-			case "attackUT":
-				loadGraphic(Paths.image('undertaleActions1', 'shared'));
-				setZoom(1.5);
-			case "dodgeUT":
-				loadGraphic(Paths.image('undertaleActions2', 'shared'));
-				setZoom(1.5);
 		}
 
 		antialiasing = FlxG.save.data.highquality && !StringTools.endsWith(type, 'UT');

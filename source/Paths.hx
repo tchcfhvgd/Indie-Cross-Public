@@ -217,22 +217,16 @@ class Paths
 	public static function returnSound(path:String, key:String, ?library:String, ?cache:Bool = true):Sound
 	{
 		var gottenPath:String = getPath('$path/$key.$SOUND_EXT', SOUND, library);
-		if (OpenFlAssets.exists(gottenPath, SOUND))
+		gottenPath = gottenPath.substring(gottenPath.indexOf(':') + 1, gottenPath.length);
+		if (!currentTrackedSounds.exists(gottenPath))
 		{
-			gottenPath = gottenPath.substring(gottenPath.indexOf(':') + 1, gottenPath.length);
-			if (!currentTrackedSounds.exists(gottenPath))
-			{
-				var folder:String = '';
-				if (path == 'songs')
-					folder = 'songs:';
+			var folder:String = '';
+			if (path == 'songs')
+				folder = 'songs:';
 
-				currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(folder + getPath('$path/$key.$SOUND_EXT', SOUND, library), cache));
-			}
-			localTrackedAssets.push(gottenPath);
-			return currentTrackedSounds.get(gottenPath);
+			currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(folder + getPath('$path/$key.$SOUND_EXT', SOUND, library), cache));
 		}
-
-		trace('oh no its returning null NOOOO');
-		return null;
+		localTrackedAssets.push(gottenPath);
+		return currentTrackedSounds.get(gottenPath);
 	}
 }
