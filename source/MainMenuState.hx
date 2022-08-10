@@ -592,7 +592,7 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.ACCEPT)
 			{
-				if (showKeybindsMenu && curSelected == 0)
+				/*if (showKeybindsMenu && curSelected == 0)
 				{
 					persistentUpdate = false;
 					openSubState(new KeyBindMenu());
@@ -604,9 +604,9 @@ class MainMenuState extends MusicBeatState
 					}
 				}
 				else
-				{
+				{*/
 					enterSelection();
-				}
+				//}
 			}
 
 			if (controls.BACK && allowTransit)
