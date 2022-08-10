@@ -217,7 +217,7 @@ class Paths
 	public static function returnSound(path:String, key:String, ?library:String, ?cache:Bool = true):Sound
 	{
 		var gottenPath:String = getPath('$path/$key.$SOUND_EXT', SOUND, library);
-		if (OpenFlAssets.exists(path, SOUND))
+		if (OpenFlAssets.exists(gottenPath, SOUND))
 		{
 			gottenPath = gottenPath.substring(gottenPath.indexOf(':') + 1, gottenPath.length);
 			if (!currentTrackedSounds.exists(gottenPath))
