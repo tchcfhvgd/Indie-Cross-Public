@@ -2727,9 +2727,6 @@ class PlayState extends MusicBeatState
 
 				if (((PlayStateChangeables.botPlay && MainMenuState.showcase) || !PlayStateChangeables.botPlay))
 					add(healthBarBGOverlay);
-				healthBar = new FlxBar(healthBarBG.x, healthBarBG.y, LEFT_TO_RIGHT, Std.int(healthBarBG.width), Std.int(healthBarBG.height), this, 'health',
-					0, 2);
-				healthBar.createFilledBar(0x00FFFFFF, FlxColor.YELLOW);
 
 				// healthBarBG.alpha = 0.0;
 
@@ -2737,10 +2734,14 @@ class PlayState extends MusicBeatState
 				krBar.scrollFactor.set(0, 0);
 				krBar.createFilledBar(FlxColor.RED, 0xFFff00ff);
 				krBar.cameras = [camHUD];
-
 				if (((PlayStateChangeables.botPlay && MainMenuState.showcase) || !PlayStateChangeables.botPlay))
 					add(krBar);
-				add(healthBar); // add the healthbar OVER this bg
+
+				healthBar = new FlxBar(healthBarBG.x, healthBarBG.y, LEFT_TO_RIGHT, Std.int(healthBarBG.width), Std.int(healthBarBG.height), this, 'health',
+					0, 2);
+				healthBar.createFilledBar(0x00FFFFFF, FlxColor.YELLOW);
+				if (((PlayStateChangeables.botPlay && MainMenuState.showcase) || !PlayStateChangeables.botPlay))
+					add(healthBar); // add the healthbar OVER this bg
 		}
 
 		if (FlxG.save.data.songPosition) // I dont wanna talk about this code :(
