@@ -103,7 +103,11 @@ class FlxHitbox extends FlxSpriteGroup
 		    add(buttonDown = createHint(FlxG.width / 4, 180, 'down', 0x00FFFF));
 		    add(buttonUp = createHint(FlxG.width / 2, 180, 'up', 0x00FF00));
 		    add(buttonRight = createHint((FlxG.width / 2) + (FlxG.width / 4), 180, 'right', 0xFF0000));
-		    add(buttonSpace = createHint(0, 0, 'space', 0xFF0000));
+                    if (!isShit) {
+		         add(buttonSpace = createHint(0, 0, 'space', 0xFF0000));
+                    } else {
+                         add(buttonSpace = createHint(0, 0, 'space', 0xFFFF00));
+                    }
 		}
 		else if (addNewHitNum == 2 && isAtUp == 1)
 		{
