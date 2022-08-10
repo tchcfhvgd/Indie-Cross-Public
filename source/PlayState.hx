@@ -3626,10 +3626,6 @@ class PlayState extends MusicBeatState
 	{
 		bumpRate = 4;
 
-		#if android
-		androidControls.visible = true;
-		#end
-
 		if (cutsceneSpr != null)
 			cutsceneSpr.visible = false;
 
@@ -3663,6 +3659,9 @@ class PlayState extends MusicBeatState
 			add(controlsOverlay);
 			controlsOverlay.fade();
 
+			#if android
+			androidControls.visible = true;
+			#end
 			camGame.visible = true;
 			camHUD.visible = true;
 			camOVERLAY.visible = true;
@@ -5128,7 +5127,7 @@ class PlayState extends MusicBeatState
 		{
 			hasInstruction = false;
 			#if android
-			androidControls.visible = false;
+			androidControls.visible = true;
 			#end
 			camGame.visible = true;
 			camHUD.visible = true;
@@ -5175,10 +5174,6 @@ class PlayState extends MusicBeatState
 				}
 			}
 		}
-		#if android
-		else if (hasInstruction && !pressedEnter && !inCutscene && !videoPlaying)
-			androidControls.visible = false;
-		#end
 
 		if (MainMenuState.debugTools)
 		{
