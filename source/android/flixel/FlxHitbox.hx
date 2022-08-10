@@ -215,7 +215,6 @@ class FlxHitbox extends FlxSpriteGroup
 			    .getByName(Graphic)));
 		}
 
-		hint.setGraphicSize(Std.int(FlxG.width / 4), FlxG.height);
 		hint.updateHitbox();
 		hint.solid = false;
 		hint.immovable = true;
