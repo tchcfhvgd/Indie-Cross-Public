@@ -925,8 +925,6 @@ class FreeplayState extends MusicBeatState
 				if (curSelected[freeplayType] >= songs.length)
 					curSelected[freeplayType] = 0;
 
-                                lime.app.Application.current.window.alert(songs[curSelected[freeplayType]].songName, 'Trace');
-
 				var songHighscore = StringTools.replace(songs[curSelected[freeplayType]].songName, " ", "-");
 
 				if (songs[curSelected[freeplayType]].songName.toLowerCase() == "bad-to-the-bone")
