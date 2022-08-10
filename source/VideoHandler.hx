@@ -56,10 +56,17 @@ class VideoHandler
 
 		FlxG.stage.addEventListener(Event.ENTER_FRAME, update);
 
+		#if android
+		if (repeat)
+			bitmap.repeat = 65535;
+		else
+			bitmap.repeat = 0;
+		#else
 		if (repeat)
 			bitmap.repeat = -1;
 		else
 			bitmap.repeat = 0;
+		#end
 
 		bitmap.inWindow = isWindow;
 		bitmap.fullscreen = isFullscreen;

@@ -106,7 +106,11 @@ extern class LibVLC
 	public function getRepeat():Int;
 
 	@:native("setRepeat")
+	#if android
+	public function setRepeat(repeat:Int = 65535):Void;
+	#else
 	public function setRepeat(repeat:Int = 1):Void;
+	#end
 
 	@:native("getPixelData")
 	public function getPixelData():Pointer<UInt8>;
