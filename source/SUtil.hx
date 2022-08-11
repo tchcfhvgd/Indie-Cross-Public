@@ -192,6 +192,6 @@ class SUtil
 		#end
 	}
 
-	public static function getDisplayRefreshRate(copyPath:String, savePath:String)
+	public static function getDisplayRefreshRate():Int
 		return Application.current.window.displayMode.refreshRate;
 }
