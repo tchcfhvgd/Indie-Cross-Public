@@ -5,7 +5,7 @@ class StepEvent
 
 	public function new(daStep:Int = 0, daCallback:Void->Void = null)
 	{
-		// /trace(daStep);
+		// trace(daStep);
 		step = daStep;
 		callback = daCallback;
 	}
