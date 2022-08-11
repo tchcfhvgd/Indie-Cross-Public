@@ -254,42 +254,32 @@ class Controls extends FlxActionSet
 	{
 		switch (MechsType)
 		{
-			case 4:
+			case 0:
 				inline forEachBound(Control.UP, (action, state) -> addbutton(action, Hitbox.buttonUp, state));
 				inline forEachBound(Control.DOWN, (action, state) -> addbutton(action, Hitbox.buttonDown, state));
 				inline forEachBound(Control.LEFT, (action, state) -> addbutton(action, Hitbox.buttonLeft, state));
 				inline forEachBound(Control.RIGHT, (action, state) -> addbutton(action, Hitbox.buttonRight, state));
-				inline forEachBound(Control.DODGE, (action, state) -> addbutton(action, Hitbox.buttonSpaceAlt, state));
-			case 3:
+			case 1 | 4:
 				inline forEachBound(Control.UP, (action, state) -> addbutton(action, Hitbox.buttonUp, state));
 				inline forEachBound(Control.DOWN, (action, state) -> addbutton(action, Hitbox.buttonDown, state));
 				inline forEachBound(Control.LEFT, (action, state) -> addbutton(action, Hitbox.buttonLeft, state));
 				inline forEachBound(Control.RIGHT, (action, state) -> addbutton(action, Hitbox.buttonRight, state));
-				inline forEachBound(Control.ATTACKLEFT, (action, state) -> addbutton(action, Hitbox.buttonSpaceLeft, state));
-				inline forEachBound(Control.DODGE, (action, state) -> addbutton(action, Hitbox.buttonSpaceMid, state));
-				inline forEachBound(Control.ATTACKRIGHT, (action, state) -> addbutton(action, Hitbox.buttonSpaceRight, state));
+				inline forEachBound(Control.ATTACKLEFT, (action, state) -> addbutton(action, Hitbox.buttonSpace, state));
 			case 2:
 				inline forEachBound(Control.UP, (action, state) -> addbutton(action, Hitbox.buttonUp, state));
 				inline forEachBound(Control.DOWN, (action, state) -> addbutton(action, Hitbox.buttonDown, state));
 				inline forEachBound(Control.LEFT, (action, state) -> addbutton(action, Hitbox.buttonLeft, state));
 				inline forEachBound(Control.RIGHT, (action, state) -> addbutton(action, Hitbox.buttonRight, state));
 				inline forEachBound(Control.ATTACKLEFT, (action, state) -> addbutton(action, Hitbox.buttonSpaceLeft, state));
-				inline forEachBound(Control.DODGE, (action, state) -> addbutton(action, Hitbox.buttonSpaceMid, state));
-			case 1:
+				inline forEachBound(Control.DODGE, (action, state) -> addbutton(action, Hitbox.buttonSpaceRight, state));
+			case 3:
 				inline forEachBound(Control.UP, (action, state) -> addbutton(action, Hitbox.buttonUp, state));
 				inline forEachBound(Control.DOWN, (action, state) -> addbutton(action, Hitbox.buttonDown, state));
 				inline forEachBound(Control.LEFT, (action, state) -> addbutton(action, Hitbox.buttonLeft, state));
 				inline forEachBound(Control.RIGHT, (action, state) -> addbutton(action, Hitbox.buttonRight, state));
-                                if (!isShit) {
-				     inline forEachBound(Control.ATTACKLEFT, (action, state) -> addbutton(action, Hitbox.buttonSpace, state));
-                                } else {
-                                     inline forEachBound(Control.DODGE, (action, state) -> addbutton(action, Hitbox.buttonSpace, state));
-                                }
-			default:
-				inline forEachBound(Control.UP, (action, state) -> addbutton(action, Hitbox.buttonUp, state));
-				inline forEachBound(Control.DOWN, (action, state) -> addbutton(action, Hitbox.buttonDown, state));
-				inline forEachBound(Control.LEFT, (action, state) -> addbutton(action, Hitbox.buttonLeft, state));
-				inline forEachBound(Control.RIGHT, (action, state) -> addbutton(action, Hitbox.buttonRight, state));
+				inline forEachBound(Control.ATTACKLEFT, (action, state) -> addbutton(action, Hitbox.buttonSpaceLeft, state));
+				inline forEachBound(Control.DODGE, (action, state) -> addbutton(action, Hitbox.buttonSpace, state));
+				inline forEachBound(Control.ATTACKRIGHT, (action, state) -> addbutton(action, Hitbox.buttonSpaceRight, state));
 		}
 	}
 

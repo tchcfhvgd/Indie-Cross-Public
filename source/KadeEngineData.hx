@@ -6,7 +6,7 @@ class KadeEngineData
 	public static function initSave()
 	{
 		if (FlxG.save.data.mechsInputVariants == null)
-			FlxG.save.data.mechsInputVariants = 0;
+			FlxG.save.data.mechsInputVariants = true;
 
 		if (FlxG.save.data.gotSaveData == null)
 			FlxG.save.data.gotSaveData = 0;

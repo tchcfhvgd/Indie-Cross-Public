@@ -2950,7 +2950,7 @@ class PlayState extends MusicBeatState
 		switch (PlayState.SONG.song.toLowerCase())
 		{
 			case 'whoopee' | 'satanic-funkin' | 'ritual' | 'bad-time':
-				addAndroidControls(4, true);
+				addAndroidControls(4);
 			case 'last-reel':
 				addAndroidControls(3);
 			case 'knockout' | 'devils-gambit' | 'despair' | 'sansational' | 'burning-in-hell':

@@ -23,7 +23,6 @@ class OptionsMenu extends MusicBeatState
 		new OptionCategory("Gameplay", [
 			new DFJKOption(),
 			#if android
-			new CustomizeAndroidControls("Change the mode of the android controls."),
 			new MechsInputVariants("Variants of inputs for mechanics. !!!THIS OPTION AFFECTS ONLY TO HITBOX INPUT!!!"),
 			#end
 			new DownscrollOption("Change the layout of the strumline."),
@@ -46,7 +45,6 @@ class OptionsMenu extends MusicBeatState
 		new OptionCategory("Performance", [
 			new Photosensitive("Turn off visual effects that may harm your vision."),
 			new HighQuality("Enable low quality mode for a smoother playing experience."),
-			// new CacheStart("Enables caching and loading of images before the game starts and songs.")
 		]),
 		new OptionCategory("Window", [
 			#if !android
@@ -65,8 +63,9 @@ class OptionsMenu extends MusicBeatState
 		]),
 		new OptionCategory("Accessibility", [
 			new ShowSubtitles("Show subtitles during cutscenes."),
-			new Colorblind("") // new LogInGJ("Log into gamejolt for achievements & perks"),
-				// new LogOutGJ("Log out of your gamejolt account")
+			new Colorblind("")
+			// new LogInGJ("Log into gamejolt for achievements & perks"),
+			// new LogOutGJ("Log out of your gamejolt account")
 		])
 	];
 

@@ -54,22 +54,12 @@ class MusicBeatState extends FNFState
 			remove(virtualPad);
 	}
 
-	public function addAndroidControls(mechsType:Int = 0, isShit:Bool = false)
+	public function addAndroidControls(mechsType:Int = 0)
 	{
 		androidControls = new AndroidControls(mechsType);
 		androidControls.alpha = 0.8;
 
-		switch (AndroidControls.getMode())
-		{
-			case 0 | 1 | 2: // RIGHT_FULL | LEFT_FULL | CUSTOM
-				controls.setvirtualPad(androidControls.virtualPad, RIGHT_FULL, NONE);
-			case 3: // BOTH_FULL
-				controls.setvirtualPad(androidControls.virtualPad, BOTH_FULL, NONE);
-			case 4: // HITBOX
-				controls.setHitBox(androidControls.hitbox, mechsType, isShit);
-			case 5: // KEYBOARD
-		}
-
+		controls.setHitBox(androidControls.hitbox, mechsType);
 		trackedinputs = controls.trackedinputs;
 		controls.trackedinputs = [];
 

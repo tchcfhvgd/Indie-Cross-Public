@@ -597,15 +597,18 @@ class FreeplayState extends MusicBeatState
 
 	function codeAccepted(code:String)
 	{
-		if (code == '999414666')
-			if (!FlxG.save.data.givenCode || !MainMenuState.debugTools)
-				return;
+		if (code == '999414666' && (!FlxG.save.data.givenCode || !MainMenuState.debugTools))
+			return;
+
 		achievementCheck(code);
 
 		var suffix:String = '';
 
 		if (code == 'gose')
 		{
+			#if android
+			removeVirtualPad();
+			#end
 			if (Achievements.gotAll() || MainMenuState.debugTools)
 			{
 				persistentUpdate = false;

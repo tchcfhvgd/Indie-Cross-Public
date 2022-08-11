@@ -179,23 +179,18 @@ class MechsInputVariants extends Option
 
 	public override function press():Bool
 	{
-		FlxG.save.data.mechsInputVariants += 1;
-		if (FlxG.save.data.mechsInputVariants > 2) {
-			FlxG.save.data.mechsInputVariants = 0;
-		}
+		FlxG.save.data.mechsInputVariants = !FlxG.save.data.mechsInputVariants;
 		display = updateDisplay();
 		return true;
 	}
 
 	private override function updateDisplay():String
 	{
-		if (FlxG.save.data.mechsInputVariants == 0) {
-		    return "bottom hitboxes";
-		} else if (FlxG.save.data.mechsInputVariants == 1) {
-			return "top hitboxes";
-		} else if (FlxG.save.data.mechsInputVariants == 2) {
-			return "vpad buttons";
-		}
+		if (FlxG.save.data.mechsInputVariants == true)
+		    return "Bottom hitboxes";
+		else if (FlxG.save.data.mechsInputVariants == false)
+			return "Top Hitboxes";
+
 		return "the shit is broken";
 	}
 }
@@ -1079,28 +1074,6 @@ class CustomizeGameplay extends Option
 		return "Customize Gameplay";
 	}
 }
-
-#if android
-class CustomizeAndroidControls extends Option
-{
-	public function new(desc:String)
-	{
-		super();
-		description = desc;
-	}
-
-	public override function press():Bool
-	{
-		OptionsMenu.instance.openSubState(new android.AndroidControlsSubState());
-		return false;
-	}
-
-	private override function updateDisplay():String
-	{
-		return "Customize Android Controls";
-	}
-}
-#end
 
 /*class LogInGJ extends Option
 	{

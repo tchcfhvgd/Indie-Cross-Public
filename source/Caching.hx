@@ -34,6 +34,10 @@ class Caching extends MusicBeatState
 
 	override function create()
 	{
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
+
 		super.create();
 
 		screen = new LoadingScreen();
