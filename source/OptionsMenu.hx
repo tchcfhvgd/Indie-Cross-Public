@@ -52,10 +52,8 @@ class OptionsMenu extends MusicBeatState
 			#end
 			new Gamma("Change the gamma value of the app."),
 			new Brightness("Change the brightness value of the app."),
-			#if !android
 			new FocusFreeze("Freeze the game when clicking off of the application."),
 			new FocusPause("Open the pause menu when clicking off of the application in a song (Only works with Focus Freeze)."),
-			#end
 			new FPSCapOption("Cap your FPS"),
 			new FPSOption("Toggle the FPS Counter"),
 			new MemOption("Toggle the Memory Counter"),
