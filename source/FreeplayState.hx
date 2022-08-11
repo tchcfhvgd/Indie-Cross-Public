@@ -732,6 +732,9 @@ class FreeplayState extends MusicBeatState
 			{
 				FNFState.disableNextTransOut = true;
 				waitDuration = 1.1;
+				#if android
+				removeVirtualPad();
+				#end
 				cupTea.alpha = 1;
 				cupTea.animation.play('start', true, true);
 				FlxG.sound.play(Paths.sound('boing', 'cup'), 1);

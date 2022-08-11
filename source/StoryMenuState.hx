@@ -450,7 +450,7 @@ class StoryMenuState extends MusicBeatState
 				FNFState.disableNextTransOut = true;
 				waitDuration = 1.1;
 				#if android
-				virtualPad.alpha = 0;
+				removeVirtualPad();
 				#end
 				cupTea.alpha = 1;
 				cupTea.animation.play('start', true, true);

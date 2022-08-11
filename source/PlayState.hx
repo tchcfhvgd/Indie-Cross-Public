@@ -11417,12 +11417,14 @@ class PlayState extends MusicBeatState
 					}
 
 					FlxTween.tween(camHUD, {alpha: 0}, 1);
+					#if android
 					FlxTween.tween(androidControls, {alpha: 0}, 1, {
 						onComplete: function(twn:FlxTween)
 						{
-							androidControls.visible = false;
+							removeAndroidControls();
 						}
 					});
+					#end
 					FlxG.camera.shake(0.005);
 
 					camMovement.cancel();
