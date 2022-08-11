@@ -14,7 +14,7 @@ class Paths
 {
 	inline public static var SOUND_EXT = "ogg";
 
-	/// haya I love you for the base cache dump I took to the max
+	// haya I love you for the base cache dump I took to the max
 	public static function clearUnusedMemory()
 	{
 		// clear non local assets in the tracked assets list

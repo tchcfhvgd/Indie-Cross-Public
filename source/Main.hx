@@ -27,49 +27,26 @@ import sys.io.Process;
 #end
 class Main extends Sprite
 {
-	var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
-	var gameHeight:Int = 720; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
-	var initialState:Class<FlxState> = Caching; // The FlxState the game starts with.
-	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
-	var framerate:Int = 60; // How many frames per second the game should run at.
-	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
-	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
-
 	#if cpp
 	var memoryMonitor:MemoryMonitor = new MemoryMonitor(10, 3, 0xffffff);
 	#end
 	var fpsCounter:FPSMonitor = new FPSMonitor(10, 3, 0xFFFFFF);
 
-	////Indie cross vars
+	//Indie cross vars
 	public static var dataJump:Int = 8; // The j
 	public static var menuOption:Int = 0;
-
 	public static var unloadDelay:Float = 0.5;
-
 	public static var appTitle:String = 'Indie Cross';
-
 	public static var menuMusic:String = 'freakyMenu';
 	public static var menubpm:Float = 117;
-
 	public static var curSave:String = 'save';
-
 	public static var logAsked:Bool = false;
 	public static var focusMusicTween:FlxTween;
-
 	public static var hiddenSongs:Array<String> = ['gose', 'gose-classic', 'saness'];
-
-	public static var gjToastManager:GJToastManager;
-
+	public static var gjToastManager:GJToastManager = new GJToastManager();
 	public static var transitionDuration:Float = 0.5;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
-
-	public static function main():Void
-	{
-		// quick checks
-
-		Lib.current.addChild(new Main());
-	}
 
 	public function new()
 	{
@@ -82,56 +59,30 @@ class Main extends Sprite
 		#end
 
 		if (stage != null)
-		{
 			init();
-		}
 		else
-		{
 			addEventListener(Event.ADDED_TO_STAGE, init);
-		}
 	}
 
 	private function init(?E:Event):Void
 	{
 		if (hasEventListener(Event.ADDED_TO_STAGE))
-		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-		}
 
 		setupGame();
 	}
 
 	private function setupGame():Void
 	{
-		var stageWidth:Int = Lib.current.stage.stageWidth;
-		var stageHeight:Int = Lib.current.stage.stageHeight;
-
-		if (zoom == -1)
-		{
-			var ratioX:Float = stageWidth / gameWidth;
-			var ratioY:Float = stageHeight / gameHeight;
-			zoom = Math.min(ratioX, ratioY);
-			gameWidth = Math.ceil(stageWidth / zoom);
-			gameHeight = Math.ceil(stageHeight / zoom);
-		}
-
 		SUtil.check();
-
-		game = new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen);
 
 		#if (debug && poly)
 		FlxStudio.create();
 		#end
 
-		addChild(game);
-
-		#if cpp
+		addChild(new FlxGame(0, 0, Caching, 1, returnRefreshRate(), returnRefreshRate(), true, false));
 		addChild(memoryMonitor);
-		#end
-
 		addChild(fpsCounter);
-
-		gjToastManager = new GJToastManager();
 		addChild(gjToastManager);
 
 		#if debug
@@ -149,7 +100,6 @@ class Main extends Sprite
 		Application.current.window.onFocusIn.add(onWindowFocusIn);
 	}
 
-	var game:FlxGame;
 	var oldVol:Float = 1.0;
 	var newVol:Float = 0.3;
 
@@ -221,17 +171,13 @@ class Main extends Sprite
 
 	public function toggleMemCounter(enabled:Bool):Void
 	{
-		#if cpp
 		memoryMonitor.visible = enabled;
-		#end
 	}
 
 	public function changeDisplayColor(color:FlxColor)
 	{
-		#if cpp
 		fpsCounter.textColor = color;
 		memoryMonitor.textColor = color;
-		#end
 	}
 
 	public function setFPSCap(cap:Float)
@@ -306,5 +252,15 @@ class Main extends Sprite
 		}
 
 		Sys.exit(1);
+	}
+
+	function returnRefreshRate():Int
+	{
+		var refreshRate:Int = SUtil.getDisplayRefreshRate();
+
+		if(refreshRate > 290)
+			refreshRate = 290;
+
+		return refreshRate;
 	}
 }

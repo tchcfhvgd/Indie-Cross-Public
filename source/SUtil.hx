@@ -191,4 +191,7 @@ class SUtil
 			Hardware.toast("Error!\nClouldn't copy the file because:\n" + e, 2);
 		#end
 	}
+
+	public static function getDisplayRefreshRate(copyPath:String, savePath:String)
+		return Application.current.window.displayMode.refreshRate;
 }

@@ -10183,8 +10183,8 @@ class PlayState extends MusicBeatState
 
 		if (curBeat % 2 == 0 && MainMenuState.debugTools)
 		{
-			///trace('curStep:' + curStep);
-			///trace('curBeat:' + curBeat);
+			//trace('curStep:' + curStep);
+			//trace('curBeat:' + curBeat);
 		}
 
 		bop();
