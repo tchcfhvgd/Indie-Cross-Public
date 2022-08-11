@@ -62,16 +62,16 @@ class FlxHitbox extends FlxSpriteGroup
 					add(buttonUp = createHint(640, 0, 'up', 0x00FF00));
 					add(buttonRight = createHint(960, 0, 'right', 0xFF0000));
 					if (addNewHitNum == 1)
-						add(buttonSpace = createHint(0, 540, 'space', 0xFFFF00));
-					else if (addNewHitNum == 4)
 						add(buttonSpace = createHint(0, 540, 'space', 0xFF0000));
+					else if (addNewHitNum == 4)
+						add(buttonSpace = createHint(0, 540, 'space', 0xFFFF00));
 				}
 				else if (!FlxG.save.data.mechsInputVariants)
 				{
 					if (addNewHitNum == 1)
-						add(buttonSpace = createHint(0, 0, 'space', 0xFFFF00));
-					else if (addNewHitNum == 4)
 						add(buttonSpace = createHint(0, 0, 'space', 0xFF0000));
+					else if (addNewHitNum == 4)
+						add(buttonSpace = createHint(0, 0, 'space', 0xFFFF00));
 					add(buttonLeft = createHint(0, 180, 'left', 0xFF00FF));
 					add(buttonDown = createHint(320, 180, 'down', 0x00FFFF));
 					add(buttonUp = createHint(640, 180, 'up', 0x00FF00));
