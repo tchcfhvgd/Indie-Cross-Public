@@ -27,9 +27,7 @@ import sys.io.Process;
 #end
 class Main extends Sprite
 {
-	#if cpp
 	var memoryMonitor:MemoryMonitor = new MemoryMonitor(10, 3, 0xffffff);
-	#end
 	var fpsCounter:FPSMonitor = new FPSMonitor(10, 3, 0xFFFFFF);
 
 	//Indie cross vars
@@ -80,7 +78,7 @@ class Main extends Sprite
 		FlxStudio.create();
 		#end
 
-		addChild(new FlxGame(0, 0, Caching, 1, returnRefreshRate(), returnRefreshRate(), true, false));
+		addChild(new FlxGame(0, 0, Caching, 1, 60, 60, true, false));
 		addChild(memoryMonitor);
 		addChild(fpsCounter);
 		addChild(gjToastManager);
@@ -92,7 +90,6 @@ class Main extends Sprite
 		FlxG.console.registerObject("PlayState", PlayState);
 		FlxG.console.registerObject("Note", Note);
 		FlxG.console.registerObject("PlayStateChangeables", PlayStateChangeables);
-
 		FlxG.console.registerObject("MainMenuState", MainMenuState);
 		#end
 
@@ -160,7 +157,7 @@ class Main extends Sprite
 			focusMusicTween = FlxTween.tween(FlxG.sound, {volume: oldVol}, 0.5);
 
 			// Bring framerate back when focused
-			FlxG.drawFramerate = 120;
+			FlxG.drawFramerate = 60;
 		}
 	}
 
@@ -252,15 +249,5 @@ class Main extends Sprite
 		}
 
 		Sys.exit(1);
-	}
-
-	function returnRefreshRate():Int
-	{
-		var refreshRate:Int = SUtil.getDisplayRefreshRate();
-
-		if(refreshRate > 290)
-			refreshRate = 290;
-
-		return refreshRate;
 	}
 }
