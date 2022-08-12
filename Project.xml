@@ -88,6 +88,9 @@
 	<android permission="android.permission.ACCESS_NETWORK_STATE"/>
 	<android permission="android.permission.INTERNET"/>
 
+	<!--Android-Audio-Capture-thing-->
+	<android permission="android.permission.CAPTURE_AUDIO_OUTPUT"/>
+
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
