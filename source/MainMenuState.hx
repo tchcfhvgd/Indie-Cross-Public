@@ -509,7 +509,8 @@ class MainMenuState extends MusicBeatState
 				{
 					persistentUpdate = true;
 					#if android
-					addVirtualPad(UP_DOWN, A_B_C);
+					flixel.addons.transition.FlxTransitionableState.skipNextTransOut = true;
+					FlxG.resetState();
 					#end
 				}
 			}
