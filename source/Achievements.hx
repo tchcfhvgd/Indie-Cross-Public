@@ -72,7 +72,7 @@ class Achievements
 			FlxG.save.data.achievementsIndie[achievements[ID].id] = true;
 
 			// GameJoltAPI.getTrophy(achievements[ID].id);
-			Main.gjToastManager.createToast("assets/achievements/images/" + Achievements.achievements[ID].img + ".png", Achievements.achievements[ID].name,
+			Main.gjToastManager.createToast(Paths.getPath('images/' + Achievements.achievements[ID].img + '.png', IMAGE, 'achievements'), Achievements.achievements[ID].name,
 				Achievements.achievements[ID].desc, hasSound, Achievements.achievements[ID].color);
 
 			FlxG.save.flush();
