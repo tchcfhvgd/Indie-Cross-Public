@@ -54,6 +54,22 @@ class Main extends Sprite
 		SUtil.uncaughtErrorHandler();
 		#end
 
+		if (stage != null)
+			init();
+		else
+			addEventListener(Event.ADDED_TO_STAGE, init);
+	}
+
+	private function init(?E:Event):Void
+	{
+		if (hasEventListener(Event.ADDED_TO_STAGE))
+			removeEventListener(Event.ADDED_TO_STAGE, init);
+
+		setupGame();
+	}
+
+	private function setupGame():Void
+	{
 		SUtil.check();
 
 		addChild(new FlxGame(0, 0, Caching, 1, 60, 60, true, false));
