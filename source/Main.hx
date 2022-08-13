@@ -22,9 +22,6 @@ import sys.FileSystem;
 import sys.io.File;
 import sys.io.Process;
 
-#if debug
-// import flixel.addons.studio.FlxStudio;
-#end
 class Main extends Sprite
 {
 	var memoryMonitor:MemoryMonitor = new MemoryMonitor(10, 3, 0xffffff);
@@ -56,27 +53,7 @@ class Main extends Sprite
 		SUtil.uncaughtErrorHandler();
 		#end
 
-		if (stage != null)
-			init();
-		else
-			addEventListener(Event.ADDED_TO_STAGE, init);
-	}
-
-	private function init(?E:Event):Void
-	{
-		if (hasEventListener(Event.ADDED_TO_STAGE))
-			removeEventListener(Event.ADDED_TO_STAGE, init);
-
-		setupGame();
-	}
-
-	private function setupGame():Void
-	{
 		SUtil.check();
-
-		#if (debug && poly)
-		FlxStudio.create();
-		#end
 
 		addChild(new FlxGame(0, 0, Caching, 1, 60, 60, true, false));
 		addChild(memoryMonitor);
