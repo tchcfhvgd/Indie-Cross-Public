@@ -41,7 +41,8 @@ class Main extends Sprite
 	public static var gjToastManager:GJToastManager = new GJToastManager();
 	public static var transitionDuration:Float = 0.5;
 
-	// You can pretty much ignore everything from here on - your code should go in your states.
+	public static function main():Void
+		Lib.current.addChild(new Main());
 
 	public function new()
 	{
