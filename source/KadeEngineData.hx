@@ -46,15 +46,7 @@ class KadeEngineData
 			FlxG.save.data.fpsRain = false;
 
 		if (FlxG.save.data.fpsCap == null)
-		{
-			var refreshRate:Int = SUtil.getDisplayRefreshRate();
-			if(FlxG.save.data.fpsCap != refreshRate)
-			{
-				FlxG.save.data.fpsCap = refreshRate;
-				if(FlxG.save.data.fpsCap > 290)
-					FlxG.save.data.fpsCap = 290;
-			}
-		}
+			FlxG.save.data.fpsCap = 60;
 
 		if (FlxG.save.data.npsDisplay == null)
 			FlxG.save.data.npsDisplay = false;
