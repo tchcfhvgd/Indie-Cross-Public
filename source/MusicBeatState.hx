@@ -55,7 +55,7 @@ class MusicBeatState extends FNFState
 			remove(virtualPad);
 	}
 
-	public function addAndroidControls(mechsType:Modes)
+	public function addAndroidControls(mechsType:Modes = DEFAULT)
 	{
 		androidControls = new AndroidControls(mechsType);
 		androidControls.alpha = 0.8;
