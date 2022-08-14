@@ -38,7 +38,7 @@ class Main extends Sprite
 	public static var logAsked:Bool = false;
 	public static var focusMusicTween:FlxTween;
 	public static var hiddenSongs:Array<String> = ['gose', 'gose-classic', 'saness'];
-	public static var gjToastManager:GJToastManager = new GJToastManager();
+	public static var gjToastManager:GJToastManager;
 	public static var transitionDuration:Float = 0.5;
 
 	public static function main():Void
@@ -73,6 +73,7 @@ class Main extends Sprite
 		SUtil.check();
 
 		addChild(new FlxGame(0, 0, Caching, 1, 60, 60, true, false));
+		gjToastManager = new GJToastManager();
 		addChild(memoryMonitor);
 		addChild(fpsCounter);
 		addChild(gjToastManager);
