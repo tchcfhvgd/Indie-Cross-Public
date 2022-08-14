@@ -41,9 +41,6 @@ class Main extends Sprite
 	public static var gjToastManager:GJToastManager;
 	public static var transitionDuration:Float = 0.5;
 
-	public static function main():Void
-		Lib.current.addChild(new Main());
-
 	public function new()
 	{
 		super();
