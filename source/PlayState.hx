@@ -2965,6 +2965,10 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
+                preload('AllnoteSplashes', 'notes');
+                preload('Parry_assets', 'notes');
+                preload('sinSplashes', 'notes');
+
 		startingSong = true;
 
 		if (curStage == 'hall')
@@ -12676,5 +12680,13 @@ class PlayState extends MusicBeatState
 			else
 				trace('is null');
 		}
+	}
+
+        public function preload(graphic:String, ?lib:String) //preload assets
+	{
+		var newthing:FlxSprite = new FlxSprite(0,0).loadGraphic(Paths.image(graphic, lib));
+		newthing.visible = false;
+		add(newthing);
+		remove(newthing);
 	}
 }
