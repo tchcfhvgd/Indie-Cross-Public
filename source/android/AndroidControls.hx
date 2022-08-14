@@ -6,33 +6,18 @@ import flixel.FlxG;
 import flixel.group.FlxSpriteGroup;
 import flixel.math.FlxPoint;
 import flixel.util.FlxDestroyUtil;
+import android.flixel.FlxHitbox.Modes;
 
 class AndroidControls extends FlxSpriteGroup
 {
 	public var hitbox:FlxHitbox;
 
-	public function new(mechsType:Int = 0)
+	public function new(mechsType:Modes = DEFAULT)
 	{
 		super();
 
-		switch (mechsType)
-		{
-			case 4:
-				hitbox = new FlxHitbox(4);
-				add(hitbox);
-			case 3:
-				hitbox = new FlxHitbox(3);
-				add(hitbox);
-			case 2:
-				hitbox = new FlxHitbox(2);
-				add(hitbox);
-			case 1:
-				hitbox = new FlxHitbox(1);
-				add(hitbox);
-			default:
-				hitbox = new FlxHitbox(0);
-				add(hitbox);
-		}
+	        hitbox = new FlxHitbox(mechsType);
+		add(hitbox);
 	}
 
 	override public function destroy():Void
