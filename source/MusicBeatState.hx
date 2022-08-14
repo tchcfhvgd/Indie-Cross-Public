@@ -5,6 +5,7 @@ import android.AndroidControls;
 import android.flixel.FlxVirtualPad;
 import flixel.input.actions.FlxActionInput;
 import flixel.util.FlxDestroyUtil;
+import android.flixel.FlxHitbox.Modes;
 #end
 import Shaders.BloomHandler;
 import Shaders.ChromaHandler;
@@ -54,7 +55,7 @@ class MusicBeatState extends FNFState
 			remove(virtualPad);
 	}
 
-	public function addAndroidControls(mechsType:Int = 0)
+	public function addAndroidControls(mechsType:Modes)
 	{
 		androidControls = new AndroidControls(mechsType);
 		androidControls.alpha = 0.8;
