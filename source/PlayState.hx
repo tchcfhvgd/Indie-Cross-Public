@@ -67,6 +67,9 @@ import sys.thread.Thread;
 import Discord.DiscordClient;
 import sys.FileSystem;
 #end
+#if android
+import android.flixel.FlxHitbox.Modes;
+#end
 
 class PlayState extends MusicBeatState
 {
@@ -2950,15 +2953,15 @@ class PlayState extends MusicBeatState
 		switch (PlayState.SONG.song.toLowerCase())
 		{
 			case 'whoopee' | 'satanic-funkin' | 'ritual' | 'bad-time':
-				addAndroidControls(4);
+				addAndroidControls(SINGLEDODGE);
 			case 'last-reel':
-				addAndroidControls(3);
+				addAndroidControls(TRIPLE);
 			case 'knockout' | 'devils-gambit' | 'despair' | 'sansational' | 'burning-in-hell':
-				addAndroidControls(2);
+				addAndroidControls(DOUBLE);
 			case 'technicolor-tussle':
-				addAndroidControls(1);
+				addAndroidControls(SINGLEATTACK);
 			default:
-				addAndroidControls(0);
+				addAndroidControls(DEFAULT);
 		}
 		#end
 
