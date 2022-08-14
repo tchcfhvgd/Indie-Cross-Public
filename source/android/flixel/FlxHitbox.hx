@@ -12,16 +12,10 @@ import flixel.group.FlxSpriteGroup;
 import openfl.utils.Assets;
 
 /**
- * A zone with 4 buttons (A hitbox).
- * It's easy to customize the layout.
+ * A zone with 4 hint's (A hitbox).
+ * It's really easy to customize the layout.
  *
  * @author: Saw (M.A. Jigsaw)
- */
-
- /**
- * This is an Edited Version, that was made for indie cross port
- * Edited Version Contains 3 additional hitboxes at the top or at the bottom, check second parametr
- * @author: Sirox
  */
 class FlxHitbox extends FlxSpriteGroup
 {
@@ -29,94 +23,54 @@ class FlxHitbox extends FlxSpriteGroup
 	public var buttonDown:FlxButton = new FlxButton(0, 0);
 	public var buttonUp:FlxButton = new FlxButton(0, 0);
 	public var buttonRight:FlxButton = new FlxButton(0, 0);
+	
+	public var buttonDodge:FlxButton = new FlxButton(0, 0);
+	public var buttonAttackLeft:FlxButton = new FlxButton(0, 0);
+	public var buttonAttackRight:FlxButton = new FlxButton(0, 0);
 
-	public var buttonSpace:FlxButton = new FlxButton(0, 0);
-	public var buttonSpaceLeft:FlxButton = new FlxButton(0, 0);
-	public var buttonSpaceRight:FlxButton = new FlxButton(0, 0);
-
-	var addNewHitNum:Int = 0;
 
 	/**
 	 * Create the zone.
 	 */
-	public function new(addNewHitNum:Int = 0)
+	public function new(mode:Modes)
 	{
 		super();
 
-		this.addNewHitNum = addNewHitNum;
-
 		scrollFactor.set();
-
-		switch (addNewHitNum)
-		{
-			case 0:
-				add(buttonLeft = createHint(0, 0, 'left', 0xFF00FF));
-				add(buttonDown = createHint(320, 0, 'down', 0x00FFFF));
-				add(buttonUp = createHint(640, 0, 'up', 0x00FF00));
-				add(buttonRight = createHint(960, 0, 'right', 0xFF0000));
-			case 1 | 4:
-				if (FlxG.save.data.mechsInputVariants)
-				{
-					add(buttonLeft = createHint(0, 0, 'left', 0xFF00FF));
-					add(buttonDown = createHint(320, 0, 'down', 0x00FFFF));
-					add(buttonUp = createHint(640, 0, 'up', 0x00FF00));
-					add(buttonRight = createHint(960, 0, 'right', 0xFF0000));
-					if (addNewHitNum == 1)
-						add(buttonSpace = createHint(0, 540, 'space', 0xFF0000));
-					else if (addNewHitNum == 4)
-						add(buttonSpace = createHint(0, 540, 'space', 0xFFFF00));
-				}
-				else if (!FlxG.save.data.mechsInputVariants)
-				{
-					if (addNewHitNum == 1)
-						add(buttonSpace = createHint(0, 0, 'space', 0xFF0000));
-					else if (addNewHitNum == 4)
-						add(buttonSpace = createHint(0, 0, 'space', 0xFFFF00));
-					add(buttonLeft = createHint(0, 180, 'left', 0xFF00FF));
-					add(buttonDown = createHint(320, 180, 'down', 0x00FFFF));
-					add(buttonUp = createHint(640, 180, 'up', 0x00FF00));
-					add(buttonRight = createHint(960, 180, 'right', 0xFF0000));
-				}
-			case 2:
-				if (FlxG.save.data.mechsInputVariants)
-				{
-					add(buttonLeft = createHint(0, 0, 'left', 0xFF00FF));
-					add(buttonDown = createHint(320, 0, 'down', 0x00FFFF));
-					add(buttonUp = createHint(640, 0, 'up', 0x00FF00));
-					add(buttonRight = createHint(960, 0, 'right', 0xFF0000));
-					add(buttonSpaceLeft = createHint(0, 540, 'space_left', 0xFF0000));
-					add(buttonSpaceRight = createHint(640, 540, 'space_right', 0xFFFF00));
-				}
-				else if (!FlxG.save.data.mechsInputVariants)
-				{
-					add(buttonSpaceLeft = createHint(0, 0, 'space_left', 0xFF0000));
-					add(buttonSpaceRight = createHint(640, 0, 'space_right', 0xFFFF00));
-					add(buttonLeft = createHint(0, 180, 'left', 0xFF00FF));
-					add(buttonDown = createHint(320, 180, 'down', 0x00FFFF));
-					add(buttonUp = createHint(640, 180, 'up', 0x00FF00));
-					add(buttonRight = createHint(960, 180, 'right', 0xFF0000));
-				}
-			case 3:
-				if (FlxG.save.data.mechsInputVariants)
-				{
-					add(buttonLeft = createHint(0, 0, 'left', 0xFF00FF));
-					add(buttonDown = createHint(320, 0, 'down', 0x00FFFF));
-					add(buttonUp = createHint(640, 0, 'up', 0x00FF00));
-					add(buttonRight = createHint(960, 0, 'right', 0xFF0000));
-					add(buttonSpaceLeft = createHint(0, 540, 'space_left', 0xFF0000));
-					add(buttonSpace = createHint(426, 540, 'space_mid', 0xFFFF00));
-					add(buttonSpaceRight = createHint(852, 540, 'space_right', 0xFF0000));
-				}
-				else if (!FlxG.save.data.mechsInputVariants)
-				{
-					add(buttonSpaceLeft = createHint(0, 0, 'space_left', 0xFF0000));
-					add(buttonSpace = createHint(426, 0, 'space_mid', 0xFFFF00));
-					add(buttonSpaceRight = createHint(852, 0, 'space_right', 0xFF0000));
-					add(buttonLeft = createHint(0, 180, 'left', 0xFF00FF));
-					add(buttonDown = createHint(320, 180, 'down', 0x00FFFF));
-					add(buttonUp = createHint(640, 180, 'up', 0x00FF00));
-					add(buttonRight = createHint(960, 180, 'right', 0xFF0000));
-				}
+		
+		switch (mode) {
+			case DEFAULT:
+			    add(buttonLeft = createHint(0, 0, Std.int(FlxG.width / 4), FlxG.height, 0xFF00FF));
+		        add(buttonDown = createHint(FlxG.width / 4, 0, Std.int(FlxG.width / 4), FlxG.height, 0x00FFFF));
+		        add(buttonUp = createHint(FlxG.width / 2, 0, Std.int(FlxG.width / 4), FlxG.height, 0x00FF00));
+		        add(buttonRight = createHint((FlxG.width / 2) + (FlxG.width / 4), 0, Std.int(FlxG.width / 4), FlxG.height, 0xFF0000));
+		    case SINGLEATTACK:
+		        add(buttonLeft = createHint(0, 0, Std.int(FlxG.width / 4), 540, 0xFF00FF));
+		        add(buttonDown = createHint(FlxG.width / 4, 0, Std.int(FlxG.width / 4), 540, 0x00FFFF));
+		        add(buttonUp = createHint(FlxG.width / 2, 0, Std.int(FlxG.width / 4), 540, 0x00FF00));
+		        add(buttonRight = createHint((FlxG.width / 2) + (FlxG.width / 4), 0, Std.int(FlxG.width / 4), 540, 0xFF0000));
+		        add(buttonAttackLeft = createHint(0, Std.int(FlxG.height / 4) * 3, FlxG.width, Std.int(FlxG.height / 4), 0xFF0000));
+		    case SINGLEDODGE:
+		        add(buttonLeft = createHint(0, 0, Std.int(FlxG.width / 4), 540, 0xFF00FF));
+		        add(buttonDown = createHint(FlxG.width / 4, 0, Std.int(FlxG.width / 4), 540, 0x00FFFF));
+		        add(buttonUp = createHint(FlxG.width / 2, 0, Std.int(FlxG.width / 4), 540, 0x00FF00));
+		        add(buttonRight = createHint((FlxG.width / 2) + (FlxG.width / 4), 0, Std.int(FlxG.width / 4), 540, 0xFF0000));
+		        add(buttonDodge = createHint(0, Std.int(FlxG.height / 4) * 3, FlxG.width, Std.int(FlxG.height / 4), 0xFFFF00));
+		    case DOUBLE:
+		        add(buttonLeft = createHint(0, 0, Std.int(FlxG.width / 4), 540, 0xFF00FF));
+		        add(buttonDown = createHint(FlxG.width / 4, 0, Std.int(FlxG.width / 4), 540, 0x00FFFF));
+		        add(buttonUp = createHint(FlxG.width / 2, 0, Std.int(FlxG.width / 4), 540, 0x00FF00));
+		        add(buttonRight = createHint((FlxG.width / 2) + (FlxG.width / 4), 0, Std.int(FlxG.width / 4), 540, 0xFF0000));
+		        add(buttonDodge = createHint(Std.int(FlxG.width / 2), Std.int(FlxG.height / 4) * 3, Std.int(FlxG.width / 2), Std.int(FlxG.height / 4), 0xFFFF00));
+		        add(buttonAttackLeft = createHint(0, Std.int(FlxG.height / 4) * 3, Std.int(FlxG.width / 2), Std.int(FlxG.height / 4), 0xFF0000));
+		    case TRIPLE:
+		        add(buttonLeft = createHint(0, 0, Std.int(FlxG.width / 4), 540, 0xFF00FF));
+		        add(buttonDown = createHint(FlxG.width / 4, 0, Std.int(FlxG.width / 4), 540, 0x00FFFF));
+		        add(buttonUp = createHint(FlxG.width / 2, 0, Std.int(FlxG.width / 4), 540, 0x00FF00));
+		        add(buttonRight = createHint((FlxG.width / 2) + (FlxG.width / 4), 0, Std.int(FlxG.width / 4), 540, 0xFF0000));
+		        add(buttonAttackRight = createHint(Std.int(FlxG.width / 3) * 2, Std.int(FlxG.height / 4) * 3, Std.int(FlxG.width / 3), Std.int(FlxG.height / 4), 0xFF0000));
+		        add(buttonDodge = createHint(Std.int(FlxG.width / 3), Std.int(FlxG.height / 4) * 3, Std.int(FlxG.width / 3), Std.int(FlxG.height / 4), 0xFFFF00));
+		        add(buttonAttackLeft = createHint(0, Std.int(FlxG.height / 4) * 3, Std.int(FlxG.width / 3), Std.int(FlxG.height / 4), 0xFF0000));
 		}
 	}
 
@@ -131,37 +85,18 @@ class FlxHitbox extends FlxSpriteGroup
 		buttonDown = null;
 		buttonUp = null;
 		buttonRight = null;
-		buttonSpace = null;
-		buttonSpaceLeft = null;
-		buttonSpaceRight = null;
+		buttonDodge = null;
+		buttonAttackLeft = null;
+		buttonAttackRight = null;
 	}
 
-	private function createHint(X:Float, Y:Float, Graphic:String, Color:Int = 0xFFFFFF):FlxButton
+	private function createHint(X:Float, Y:Float, Width:Int, Height:Int, Color:Int = 0xFFFFFF):FlxButton
 	{
 		var hintTween:FlxTween = null;
 		var hint:FlxButton = new FlxButton(X, Y);
-
-		switch (addNewHitNum)
-		{
-			case 0:
-				hint.loadGraphic(FlxGraphic.fromFrame(FlxAtlasFrames.fromSparrow(Assets.getBitmapData('assets/android/hitbox.png'), Assets.getText('assets/android/hitbox.xml')).getByName(Graphic)));
-			case 1 | 4:
-				if (FlxG.save.data.mechsInputVariants)
-					hint.loadGraphic(FlxGraphic.fromFrame(FlxAtlasFrames.fromSparrow(Assets.getBitmapData('assets/android/hitbox_one.png'), Assets.getText('assets/android/hitbox_one.xml')).getByName(Graphic)));
-				else if (!FlxG.save.data.mechsInputVariants)
-					hint.loadGraphic(FlxGraphic.fromFrame(FlxAtlasFrames.fromSparrow(Assets.getBitmapData('assets/android/hitbox_one_up.png'), Assets.getText('assets/android/hitbox_one_up.xml')).getByName(Graphic)));
-			case 2:
-				if (FlxG.save.data.mechsInputVariants)
-					hint.loadGraphic(FlxGraphic.fromFrame(FlxAtlasFrames.fromSparrow(Assets.getBitmapData('assets/android/hitbox_two.png'), Assets.getText('assets/android/hitbox_two.xml')).getByName(Graphic)));
-				else if (!FlxG.save.data.mechsInputVariants)
-					hint.loadGraphic(FlxGraphic.fromFrame(FlxAtlasFrames.fromSparrow(Assets.getBitmapData('assets/android/hitbox_two_up.png'), Assets.getText('assets/android/hitbox_two_up.xml')).getByName(Graphic)));
-			case 3:
-				if (FlxG.save.data.mechsInputVariants)
-					hint.loadGraphic(FlxGraphic.fromFrame(FlxAtlasFrames.fromSparrow(Assets.getBitmapData('assets/android/hitbox_three.png'), Assets.getText('assets/android/hitbox_three.xml')).getByName(Graphic)));
-				else if (!FlxG.save.data.mechsInputVariants)
-					hint.loadGraphic(FlxGraphic.fromFrame(FlxAtlasFrames.fromSparrow(Assets.getBitmapData('assets/android/hitbox_three_up.png'), Assets.getText('assets/android/hitbox_three_up.xml')).getByName(Graphic)));
-		}
-
+		hint.loadGraphic(Assets.getBitmapData('assets/android/hint.png'));
+		hint.setGraphicSize(Width, Height);
+		hint.updateHitbox();
 		hint.solid = false;
 		hint.immovable = true;
 		hint.scrollFactor.set();
@@ -172,26 +107,20 @@ class FlxHitbox extends FlxSpriteGroup
 			if (hintTween != null)
 				hintTween.cancel();
 
-			hintTween = FlxTween.tween(hint, {alpha: AndroidControls.getOpacity()}, 0.01, {
-				ease: FlxEase.circInOut,
-				onComplete: function(twn:FlxTween)
-				{
-					hintTween = null;
-				}
-			});
+			hintTween = FlxTween.tween(hint, {alpha: AndroidControls.getOpacity()}, 0.01, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
+			{
+				hintTween = null;
+			}});
 		}
 		hint.onUp.callback = function()
 		{
 			if (hintTween != null)
 				hintTween.cancel();
 
-			hintTween = FlxTween.tween(hint, {alpha: 0.00001}, 0.1, {
-				ease: FlxEase.circInOut,
-				onComplete: function(twn:FlxTween)
-				{
-					hintTween = null;
-				}
-			});
+			hintTween = FlxTween.tween(hint, {alpha: 0.00001}, 0.1, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
+			{
+				hintTween = null;
+			}});
 		}
 		hint.onOver.callback = hint.onDown.callback;
 		hint.onOut.callback = hint.onUp.callback;
@@ -200,4 +129,12 @@ class FlxHitbox extends FlxSpriteGroup
 		#end
 		return hint;
 	}
+}
+
+enum Modes {
+	DEFAULT;
+	SINGLEATTACK;
+	SINGLEDODGE;
+	DOUBLE;
+	TRIPLE;
 }
