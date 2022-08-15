@@ -6089,6 +6089,7 @@ class PlayState extends MusicBeatState
 			#if desktop
 			DiscordClient.changePresence("Chart Editor", null, null, true);
 			#end
+                        GlobalVariables.reset();
 			FlxG.switchState(new ChartingState());
 			Application.current.window.onFocusOut.remove(onWindowFocusOut);
 			if (luaModchart != null)
@@ -6181,7 +6182,7 @@ class PlayState extends MusicBeatState
 			if (FlxG.keys.justPressed.SIX)
 			{
 				AnimationDebug.isDad = true;
-
+                                GlobalVariables.reset();
 				FlxG.switchState(new AnimationDebug(dad.curCharacter));
 				Application.current.window.onFocusOut.remove(onWindowFocusOut);
 				if (luaModchart != null)
@@ -7360,10 +7361,12 @@ class PlayState extends MusicBeatState
 			{
 				MainMenuState.showCredits = true;
 				pushToAchievementIDS("The End", true);
+                                GlobalVariables.reset();
 				FlxG.switchState(new MainMenuState());
 			}
 			else
 			{
+                                GlobalVariables.reset();
 				FlxG.switchState(new StoryMenuState());
 			}
 		};
@@ -7607,6 +7610,7 @@ class PlayState extends MusicBeatState
 					Conductor.changeBPM(Main.menubpm);
 
 					OptionsMenu.returnedfromOptions = false;
+                                        GlobalVariables.reset();
 					FlxG.switchState(new MainMenuState());
 				}
 				else
@@ -7637,11 +7641,13 @@ class PlayState extends MusicBeatState
 						FlxG.sound.play(Paths.sound('boing', 'cup'), 1);
 						new FlxTimer().start(1.1, function(tmr:FlxTimer)
 						{
+                                                        GlobalVariables.reset();
 							FlxG.switchState(new LoadingState());
 						});
 					}
 					else
 					{
+                                                GlobalVariables.reset();
 						FlxG.switchState(new LoadingState());
 					}
 				}
@@ -7659,6 +7665,7 @@ class PlayState extends MusicBeatState
 					cupteaBackout();
 					new FlxTimer().start(0.666, function(tmr:FlxTimer)
 					{
+                                                GlobalVariables.reset();
 						FlxG.switchState(new FreeplayState());
 					});
 				}
@@ -7671,6 +7678,7 @@ class PlayState extends MusicBeatState
 					else
 					{
 						OptionsMenu.returnedfromOptions = false;
+                                                GlobalVariables.reset();
 						FlxG.switchState(new FreeplayState());
 					}
 				}
@@ -11516,7 +11524,6 @@ class PlayState extends MusicBeatState
 	{
 		if (storyDifficulty == 2)
 		{
-			var songsNotFCd:Int = 0;
 			for (i in 0...StoryMenuState.weekData[storyWeek].length)
 			{
 				var songHighscore = StringTools.replace(StoryMenuState.weekData[storyWeek][i], " ", "-");
@@ -11530,13 +11537,13 @@ class PlayState extends MusicBeatState
 				else
 				{
 					trace('dumbass you didnt fc it');
-					songsNotFCd++;
+					GlobalVariables.songsNotFCd++;
 				}
 			}
 
 			trace("you have not fcd " + songsNotFCd + " songs");
 
-			if (songsNotFCd == 0) // has fcd the whole week
+			if (GlobalVariables.songsNotFCd == 0 && storyPlaylist.length <= 0 && isStoryMode) // has fcd the whole week
 			{
 				trace('gj! you fcd week ' + storyWeek);
 				switch (storyWeek)
