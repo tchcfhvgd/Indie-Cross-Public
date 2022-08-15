@@ -7641,13 +7641,11 @@ class PlayState extends MusicBeatState
 						FlxG.sound.play(Paths.sound('boing', 'cup'), 1);
 						new FlxTimer().start(1.1, function(tmr:FlxTimer)
 						{
-                                                        GlobalVariables.reset();
 							FlxG.switchState(new LoadingState());
 						});
 					}
 					else
 					{
-                                                GlobalVariables.reset();
 						FlxG.switchState(new LoadingState());
 					}
 				}
