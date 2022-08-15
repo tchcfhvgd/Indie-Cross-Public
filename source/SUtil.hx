@@ -126,15 +126,15 @@ class SUtil
 				switch (stackItem)
 				{
 					case CFunction:
-						errMsg += '(a C function)\n';
+						errMsg += 'a C function\n';
 					case Module(m):
-						errMsg += '(module ' + m + ')\n';
+						errMsg += 'module ' + m + '\n';
 					case FilePos(s, file, line, column):
-						errMsg += '(' + file + ' line ' + line + ' column ' + column == null ? "<unknown>" : column + ')\n';
+						errMsg += file + ' (line ' + line + ')\n';
 					case Method(cname, meth):
-						errMsg += '(' + cname == null ? "<unknown>" : cname + '.' + meth + ')\n';
+						errMsg += cname == null ? "<unknown>" : cname + '.' + meth + '\n';
 					case LocalFunction(n):
-						errMsg += "(local function #" + n + ')\n';
+						errMsg += 'local function ' + n + '\n';
 				}
 			}
 
