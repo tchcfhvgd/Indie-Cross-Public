@@ -11541,7 +11541,7 @@ class PlayState extends MusicBeatState
 				}
 			}
 
-			trace("you have not fcd " + songsNotFCd + " songs");
+			trace("you have not fcd " + GlobalVariables.songsNotFCd + " songs");
 
 			if (GlobalVariables.songsNotFCd == 0 && storyPlaylist.length <= 0 && isStoryMode) // has fcd the whole week
 			{
