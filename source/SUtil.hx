@@ -31,7 +31,7 @@ class SUtil
 		"intro",
 		"bendy/1.5",
 		"bendy/1",
-		"bendy2",
+		"bendy/2",
 		"bendy/3",
 		"bendy/4",
 		"bendy/4ez",
