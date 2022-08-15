@@ -1,20 +1,16 @@
 package vlc;
 
 import flixel.FlxG;
-import openfl.system.Capabilities;
 #if cpp
 import cpp.NativeArray;
 import cpp.UInt8;
-import haxe.ValueException;
 import haxe.io.Bytes;
-import lime.app.Application;
 import openfl.Lib;
 import openfl.display.Bitmap;
 import openfl.display.BitmapData;
 import openfl.display3D.textures.RectangleTexture;
 import openfl.errors.Error;
 import openfl.events.Event;
-import openfl.geom.Rectangle;
 import vlc.LibVLC;
 
 /**
@@ -80,7 +76,6 @@ class VlcBitmap extends Bitmap
 	var bmdBuf2:BitmapData;
 	var oldTime:Int;
 	var flipBuffer:Bool;
-	var frameRect:Rectangle;
 	var screenWidth:Float;
 	var screenHeight:Float;
 
@@ -333,7 +328,6 @@ class VlcBitmap extends Bitmap
 
 		// BitmapData
 		bitmapData = new BitmapData(Std.int(videoWidth), Std.int(videoHeight), true, 0);
-		frameRect = new Rectangle(0, 0, Std.int(videoWidth), Std.int(videoHeight));
 
 		// (Stage3D)
 		// texture = Lib.current.stage.stage3Ds[0].context3D.createRectangleTexture(videoWidth, videoHeight, Context3DTextureFormat.BGRA, true);
@@ -380,12 +374,12 @@ class VlcBitmap extends Bitmap
 		var cTime = Lib.getTimer();
 
 		// with fast gpu rendering now i think we can make the fps higher (35 to 60)
-		if ((cTime - oldTime) > 16) // min 28 ms between renders, but this is not a good way to do it...
+		if ((cTime - oldTime) > 16) // min 16 ms between renders, but this is not a good way to do it...
 		{
 			oldTime = cTime;
 
 			#if cpp
-			// if (isPlaying && texture != null) // (Stage3D)
+			//if (isPlaying && texture != null) // (Stage3D)
 			if (isPlaying)
 			{
 				try
@@ -396,10 +390,10 @@ class VlcBitmap extends Bitmap
 						// BitmapData
 						// libvlc.getPixelData() sometimes is null and the exe hangs ...
 						if (libvlc.getPixelData() != null)
-							bitmapData.setPixels(frameRect, Bytes.ofData(bufferMem));
+							bitmapData.setPixels(bitmapData.rect, Bytes.ofData(cast(bufferMem)));
 
 						// (Stage3D)
-						// texture.uploadFromByteArray( Bytes.ofData(cast(bufferMem)), 0 );
+						// texture.uploadFromByteArray(Bytes.ofData(cast(bufferMem)), 0);
 						// this.width++; //This is a horrible hack to force the texture to update... Surely there is a better way...
 						// this.width--;
 					}
