@@ -148,7 +148,7 @@ class SUtil
 				if (!FileSystem.exists(SUtil.getPath() + 'logs'))
 					FileSystem.createDirectory(SUtil.getPath() + 'logs');
 
-				File.saveContent(SUtil.getPath() + 'logs/' + Application.current.meta.get('file') + '_'
+				File.saveContent(SUtil.getPath() + 'logs/' + Application.current.meta.get('file') + '-'
 					+ Date.now().toString().replace(" ", "-").replace(":", "'") + '.log',
 					errMsg + "\n");
 			}
