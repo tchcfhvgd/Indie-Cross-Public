@@ -3,6 +3,7 @@ package;
 #if android
 import android.Hardware;
 import android.Permissions;
+import android.os.Build;
 import android.os.Environment;
 #end
 import flash.system.System;
@@ -62,14 +63,22 @@ class SUtil
 		if (!Permissions.getGrantedPermissions().contains(PermissionsList.WRITE_EXTERNAL_STORAGE)
 			&& !Permissions.getGrantedPermissions().contains(PermissionsList.READ_EXTERNAL_STORAGE))
 		{
-			Permissions.requestPermissions([PermissionsList.WRITE_EXTERNAL_STORAGE, PermissionsList.READ_EXTERNAL_STORAGE]);
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+			{
+				Permissions.requestPermissions([PermissionsList.WRITE_EXTERNAL_STORAGE, PermissionsList.READ_EXTERNAL_STORAGE]);
 
-			/**
-			 * Basically for now i can't force the app to stop while its requesting a android permission, so this makes the app to stop while its requesting the specific permission
-			 */
-			Application.current.window.alert('If you accepted the permissions you are all good!' + "\nIf you didn't then expect a crash"
-				+ 'Press Ok to see what happens',
-				'Permissions?');
+				/**
+				 * Basically for now i can't force the app to stop while its requesting a android permission, so this makes the app to stop while its requesting the specific permission
+				 */
+				Application.current.window.alert('If you accepted the permissions you are all good!' + "\nIf you didn't then expect a crash"
+					+ 'Press Ok to see what happens',
+					'Permissions?');
+			}
+			else
+			{
+				Application.current.window.alert('Please grant the game storage permissions in app settings' + '\nPress Ok io close the app', 'Permissions?');
+				System.exit(1);
+			}
 		}
 
 		if (Permissions.getGrantedPermissions().contains(PermissionsList.WRITE_EXTERNAL_STORAGE)
