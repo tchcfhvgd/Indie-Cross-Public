@@ -326,12 +326,8 @@ class VlcBitmap extends Bitmap
 		if (texture2 != null)
 			texture2.dispose();
 
-		// BitmapData
-		bitmapData = new BitmapData(Std.int(videoWidth), Std.int(videoHeight), true, 0);
-
-		// (Stage3D)
-		// texture = Lib.current.stage.stage3Ds[0].context3D.createRectangleTexture(videoWidth, videoHeight, Context3DTextureFormat.BGRA, true);
-		// this.bitmapData = BitmapData.fromTexture(texture);
+		texture = Lib.current.stage.context3D.createRectangleTexture(videoWidth, videoHeight, BGRA, true);
+		bitmapData = BitmapData.fromTexture(texture);
 
 		smoothing = true;
 
@@ -387,15 +383,9 @@ class VlcBitmap extends Bitmap
 					NativeArray.setUnmanagedData(bufferMem, libvlc.getPixelData(), frameSize);
 					if (bufferMem != null)
 					{
-						// BitmapData
-						// libvlc.getPixelData() sometimes is null and the exe hangs ...
-						if (libvlc.getPixelData() != null)
-							bitmapData.setPixels(bitmapData.rect, Bytes.ofData(cast(bufferMem)));
-
-						// (Stage3D)
-						// texture.uploadFromByteArray(Bytes.ofData(cast(bufferMem)), 0);
-						// this.width++; //This is a horrible hack to force the texture to update... Surely there is a better way...
-						// this.width--;
+						texture.uploadFromByteArray(Bytes.ofData(cast(bufferMem)), 0);
+						width++; //This is a horrible hack to force the texture to update... Surely there is a better way...
+						width--;
 					}
 				}
 				catch (e:Error)
