@@ -3,7 +3,8 @@ package;
 #if android
 import android.Hardware;
 import android.Permissions;
-import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Environment;
 #end
 import flash.system.System;
@@ -63,7 +64,7 @@ class SUtil
 		if (!Permissions.getGrantedPermissions().contains(PermissionsList.WRITE_EXTERNAL_STORAGE)
 			&& !Permissions.getGrantedPermissions().contains(PermissionsList.READ_EXTERNAL_STORAGE))
 		{
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+			if (VERSION.SDK_INT >= VERSION_CODES.M)
 			{
 				Permissions.requestPermissions([PermissionsList.WRITE_EXTERNAL_STORAGE, PermissionsList.READ_EXTERNAL_STORAGE]);
 
