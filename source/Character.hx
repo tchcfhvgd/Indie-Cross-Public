@@ -4,6 +4,7 @@ import flixel.math.FlxRect;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxTimer;
+import flixel.graphics.frames.FlxAtlasFrames;
 
 using StringTools;
 
@@ -36,6 +37,13 @@ class Character extends FlxSprite
 
 	var idletimer:FlxTimer;
 
+	function jointex(frames1:FlxAtlasFrames, frames2:FlxAtlasFrames) {
+		for (frame in frames2.frames){
+			frames1.pushFrame(frame);
+		}
+		return frames1;
+	}
+
 	public function new(x:Float, y:Float, ?character:String = "none", ?isPlayer:Bool = false)
 	{
 		super(x, y);
@@ -44,6 +52,7 @@ class Character extends FlxSprite
 		curCharacter = character;
 		this.isPlayer = isPlayer;
 
+		var tex:FlxAtlasFrames;
 		antialiasing = FlxG.save.data.highquality;
 
 		switch (curCharacter)
@@ -410,7 +419,9 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'sans':
-				frames = Paths.getSparrowAtlas('characters/Sans', 'shared');
+				tex = Paths.getSparrowAtlas('characters/Sans', 'shared');
+				tex = jointex(tex, Paths.getSparrowAtlas('characters/Sans2', 'shared'));
+				frames = tex;
 				animation.addByIndices('idleLeft', 'Sans FNF instance 1', [28, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
 				animation.addByIndices('idleRight', 'Sans FNF instance 1', [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27], "", 24, false);
 				animation.addByPrefix('singUP', 'Up instance 1', 24, false);
@@ -445,7 +456,9 @@ class Character extends FlxSprite
 			 */
 
 			case 'sansScared':
-				frames = Paths.getSparrowAtlas('characters/Sans_Phase_3', 'shared');
+				tex = Paths.getSparrowAtlas('characters/Sans_Phase_3', 'shared');
+				tex = jointex(tex, Paths.getSparrowAtlas('characters/Sans_Phase_3_2', 'shared'));
+				frames = tex;
 				animation.addByIndices('idleLeft', 'Sans FNF instance 1', [28, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
 				animation.addByIndices('idleRight', 'Sans FNF instance 1', [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27], "", 24, false);
 				animation.addByPrefix('singUP', 'Up instance 1', 24, false);
