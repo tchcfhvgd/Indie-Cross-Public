@@ -1,9 +1,9 @@
 import GameJolt.GameJoltInfo;
-#if desktop
+
 import sys.io.Process;
 import sys.FileSystem;
 import sys.io.File;
-#end
+
 import flixel.FlxG;
 import flixel.graphics.FlxGraphic;
 import flixel.graphics.frames.FlxAtlasFrames;
