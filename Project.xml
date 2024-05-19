@@ -60,6 +60,8 @@
 	<haxelib name="flixel-ui" />
 	<haxelib name="discord_rpc" if="desktop"/>
 	<haxelib name="linc_luajit" if="cpp"/>
+	<haxelib name="extension-androidtools" if="android"/>
+	<haxelib name="hxCodec" if="desktop || android" />
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
