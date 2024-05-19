@@ -1,5 +1,6 @@
 package;
 
+#if desktop
 import flixel.FlxG;
 import Sys.sleep;
 
@@ -120,3 +121,4 @@ class DiscordClient
 		#end
 	}
 }
+#end
