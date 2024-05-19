@@ -296,7 +296,9 @@ class MainMenuState extends MusicBeatState
 		FlxG.mouse.visible = true;
 
 		Application.current.window.title = Main.appTitle;
+		#if desktop
 		DiscordClient.changePresence("In the Menus", null);
+		#end
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menu/BG', 'preload'));
 		bg.updateHitbox();
@@ -539,7 +541,7 @@ class MainMenuState extends MusicBeatState
 				FlxG.sound.music.proximity(soundX, FlxG.height/2, ear, 300, true);
 			}
 
-			#if cpp
+			#if desktop
 			if (FlxG.keys.justPressed.SEMICOLON)
 			{
 				if (FlxG.keys.pressed.CONTROL)
