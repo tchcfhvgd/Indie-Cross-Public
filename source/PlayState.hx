@@ -4943,7 +4943,7 @@ class PlayState extends MusicBeatState
 					player3.onpause(true);
 			}
 
-			#if cpp
+			#if desktop
 			var disSong:String = SONG.song;
 			if (HelperFunctions.shouldBeHidden(SONG.song.toLowerCase()))
 				disSong = '[CONFIDENTIAL]';
@@ -11648,7 +11648,7 @@ class PlayState extends MusicBeatState
 				}
 			}
 
-			#if cpp
+			#if desktop
 			// Game Over doesn't get his own variable because it's only used here
 			var disSong:String = SONG.song;
 			if (HelperFunctions.shouldBeHidden(SONG.song.toLowerCase()))
