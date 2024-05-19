@@ -58,10 +58,10 @@ jobs:
           haxelib git line https://github.com/mcagabe19-stuff/lime
           haxelib git hxcpp https://github.com/mcagabe19-stuff/hxcpp
           haxelib install openfl 9.2.2
-          haxelib install flixel 5.3.1
+          haxelib install flixel 4.11.0
           haxelib install flixel-tools
           haxelib install flixel-ui
-          haxelib install flixel-addons 3.1.1
+          haxelib install flixel-addons 2.11.0
           haxelib install tjson
           haxelib install hxjsonast
           haxelib install hscript
@@ -78,8 +78,8 @@ jobs:
           haxelib run lime config JAVA_HOME $JAVA_HOME
           haxelib run lime config ANDROID_SETUP true
           haxelib set openfl 9.2.2
-          haxelib set flixel 5.3.1
-          haxelib set flixel-addons 3.1.1
+          haxelib set flixel 4.11.0
+          haxelib set flixel-addons 2.11.0
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Compile
