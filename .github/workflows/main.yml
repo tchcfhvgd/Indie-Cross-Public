@@ -36,6 +36,9 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@main
+
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
         with:
@@ -125,4 +128,4 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: buildAndroid
-          path: export/release/android/bin/app/build/outputs/apk/release/*.apk
+          path: export/release/android/bin/app/build/outputs/apk/debug
