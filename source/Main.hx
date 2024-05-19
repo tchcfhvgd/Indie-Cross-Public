@@ -99,7 +99,7 @@ class Main extends Sprite
 
 	private function setupGame():Void
 	{
-		game = new FlxGame(gameWidth, gameHeight, initialState, framerate, framerate, skipSplash, startFullscreen);
+		game = new FlxGame(gameWidth, gameHeight, initialState, 60, 60, skipSplash, startFullscreen);
 
 		#if (debug && poly)
 		FlxStudio.create();
