@@ -28,7 +28,7 @@ import flixel.input.keyboard.FlxKey;
 
 using StringTools;
 
-#if cpp
+#if desktop
 import Discord.DiscordClient;
 #end
 
