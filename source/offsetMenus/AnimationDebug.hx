@@ -27,7 +27,7 @@ import openfl.net.FileReference;
 
 using StringTools;
 
-#if cpp
+#if desktop
 import systools.Clipboard;
 #end
 
