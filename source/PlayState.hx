@@ -56,14 +56,14 @@ import openfl.utils.Assets;
 
 using StringTools;
 
-#if desktop
+#if sys
 import sys.io.File;
+import sys.FileSystem
 import sys.io.Process;
 import sys.thread.Thread;
 #end
-#if cpp
-import Discord.DiscordClient;
-import sys.FileSystem;
+#if desktop
+import Discord.DiscordClient;;
 #end
 
 class PlayState extends MusicBeatState
