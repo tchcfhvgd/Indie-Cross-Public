@@ -83,7 +83,7 @@ class AnimationDebug extends MusicBeatState
 
 		if ((data != null) && (data.length > 0))
 		{
-			#if cpp
+			#if desktop
 			var leData = data.trim();
 			Clipboard.setText(leData);
 
