@@ -12,6 +12,7 @@
 	<!--These window settings apply to all targets-->
 	<window width="1280" height="720" fps="" background="#000000" hardware="true" vsync="false" />
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
+	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
@@ -58,10 +59,7 @@
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
 	<haxelib name="discord_rpc" if="cpp"/>
-    <haxelib name="tentools" />
 	<haxelib name="linc_luajit" if="cpp"/>
-	<haxelib name="systools" if="cpp"/>
-    <ndll name="systools" haxelib="systools" if="cpp" />
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
