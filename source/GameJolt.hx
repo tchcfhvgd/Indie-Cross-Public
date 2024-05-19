@@ -53,10 +53,13 @@ class GameJoltAPI
 		return userLogin;
 	}
 
+	public static var id:Int = 0; // Put your game's ID here
+	public static var key:String = ""; // Put your game's private API key here
+	
 	public static function connect()
 	{
 		trace("Grabbing API keys...");
-		GJApi.init(Std.int(GJKeys.id), Std.string(GJKeys.key), false);
+		GJApi.init(Std.int(id), Std.string(key), false);
 	}
 
 	public static function authDaUser(in1, in2, ?loginArg:Bool = false)
