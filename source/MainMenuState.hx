@@ -2,7 +2,7 @@
 package;
 
 import offsetMenus.DiffButtonOffsets;
-#if desktop
+#if sys
 import sys.io.File;
 import sys.FileSystem;
 #end
@@ -28,7 +28,7 @@ import flixel.system.debug.Window;
 
 using StringTools;
 
-#if cpp
+#if desktop
 import Discord.DiscordClient;
 #end
 
