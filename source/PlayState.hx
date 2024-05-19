@@ -533,7 +533,7 @@ class PlayState extends MusicBeatState
 		executeModchart = false; // FORCE disable for non cpp targets
 		#end
 
-		#if cpp
+		#if desktop
 		// Making difficulty text for Discord Rich Presence.
 		storyDifficultyText = HelperFunctions.difficultyFromInt(storyDifficulty);
 
@@ -4330,7 +4330,7 @@ class PlayState extends MusicBeatState
 
 		allowedToHeadbang = false;
 
-		#if cpp
+		#if desktop
 		// Updating Discord Rich Presence (with Time Left)
 			var disSong:String = SONG.song;
 			if (HelperFunctions.shouldBeHidden(SONG.song.toLowerCase()))
@@ -4991,7 +4991,7 @@ class PlayState extends MusicBeatState
 			FlxG.sound.music.play();
 			Conductor.songPosition = FlxG.sound.music.time;
 
-			#if cpp
+			#if desktop
 			var disSong:String = SONG.song;
 			if (HelperFunctions.shouldBeHidden(SONG.song.toLowerCase()))
 				disSong = '[CONFIDENTIAL]';
@@ -5075,7 +5075,7 @@ class PlayState extends MusicBeatState
 
 			paused = false;
 
-			#if cpp
+			#if desktop
 			if (!specialIntro)
 			{
 				if (startTimer.finished)
@@ -5133,7 +5133,7 @@ class PlayState extends MusicBeatState
 				vocals.time = Conductor.songPosition;
 				vocals.play();
 
-				#if cpp
+				#if desktop
 				var disSong:String = SONG.song;
 				if (HelperFunctions.shouldBeHidden(SONG.song.toLowerCase()))
 					disSong = '[CONFIDENTIAL]';
@@ -6238,7 +6238,9 @@ class PlayState extends MusicBeatState
 		{
 			cannotDie = true;
 			transitioningToState = true;
+			#if desktop
 			DiscordClient.changePresence("Chart Editor", null, null, true);
+			#end
 			FlxG.switchState(new ChartingState());
 			Application.current.window.onFocusOut.remove(onWindowFocusOut);
 			FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
@@ -10094,6 +10096,7 @@ class PlayState extends MusicBeatState
 			var disSong:String = SONG.song;
 			if (HelperFunctions.shouldBeHidden(SONG.song.toLowerCase()))
 				disSong = '[CONFIDENTIAL]';
+			#if desktop
 			DiscordClient.changePresence(detailsText
 				+ " "
 				+ disSong
@@ -10109,6 +10112,7 @@ class PlayState extends MusicBeatState
 				+ misses, iconRPC, true,
 				songLength
 				- Conductor.songPosition);
+		#end
 		}
 	}
 
