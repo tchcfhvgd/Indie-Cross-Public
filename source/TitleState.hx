@@ -272,7 +272,7 @@ class TitleState extends MusicBeatState
 
 	public static function restart()
 	{
-		#if cpp
+		#if desktop
 		var os = Sys.systemName();
 		var args = "Test.hx";
 		var app = "";
