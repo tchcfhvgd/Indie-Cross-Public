@@ -12,7 +12,7 @@ import sys.thread.Thread;
 
 using StringTools;
 
-#if cpp
+#if desktop
 import Discord.DiscordClient;
 #end
 
@@ -53,7 +53,7 @@ class Caching extends MusicBeatState
 
 		FlxG.save.bind(Main.curSave, 'indiecross');
 
-		#if cpp
+		#if desktop
 		DiscordClient.initialize();
 		#end
 
@@ -69,7 +69,9 @@ class Caching extends MusicBeatState
 		Application.current.onExit.add(function(exitCode)
 		{
 			FlxG.save.flush();
+			#if desktop
 			DiscordClient.shutdown();
+			#end
 			Sys.exit(0);
 		});
 
