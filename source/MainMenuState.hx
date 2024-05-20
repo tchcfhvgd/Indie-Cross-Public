@@ -25,6 +25,7 @@ import flixel.util.FlxTimer;
 import lime.app.Application;
 import openfl.Lib;
 import flixel.system.debug.Window;
+import hxcodec.VideoHandler;
 
 using StringTools;
 
@@ -399,7 +400,7 @@ class MainMenuState extends MusicBeatState
 			skipText.screenCenter(X);
 
 			var video:VideoHandler = new VideoHandler(); // it plays but it doesn't show???
-			video.allowSkip = FlxG.save.data.seenCredits;
+			video.canSkip = FlxG.save.data.seenCredits;
 			video.finishCallback = function()
 			{
 				FlxG.save.data.seenCredits = true;
@@ -409,9 +410,9 @@ class MainMenuState extends MusicBeatState
 				showCredits = false;
 				remove(skipText);
 			};
-			video.playMP4(Paths.video('credits'), false, vidSpr, false, true, false);
+			video.playVideo(Paths.video('credits'));
 
-			if (video.allowSkip)
+			if (video.canSkip)
 			{
 				add(skipText);
 				FlxTween.tween(skipText, {alpha: 1}, 1, {ease: FlxEase.quadIn});
