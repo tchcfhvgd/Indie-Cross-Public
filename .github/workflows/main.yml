@@ -25,11 +25,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
-      - name: Setup Android NDK
-        uses: nttld/setup-ndk@main
-        id: setup-ndk
-        with:
-          ndk-version: r21e
       - name: Setup Java JDK
         uses: actions/setup-java@main
         with:
@@ -80,8 +75,7 @@ jobs:
           haxelib set openfl 9.1.0
           haxelib set flixel 4.11.0
           haxelib set flixel-addons 2.11.0
-        env:
-          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+        
       - name: Compile
         run: haxelib run lime build android
       
