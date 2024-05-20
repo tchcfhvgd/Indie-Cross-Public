@@ -1144,7 +1144,7 @@ class PlayState extends MusicBeatState
 								{
 									videoName = 'bgscene';
 								}
-								freakyMachineVideo.playMP4(Paths.video('bendy/' + videoName));
+								freakyMachineVideo.playVideo(Paths.video('bendy/' + videoName));
 								gameVideos.push(freakyMachineVideo);
 
 								machineCurtainLeft = new FlxSprite(-403, -50).loadGraphic(Paths.image('bonusSongs/Curtain1', "shared"));
@@ -5060,6 +5060,7 @@ class PlayState extends MusicBeatState
 					player3.onpause(false);
 			}
 
+			/*
 			if (gameVideos != null)
 			{
 				for (i in 0...gameVideos.length)
@@ -5067,6 +5068,7 @@ class PlayState extends MusicBeatState
 					gameVideos[i].bitmap.resume();
 				}
 			}
+			*/
 
 			if (!specialIntro)
 			{
@@ -12204,6 +12206,7 @@ class PlayState extends MusicBeatState
 		}
 		paused = true;
 
+		/*
 		if (gameVideos != null)
 		{
 			for (i in 0...gameVideos.length)
@@ -12211,6 +12214,7 @@ class PlayState extends MusicBeatState
 				gameVideos[i].bitmap.pause();
 			}
 		}
+		*/
 
 		openSubState(new PauseSubState());
 	}
