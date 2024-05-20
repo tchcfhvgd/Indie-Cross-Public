@@ -53,6 +53,7 @@ import openfl.media.Sound;
 import openfl.ui.KeyLocation;
 import openfl.ui.Keyboard;
 import openfl.utils.Assets;
+import hxcodec.VideoHandler;
 
 using StringTools;
 
