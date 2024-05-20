@@ -10,6 +10,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import openfl.system.System;
+import hxcodec.VideoHandler;
 
 using StringTools;
 
@@ -147,7 +148,7 @@ class TitleState extends MusicBeatState
 			skipText.screenCenter(X);
 
 			var video:VideoHandler = new VideoHandler();
-			video.allowSkip = FlxG.save.data.watchedTitleVid;
+			video.canSkip = FlxG.save.data.watchedTitleVid;
 			video.finishCallback = function()
 			{
 				videoDone = true;
@@ -158,9 +159,9 @@ class TitleState extends MusicBeatState
 				FlxTween.tween(blackOverlay, {alpha: 0}, 1);
 			};
 			FlxG.save.data.watchedTitleVid = true;
-			video.playMP4(Paths.video('intro'), false, vidSpr, false, true, false);
+			video.playVideo(Paths.video('intro'));
 
-			if (video.allowSkip)
+			if (video.canSkip)
 			{
 				add(skipText);
 				FlxTween.tween(skipText, {alpha: 1}, 1, {ease: FlxEase.quadIn});
