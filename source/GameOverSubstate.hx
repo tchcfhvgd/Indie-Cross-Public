@@ -8,6 +8,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
+import hxcodec.VideoHandler;
 
 using StringTools;
 
@@ -162,12 +163,12 @@ class GameOverSubstate extends MusicBeatSubstate
 				add(vidSpr);
 
 				var video:VideoHandler = new VideoHandler();
-				video.allowSkip = false;
+				video.canSkip = false;
 				video.finishCallback = function()
 				{
 					throw new ValueException('Honk');
 				};
-				video.playMP4(Paths.video('gose'), false, vidSpr, false, true, false);
+				video.playVideo(Paths.video('gose'));
 		}
 
 		FlxG.camera.scroll.set();
