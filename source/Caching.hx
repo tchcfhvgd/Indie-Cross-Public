@@ -9,6 +9,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 import sys.thread.Thread;
+import hxcodec.VideoHandler;
 
 using StringTools;
 
@@ -204,7 +205,7 @@ class Caching extends MusicBeatState
 			var vidSprite = new FlxSprite(0, 0);
 			video.finishCallback = null;
 	
-			video.playMP4(Paths.video('bendy/1.5'), false, vidSprite, false, false, true);
+			video.playVideo(Paths.video('bendy/1.5'));
 			video.kill();
 			trace('finished vid cache');
 		}
