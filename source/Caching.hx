@@ -206,7 +206,7 @@ class Caching extends MusicBeatState
 			video.finishCallback = null;
 	
 			video.playVideo(Paths.video('bendy/1.5'));
-			video.kill();
+			video.dispose();
 			trace('finished vid cache');
 		}
 
